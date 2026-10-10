@@ -1,0 +1,32 @@
+.reveal h2::before { content: "T02 / 划分与评价"; }
+.reveal #title-slide::before { content: "机器学习 / 理论单元 02"; }
+.reveal #title-slide::after { content: "先安排证据，再解释分数"; }
+.reveal #t02-overview h2::before, .reveal #t02-summary h2::before { content: "T02 / 全章流程"; }
+.reveal #regression-metrics h2::before, .reveal #regression-task h2::before, .reveal #regression-answer h2::before, .reveal #metric-comparison h2::before { content: "T02 / 回归误差"; }
+.reveal #metric-demo h2::before { content: "T02 / 改变条件，观察结果"; }
+.reveal #positive-class h2::before, .reveal #confusion-matrix h2::before, .reveal #classification-metrics h2::before, .reveal #classification-cost h2::before { content: "T02 / 分类指标"; }
+.reveal #b01-chart h2::before, .reveal #b01-arrays h2::before, .reveal #b01-code h2::before { content: "T02 / 实验衔接"; }
+.reveal #t02-exit h2::before { content: "T02 / 独立核验"; }
+.reveal .exercise-editor .cm-editor { font-size: 20px; line-height: 1.3; }
+.reveal .exercise-editor .card-header { font-size: 18px; }
+.reveal .exercise-cell .exercise-output, .reveal .exercise-cell pre { font-size: 21px; line-height: 1.35; }
+.reveal .exercise-cell { margin: .2em 0; }
+.reveal .demo-reference { font-size: .67em; color: var(--ml-muted); margin-top: .4em; }
+.reveal #b01-chart img { max-height: 350px; margin: 0 auto; display: block; }
+.reveal #b01-code pre { font-size: .72em; }
+
+/* Preserve the editable source; hide only the runtime's duplicate source echo. */
+.reveal #metric-demo .cell-output-container-pyodide > div.sourceCode { display: none; }
+
+/* Use a bundled MATH-table font for stable native MathML radicals and fractions. */
+@font-face {
+  font-family: "ML Latin Modern Math";
+  src: url("assets/fonts/latinmodern-math.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+}
+.reveal math {
+  font-family: "ML Latin Modern Math", math;
+  line-height: normal;
+}

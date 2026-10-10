@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T02 纸笔活动：划分与基本评价 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t02-纸笔活动划分与基本评价">T02 纸笔活动：划分与基本评价</h1>
+<p>姓名________ 班级________ 日期________。所有数字为教学示例，课内完成，无需设备。</p>
+<h2 id="a谁负责什么">A．谁负责什么？</h2>
+<p>给“训练”“验证”“测试”分别匹配：拟合参数、比较候选、方案冻结后的最后检查。</p>
+<p>判断并说明理由：</p>
+<ol type="1">
+<li>查看测试误差后，修改模型直到测试误差满意，再报告这个测试分数。</li>
+<li>同一设备有多行记录，要预测从未见过的设备，随机把各行分到两边即可。</li>
+<li>要预测未来月份，用未来记录参与训练，再评价过去记录。</li>
+<li>本次只有训练与验证数据，报告“在本次验证集上候选优于基线”，同时说明没有独立最终测试。</li>
+</ol>
+<h2 id="b回归误差">B．回归误差</h2>
+<table>
+<thead>
+<tr>
+<th>样本</th>
+<th style="text-align: right;">实际值</th>
+<th style="text-align: right;">预测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">36</td>
+</tr>
+</tbody>
+</table>
+<p>MAE=绝对误差之和÷样本数；RMSE=√(平方误差之和÷样本数)。</p>
+<ol type="1">
+<li>写出四行绝对误差与平方误差，计算MAE、RMSE（可保留根号）。</li>
+<li>若目标单位为kWh，两种指标的单位是什么？</li>
+<li>为什么不能拿模型甲的MAE与模型乙的RMSE直接判断谁更好？</li>
+</ol>
+<h2 id="c识别超限批次">C．识别超限批次</h2>
+<p>将“超限”定义为正类，以下100个样本均为未用于训练的检查样本。</p>
+<table>
+<thead>
+<tr>
+<th>实际</th>
+<th style="text-align: right;">预测超限</th>
+<th style="text-align: right;">预测正常</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实际超限</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>实际正常</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">78</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>准确率：全部样本中预测正确的比例，是多少？</li>
+<li>精确率：预测超限的样本中实际超限的比例，是多少？</li>
+<li>召回率：实际超限的样本中被识别的比例，是多少？</li>
+<li>全部预测正常的基线准确率是多少？它能识别多少超限？</li>
+<li>若漏掉超限的代价很高，你会优先关注什么？是否意味着误报可以完全不考虑？</li>
+</ol>
+<h2 id="d该相信哪个分数">D．该相信哪个分数？</h2>
+<p>下表为假设情境，三个方法使用相同训练/验证划分和MAE。方法乙的原理本讲不考查。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align: right;">训练MAE</th>
+<th style="text-align: right;">验证MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简单基线</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr>
+<td>候选甲</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>候选乙</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">40</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>当前更有依据选择哪个候选，为什么？</li>
+<li>乙的训练误差为0，为什么仍不能宣布它最好？</li>
+<li>若甲改用了更容易的验证样本，再把新分数与乙的旧分数比较，是否公平？</li>
+<li>当前结果能否直接称为最终测试表现？</li>
+</ol>
+<h2 id="e离堂检查">E．离堂检查</h2>
+<p>某同学说：“训练误差最低的模型一定最好；测试集可以反复看，直到找到最高分。”请指出两处问题，并各写一句正确做法。</p>
+
+</main></body></html>

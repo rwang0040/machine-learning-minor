@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T03—T04 纸笔活动：选择与调整一条直线 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t03t04-纸笔活动选择与调整一条直线">T03—T04 纸笔活动：选择与调整一条直线</h1>
+<p>姓名：________　班级：________　日期：________</p>
+<p>全程使用 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mi>w</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\hat y=wx+b</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">e=\hat y-y</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo>∑</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J=\sum e_i^2/(2n)</annotation></semantics></math>。不需要电脑。</p>
+<h2 id="t03-活动">T03 活动</h2>
+<p><strong>A1 预测与残差。</strong> 给定 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x=[0,1,2]</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">y=[1,3,5]</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">w=1</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b=0</annotation></semantics></math>，填写：</p>
+<!-- print:table-stretch=2.2 -->
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></th>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>y</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat y</annotation></semantics></math></th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math></th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mn>2</mn></msup><annotation encoding="application/x-tex">e^2</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- print:table-stretch=1.65 -->
+<p><strong>A2 损失比较。</strong> 计算 A1 的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>。再计算 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">w=2</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b=1</annotation></semantics></math> 的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>。为什么不能直接用残差的平均值代表误差大小？为什么这三个样本的零损失不能保证新样本也零误差？</p>
+<!-- print:answer-lines=8 -->
+<!-- print:pagebreak -->
+<p><strong>A3 保持记录对应。</strong> 如果把输入和标签分别重新排序，再按位置计算残差和损失，是否一定仍在评价原来那些样本？解释原因，并说明调整记录顺序时应怎样处理输入和标签。</p>
+<!-- print:answer-lines=8 -->
+<p><strong>A4 离堂题。</strong> 一个候选训练损失更低。单凭这条信息，是否应该把它用于所有未来批次的能耗预测？还需要什么证据？</p>
+<!-- print:answer-lines=8 -->
+<!-- print:pagebreak -->
+<h2 id="t04-活动">T04 活动</h2>
+<p><strong>B1 求梯度。</strong> 继续 A1 的旧参数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w,b)=(1,0)</annotation></semantics></math>。利用 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>w</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">mean</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>e</mi><mo>⋅</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">d_w=\operatorname{mean}(e\cdot x)</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>b</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">mean</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>e</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">d_b=\operatorname{mean}(e)</annotation></semantics></math>，计算两个梯度。</p>
+<!-- print:answer-lines=7 -->
+<p><strong>B2 更新一次。</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\eta=0.1</annotation></semantics></math>，同时更新 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math> 和 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>。写出新参数和新损失。说明两个梯度应该在更新前还是更新后计算。</p>
+<!-- print:answer-lines=11 -->
+<!-- print:pagebreak -->
+<p><strong>B3 读曲线。</strong> 看教师展示的相同数据、相同初值和更新预算下的两条曲线：</p>
+<ol type="1">
+<li>哪个候选在当前预算内下降较快？你的依据是什么？</li>
+<li>如果损失显著上升，先检查哪两个方面？</li>
+<li>训练损失下降是否必然意味着验证误差下降？</li>
+</ol>
+<!-- print:answer-lines=6 -->
+<p><strong>B4 尺度。</strong> 训练 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x=[0,2]</annotation></semantics></math>，验证 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>10</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x=[10]</annotation></semantics></math>。使用训练均值和总体标准差（<code>ddof=0</code>）计算标准化参数，以及验证点的标准化值。为什么不能先合并数据再计算？</p>
+<!-- print:answer-lines=5 -->
+<p><strong>B5 离堂题。</strong> 某点 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>w</mi></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d_w&lt;0</annotation></semantics></math>。按梯度下降，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math> 应增大还是减小？为什么这不保证任意大的学习率都能降低损失？</p>
+<!-- print:answer-lines=3 -->
+<h2 id="带去实验的三个问题">带去实验的三个问题</h2>
+<p>我预计观察到：________________________________________________</p>
+<p>我只改变：________________；保持不变：________________________</p>
+<p>我用这些结果判断：____________________________________________</p>
+
+</main></body></html>

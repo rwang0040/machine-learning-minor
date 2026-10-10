@@ -1,0 +1,20 @@
+.reveal h2::before { content: "T03 / 模型与损失"; }
+.reveal #title-slide::before { content: "机器学习 / 理论单元 03"; }
+.reveal #title-slide::after { content: "从预测公式走到训练目标"; }
+.reveal #t03-overview h2::before, .reveal #t03-summary h2::before { content: "T03 / 全章流程"; }
+.reveal #t03-exit h2::before { content: "T03 / 课堂反馈"; }
+.reveal .exercise-editor .cm-editor { font-size: 19px; line-height: 1.25; }
+.reveal .exercise-editor .card-header { font-size: 17px; }
+.reveal .exercise-cell .exercise-output, .reveal .exercise-cell pre { font-size: 20px; line-height: 1.3; }
+.reveal .exercise-cell { margin: .15em 0; }
+.reveal .demo-reference { font-size: .65em; color: var(--ml-muted); margin-top: .35em; }
+.reveal .cell-output-container-pyodide > div.sourceCode { display: none; }
+.reveal section > p > img { max-height: 345px; margin: 0 auto; display: block; }
+@font-face {
+  font-family: "ML Latin Modern Math";
+  src: url("assets/fonts/latinmodern-math.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+}
+.reveal math { font-family: "ML Latin Modern Math", math; line-height: normal; }

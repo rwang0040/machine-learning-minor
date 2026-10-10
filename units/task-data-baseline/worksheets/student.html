@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T01 纸笔活动：任务、数据与基线 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t01-纸笔活动任务数据与基线">T01 纸笔活动：任务、数据与基线</h1>
+<p>姓名：________　班级：________　日期：________</p>
+<p>课内完成，无需电脑。所有数据均为合成教学示例。</p>
+<h2 id="a入口短诊断">A．入口短诊断</h2>
+<p>某厂想在每个批次开工前估计该批次完工后的总能耗。</p>
+<ol type="1">
+<li>数据表的一行应该代表什么？</li>
+<li>已有四个批次能耗为100、150、250、300 kWh，均值是多少？</li>
+<li>不写程序：如果需要将“计划产量”作为输入，你会选择一列还是一行？</li>
+</ol>
+<!-- print:answer-lines=4 -->
+<h2 id="b辨认任务">B．辨认任务</h2>
+<p>分别写“回归”“分类”或“聚类”，并说明输出是什么。</p>
+<!-- print:table-stretch=2.2 -->
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>任务与输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开工前预测一个批次的总能耗</td>
+<td></td>
+</tr>
+<tr>
+<td>根据已标注的历史记录，预测某批次是否会超出规定能耗限额</td>
+<td></td>
+</tr>
+<tr>
+<td>没有预先给定类别，把能耗模式相似的批次分组</td>
+<td></td>
+</tr>
+<tr>
+<td>数据表用0代表正常、1代表超限，预测这个编码</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- print:table-stretch=1.65 -->
+<!-- print:pagebreak -->
+<h2 id="c数据与预测时点">C．数据与预测时点</h2>
+<p>假设计划产量在开工前确定，总能耗和最终电费在完工后才取得。</p>
+<table>
+<thead>
+<tr>
+<th>批次编号</th>
+<th>用途</th>
+<th style="text-align: right;">计划产量（件）</th>
+<th style="text-align: right;">总能耗（kWh）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>历史记录</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>历史记录</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">150</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>历史记录</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">250</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>历史记录</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>N1</td>
+<td>新批次，完工后核对</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">230</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>新批次，完工后核对</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">320</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>在“计划产量、总能耗、最终电费、批次编号”中，选择本情境的主要输入和标签。说明另外两列的处理依据。</li>
+<li>补全任务说明：在________时，以一个________为样本，使用________，预测________。</li>
+<li>表中已经列出了 N1/N2 的实际能耗，是否表示开工前可以把它们作为输入？为什么？</li>
+</ol>
+<!-- print:answer-lines=9 -->
+<!-- print:pagebreak -->
+<h2 id="d一个简单基线">D．一个简单基线</h2>
+<p>只用 H1—H4 的能耗均值，对每个新批次预测同一个数。另有一个给定候选，其 N1/N2 预测值分别为210、310 kWh。本题只比较预测结果，不研究候选如何得到。</p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th>新批次</th>
+<th style="text-align: right;">实际能耗</th>
+<th style="text-align: right;">基线预测</th>
+<th style="text-align: right;">基线绝对误差</th>
+<th style="text-align: right;">候选预测</th>
+<th style="text-align: right;">候选绝对误差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">210</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>N2</td>
+<td style="text-align: right;">320</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<p>绝对误差＝预测值与实际值之差的绝对值；平均绝对误差＝两行绝对误差之和÷2，单位 kWh。</p>
+<ol type="1">
+<li>两种方法的平均绝对误差分别是多少？</li>
+<li>哪个方法在这两行上表现更好？这个结果能说明它对未来所有批次都更好吗？</li>
+<li>能否把 N1/N2 的实际值加入均值计算后，再声称这是开工前可用的基线？</li>
+</ol>
+<!-- print:answer-lines=4 -->
+<h2 id="e90就够好吗">E．90%就够好吗？</h2>
+<p>另一个分类案例：历史批次中正常类占多数。我们预先选定“全部预测正常”的简单基线；在随后100个检查样本中，实际90个正常、10个超限。</p>
+<p>这个基线预测对了多少个？有没有识别出超限批次？如果超限会导致严重损失，你还想知道模型的什么表现？</p>
+<!-- print:answer-lines=4 -->
+<!-- print:pagebreak -->
+<h2 id="f离堂检查独立完成">F．离堂检查（独立完成）</h2>
+<p>快递站要在每天开门前预测当天到站的包裹总件数。此时已知前一天到站件数和当天已登记的运输车次；当天关门后才能统计未取包裹件数。</p>
+<ol type="1">
+<li>写明预测时点和预测目标，并指出一项不能作为输入的字段及原因。</li>
+<li>给出一种开门前可执行的简单基线。</li>
+<li>用一句话解释：为什么正式模型需要与基线比较？</li>
+</ol>
+<!-- print:answer-lines=8 -->
+
+</main></body></html>

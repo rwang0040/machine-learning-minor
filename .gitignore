@@ -1,0 +1,11 @@
+work/
+.venv/
+.python/
+.uv-cache/
+runtime/cloudstudio/tools/
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.env
+.env.*

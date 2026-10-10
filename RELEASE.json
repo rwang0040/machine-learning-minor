@@ -1,0 +1,1476 @@
+{
+  "schema_version": 1,
+  "release_id": "minor-48-t01-t04-2026-10-10",
+  "date": "2026-10-10",
+  "track": "minor-48",
+  "chapters": [
+    "T01",
+    "T02",
+    "T03",
+    "T04"
+  ],
+  "source_revision": "8787da27d94bd35d316838537c14133767516854",
+  "source_includes_uncommitted_release_preparation": true,
+  "manifest_sha256": "2ff22a47757a599991820f97cd0adeded2eada5bafca8de915b17e42172e5856",
+  "files": {
+    ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
+    ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
+    ".python-version": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb",
+    "README.md": "628292013b4d6b1977b3a8d6e871fea3700dc8cf1f76fcc0ca126db38eca97fa",
+    "docs/course-map.md": "4e8714b07ea4ccc4068991aef89a527728105d06ee65cf5e5f629d099c4781c3",
+    "docs/getting-started.md": "19163d6f09d5dfc70fe2ee29a8e951e26df1af785eaf60f346c5d3972b134caa",
+    "docs/submission.md": "921cfd736858de4b4330431673a60f67e687a8ff0c4a3f1f3d9af3e42c730348",
+    "homework/t01-t02/student.md": "1da0e06c7093b7f86929592dcb67a1c258cd8431e62009a62ff3b68521996544",
+    "homework/t03-t04/student.md": "2270dcd902ac2a3ea8839c992d58e68f50b816b000a868a2c1555143129001d1",
+    "lecture-notes/README.md": "e4864e63fd9e11d7ec7b5c8d1f6f1e59a57a53fc40630b3b2da4e15eda8466be",
+    "lecture-notes/pdf/minor-48/t01.pdf": "36cf4ee92f638bc7a132af22a489bc72fe5f1676f3b0493d9280da548a45d135",
+    "lecture-notes/pdf/minor-48/t02.pdf": "b0155144cd9bb3aaf19f870723ca959186c12985b161f67503b885ba0c5e9267",
+    "lecture-notes/pdf/minor-48/t03.pdf": "da367dc647c4d08965c0a7e24fb103a197bf255fe823a2737bb279c6b43c0999",
+    "lecture-notes/pdf/minor-48/t04.pdf": "61c2ad1aac28c4bf901e2a3709a9c20f4b412659f98bae03508b065393ea5f1d",
+    "lecture/t01/index.html": "8f95699770be740c8d476085508adf37e8bd579ef76d490995ed6da10907f387",
+    "lecture/t02/assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
+    "lecture/t02/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
+    "lecture/t02/assets/validation-mae.png": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932",
+    "lecture/t02/index.html": "a6219eb133255df5b6f9752f4b57bd66d150880f2d957d7abf86863b2ab25e30",
+    "lecture/t02/t02.css": "c2d1b2a7e3aeec87edabaade27efb033899d9d10f1db695dbbc3d756664b131a",
+    "lecture/t02/t02_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
+    "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
+    "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/live-runtime.js": "1f8b04cdc00eb9246ffd0faf3f0897b43eeac23b119233175e56fe1e777179aa",
+    "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/pyodide-worker.js": "5a9969a50da4a3b82bce9915f421c96ea07a18f70d989d9e16801cb54333a6a6",
+    "lecture/t02/t02_files/libs/quarto-html/light-border.css": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd",
+    "lecture/t02/t02_files/libs/quarto-html/popper.min.js": "4d50586b184724d39ddfe0f6582861664eddd5e806e5a79e0dbaa832361414d0",
+    "lecture/t02/t02_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css": "510c236c766c43cb510a3a0e3aaf045f1f804d918c04350ea78209788253cfeb",
+    "lecture/t02/t02_files/libs/quarto-html/tabby.min.js": "d9bb77bde59c096a08171b67d3f4b797606fb06019ed3ca36028a5aa6f4d5953",
+    "lecture/t02/t02_files/libs/quarto-html/tippy.css": "5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678",
+    "lecture/t02/t02_files/libs/quarto-html/tippy.umd.min.js": "41181eeec6d7ba64cb9165f0e95563e34e026bde79e7c13aeec83270429b6fae",
+    "lecture/t02/t02_files/libs/quarto-ojs/quarto-ojs-runtime.js": "99628b525981d848756bbd4e77111a0002988560ee1dae3cc31ba06ac0fb2b2f",
+    "lecture/t02/t02_files/libs/quarto-ojs/quarto-ojs.css": "471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3",
+    "lecture/t02/t02_files/libs/revealjs/dist/reset.css": "1aa8e84c9cabcbfe4d95b19879fe48b9c2c5e6d54574cbe679bc22edb9fe12b6",
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.css": "9cbc5082797d938f0ee780328790a131ae3d7bc5c09c176e77927c174f29e60a",
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.esm.js": "c9d8c6a59ee4ac89aa28d2829b8153d2b0761b7eadbc8d8ac24ac301beb7b40e",
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.esm.js.map": "90adea032036c83a920ab63a61e58788e25ac838010136d4ecf39edbef950abe",
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.js": "9736bf3d8918e391e8c07c85c53773800d4004dc25f948916e319ca371ca881a",
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.js.map": "ba6170f0af229fc9c9ed3606d9ebff11f6dd97e39e7e00607aed9aa0b8ebf237",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": "f8a741f43a00e8dc1ba89debfe7cc6c760de0315e9ee47406c17474f9246c692",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": "82d18a3cfbde189aefc749cc31d314681e7a41f064141d33ec6687f6fc57223d",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": "8802c66a5594beb2420c8fdb9b0ba87088ff102ca71c819b37e53d4670c93ec8",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": "38fcc72133411c61e3194afe3a11e64ae268c00d403a87cf3c66a5c07e2d9413",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": "5eef6df86135497f2d0a586c8aa3dc3ace8963234762c16081924714658da2db",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": "bb5f5f9b59ff3ab358efed2c5436e8aa2e12444959c4bde82167b874d5db1b1c",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": "ad4b0799608b5dc860cc3bd7ff4781f2d9e13144e48a2e3d9321ce57c5a12f2a",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": "d13268affb2204223a1b6b8483afd989a0e2b20bff853eae05fe5d0d32de8ed9",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": "05d3615fdbe7d35c62d6a1308dc48e3985016b69e65926ed37b99fe7e6b297dc",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": "dce8869d25c3abcecb33a3486a3c70bb76aed17c21a74069ee83949b1d209c9b",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": "c1865d89d798bc2119872b17774361c7406974b9568121a617007e02af344981",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": "d4eaa48ba450f4dd2d024ab5b0e895c73c81475718e5453fd1890254c16b7a57",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": "ebb8918da92bae172dfe322a3947929b3df2330dccc6f13c7d8e8ed3815e1696",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": "a53e27232eff5f0bc1ba1c0af7e0759f0aaaf5c0636370b4c54f83c4652ba924",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": "b0abd2736335424f9fd3eb27974a36d03783b3db141e0801dca7d3a635218b46",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": "dfe0b47abfa0fdb0504d7be14015fa3f1cf9647b97ffd8b3bfcceb25c60f4fa6",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css": "025f4588f95a254f6a496728006ca8ecb744c136db8e744e38a2b301e272bf48",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332",
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-c880b4c6ea04ffd5b1e9ea759ca8768b.css": "df74f533230a94ec0dddf99420903d3c4e816f72ee860aa49edac03556bc4c0b",
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/highlight.esm.js": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707",
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/highlight.js": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca",
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/monokai.css": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999",
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/plugin.js": "fd0d79317e81f625ad2e50829ae0b678e82f83f221d57239d7a6eb5a37bca7a8",
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/zenburn.css": "ba1469a7d0194c9ca29aaf4ad3341ffee5bfbb583f22f0620e25e91a9a846431",
+    "lecture/t02/t02_files/libs/revealjs/plugin/markdown/markdown.esm.js": "dc1c5cbfe18950706d7b1197e0420b03875fa1f1341ed184474bb1b17123f887",
+    "lecture/t02/t02_files/libs/revealjs/plugin/markdown/markdown.js": "daef024c44fe63d26ac0a403cd1e2442dd3d15c0a46ad271ecbd11ffb8197215",
+    "lecture/t02/t02_files/libs/revealjs/plugin/markdown/plugin.js": "3fa94d03ebc86fb49ada69dd6f6759f0a1e63249cfa67c9043d848ef4552c6f8",
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/katex.js": "5a3b3c08a7aee2c27b82cbb6a1f1407f23ccdedee65bc21faa182fdb383ff034",
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/math.esm.js": "871848be629469d6dd719e2583a20f3e5a54a069312888760fb4c72f2f51cbbc",
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/math.js": "d88b3f0d43e391c5e951e36f5ab210be1ff23e80d196443a920ab4e6b65ec44d",
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/mathjax2.js": "8f4e74ea68e9f9f4238ce8d516d6602cb532224bd4e99eed6127f855a9ac578e",
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/mathjax3.js": "08d040d053431c166c9a2131f6a04adf796948226116d7a9bfafd1cbd3536e6b",
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/plugin.js": "5953baa37de282e598535d234440d9b3f4e7c640cb9c7fcb54187318ebc5af28",
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/notes.esm.js": "51cce5ff4dcb836c3cda74884e437cf83849b57bf1acad2d8320fe053d798c1e",
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/notes.js": "288fe7cb27ff696a3e1c137b22b0cd117395a84dba2a703e2bfc3136e65612a8",
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/plugin.js": "ac22d7e5b215d5049d80edd5f83f02143c4354d69598c091cda384d6eb36d5ce",
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/speaker-view.html": "cbae92980c488a08dfac298bce6a483a98eaf28ff0cc4f5912d266adf5db837f",
+    "lecture/t02/t02_files/libs/revealjs/plugin/pdf-export/pdfexport.js": "04a7cf66287cee83929567717012f992e1da8da3ee1422afc4d6ed2ccf899db5",
+    "lecture/t02/t02_files/libs/revealjs/plugin/pdf-export/plugin.yml": "ce9bb146827c559d109c1011b22d14695751de65dbc8f1033ccf38a13b029298",
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": "10ca4ebf89e45854dfb209477e5eec3dabadc6afaa3053e156be86b103d46713",
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": "e985a18488170b3206470dd1465d696f19f4396f77a39853fe4ab664f42d043d",
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": "c360344cce59778682800185df97b414ac9ec91213fefda989b9551a10b49e95",
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/footer.css": "12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94",
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/plugin.yml": "b8c1267adaf0f137c83ebe6a12f7ef0ee49ee36676f038edef63288379844bf5",
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/support.js": "556caf13cf55ef74c621dd9b732e7c3dd1a35fdd3f4c8faca8afe70b173dfb15",
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/menu.css": "d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf",
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/menu.js": "5e3a6594eed51e13b55ee755fd495e5a7de02fa3193fff97bc19b46f47e52522",
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/plugin.yml": "572b76cc11ffd42c1abfe9e415fe7c95d76e517f2812a41e4baee3333fc9cf77",
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": "81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b",
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": "031feb02645bc2e4abeaad39b2c017725e667c1ad7e50a3fb7f6035474be2521",
+    "lecture/t02/t02_files/libs/revealjs/plugin/search/plugin.js": "ad68bbdc4a0a23780dfd04f6d39e013eab88ca7295db55e29fca8541834ee2e0",
+    "lecture/t02/t02_files/libs/revealjs/plugin/search/search.esm.js": "d34e802197489977611611fe2f3af2f8f72c7a22ac98a5510f422c83ef204dc1",
+    "lecture/t02/t02_files/libs/revealjs/plugin/search/search.js": "790fe4787fc747feb7a0c77ea69afc9202047361f5af6c89f802ce10a96dab8f",
+    "lecture/t02/t02_files/libs/revealjs/plugin/zoom/plugin.js": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475",
+    "lecture/t02/t02_files/libs/revealjs/plugin/zoom/zoom.esm.js": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930",
+    "lecture/t02/t02_files/libs/revealjs/plugin/zoom/zoom.js": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296",
+    "lecture/t03/assets/data-fit.png": "f0374ba88da249c4ad1e37faf80308aa51ee29c0cb863a0e992c59908a6e2344",
+    "lecture/t03/assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
+    "lecture/t03/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
+    "lecture/t03/index.html": "e5dc1bf559133287f1d3d6acc138c115f9be00781abe0fd7520c30a845021cc3",
+    "lecture/t03/t03.css": "eb3fc5b1cc1a6512631a1ed06c8c2061a2e75dc8114d7f84107a9cb0b48364ea",
+    "lecture/t03/t03_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
+    "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
+    "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/live-runtime.js": "1f8b04cdc00eb9246ffd0faf3f0897b43eeac23b119233175e56fe1e777179aa",
+    "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/pyodide-worker.js": "5a9969a50da4a3b82bce9915f421c96ea07a18f70d989d9e16801cb54333a6a6",
+    "lecture/t03/t03_files/libs/quarto-html/light-border.css": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd",
+    "lecture/t03/t03_files/libs/quarto-html/popper.min.js": "4d50586b184724d39ddfe0f6582861664eddd5e806e5a79e0dbaa832361414d0",
+    "lecture/t03/t03_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css": "510c236c766c43cb510a3a0e3aaf045f1f804d918c04350ea78209788253cfeb",
+    "lecture/t03/t03_files/libs/quarto-html/tabby.min.js": "d9bb77bde59c096a08171b67d3f4b797606fb06019ed3ca36028a5aa6f4d5953",
+    "lecture/t03/t03_files/libs/quarto-html/tippy.css": "5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678",
+    "lecture/t03/t03_files/libs/quarto-html/tippy.umd.min.js": "41181eeec6d7ba64cb9165f0e95563e34e026bde79e7c13aeec83270429b6fae",
+    "lecture/t03/t03_files/libs/quarto-ojs/quarto-ojs-runtime.js": "99628b525981d848756bbd4e77111a0002988560ee1dae3cc31ba06ac0fb2b2f",
+    "lecture/t03/t03_files/libs/quarto-ojs/quarto-ojs.css": "471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3",
+    "lecture/t03/t03_files/libs/revealjs/dist/reset.css": "1aa8e84c9cabcbfe4d95b19879fe48b9c2c5e6d54574cbe679bc22edb9fe12b6",
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.css": "9cbc5082797d938f0ee780328790a131ae3d7bc5c09c176e77927c174f29e60a",
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.esm.js": "c9d8c6a59ee4ac89aa28d2829b8153d2b0761b7eadbc8d8ac24ac301beb7b40e",
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.esm.js.map": "90adea032036c83a920ab63a61e58788e25ac838010136d4ecf39edbef950abe",
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.js": "9736bf3d8918e391e8c07c85c53773800d4004dc25f948916e319ca371ca881a",
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.js.map": "ba6170f0af229fc9c9ed3606d9ebff11f6dd97e39e7e00607aed9aa0b8ebf237",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": "f8a741f43a00e8dc1ba89debfe7cc6c760de0315e9ee47406c17474f9246c692",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": "82d18a3cfbde189aefc749cc31d314681e7a41f064141d33ec6687f6fc57223d",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": "8802c66a5594beb2420c8fdb9b0ba87088ff102ca71c819b37e53d4670c93ec8",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": "38fcc72133411c61e3194afe3a11e64ae268c00d403a87cf3c66a5c07e2d9413",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": "5eef6df86135497f2d0a586c8aa3dc3ace8963234762c16081924714658da2db",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": "bb5f5f9b59ff3ab358efed2c5436e8aa2e12444959c4bde82167b874d5db1b1c",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": "ad4b0799608b5dc860cc3bd7ff4781f2d9e13144e48a2e3d9321ce57c5a12f2a",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": "d13268affb2204223a1b6b8483afd989a0e2b20bff853eae05fe5d0d32de8ed9",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": "05d3615fdbe7d35c62d6a1308dc48e3985016b69e65926ed37b99fe7e6b297dc",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": "dce8869d25c3abcecb33a3486a3c70bb76aed17c21a74069ee83949b1d209c9b",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": "c1865d89d798bc2119872b17774361c7406974b9568121a617007e02af344981",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": "d4eaa48ba450f4dd2d024ab5b0e895c73c81475718e5453fd1890254c16b7a57",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": "ebb8918da92bae172dfe322a3947929b3df2330dccc6f13c7d8e8ed3815e1696",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": "a53e27232eff5f0bc1ba1c0af7e0759f0aaaf5c0636370b4c54f83c4652ba924",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": "b0abd2736335424f9fd3eb27974a36d03783b3db141e0801dca7d3a635218b46",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": "dfe0b47abfa0fdb0504d7be14015fa3f1cf9647b97ffd8b3bfcceb25c60f4fa6",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc",
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332",
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/highlight.esm.js": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707",
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/highlight.js": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca",
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/monokai.css": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999",
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/plugin.js": "fd0d79317e81f625ad2e50829ae0b678e82f83f221d57239d7a6eb5a37bca7a8",
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/zenburn.css": "ba1469a7d0194c9ca29aaf4ad3341ffee5bfbb583f22f0620e25e91a9a846431",
+    "lecture/t03/t03_files/libs/revealjs/plugin/markdown/markdown.esm.js": "dc1c5cbfe18950706d7b1197e0420b03875fa1f1341ed184474bb1b17123f887",
+    "lecture/t03/t03_files/libs/revealjs/plugin/markdown/markdown.js": "daef024c44fe63d26ac0a403cd1e2442dd3d15c0a46ad271ecbd11ffb8197215",
+    "lecture/t03/t03_files/libs/revealjs/plugin/markdown/plugin.js": "3fa94d03ebc86fb49ada69dd6f6759f0a1e63249cfa67c9043d848ef4552c6f8",
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/katex.js": "5a3b3c08a7aee2c27b82cbb6a1f1407f23ccdedee65bc21faa182fdb383ff034",
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/math.esm.js": "871848be629469d6dd719e2583a20f3e5a54a069312888760fb4c72f2f51cbbc",
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/math.js": "d88b3f0d43e391c5e951e36f5ab210be1ff23e80d196443a920ab4e6b65ec44d",
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/mathjax2.js": "8f4e74ea68e9f9f4238ce8d516d6602cb532224bd4e99eed6127f855a9ac578e",
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/mathjax3.js": "08d040d053431c166c9a2131f6a04adf796948226116d7a9bfafd1cbd3536e6b",
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/plugin.js": "5953baa37de282e598535d234440d9b3f4e7c640cb9c7fcb54187318ebc5af28",
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/notes.esm.js": "51cce5ff4dcb836c3cda74884e437cf83849b57bf1acad2d8320fe053d798c1e",
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/notes.js": "288fe7cb27ff696a3e1c137b22b0cd117395a84dba2a703e2bfc3136e65612a8",
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/plugin.js": "ac22d7e5b215d5049d80edd5f83f02143c4354d69598c091cda384d6eb36d5ce",
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/speaker-view.html": "cbae92980c488a08dfac298bce6a483a98eaf28ff0cc4f5912d266adf5db837f",
+    "lecture/t03/t03_files/libs/revealjs/plugin/pdf-export/pdfexport.js": "04a7cf66287cee83929567717012f992e1da8da3ee1422afc4d6ed2ccf899db5",
+    "lecture/t03/t03_files/libs/revealjs/plugin/pdf-export/plugin.yml": "ce9bb146827c559d109c1011b22d14695751de65dbc8f1033ccf38a13b029298",
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": "10ca4ebf89e45854dfb209477e5eec3dabadc6afaa3053e156be86b103d46713",
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": "e985a18488170b3206470dd1465d696f19f4396f77a39853fe4ab664f42d043d",
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": "c360344cce59778682800185df97b414ac9ec91213fefda989b9551a10b49e95",
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/footer.css": "12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94",
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/plugin.yml": "b8c1267adaf0f137c83ebe6a12f7ef0ee49ee36676f038edef63288379844bf5",
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/support.js": "556caf13cf55ef74c621dd9b732e7c3dd1a35fdd3f4c8faca8afe70b173dfb15",
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/menu.css": "d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf",
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/menu.js": "5e3a6594eed51e13b55ee755fd495e5a7de02fa3193fff97bc19b46f47e52522",
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/plugin.yml": "572b76cc11ffd42c1abfe9e415fe7c95d76e517f2812a41e4baee3333fc9cf77",
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": "81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b",
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": "031feb02645bc2e4abeaad39b2c017725e667c1ad7e50a3fb7f6035474be2521",
+    "lecture/t03/t03_files/libs/revealjs/plugin/search/plugin.js": "ad68bbdc4a0a23780dfd04f6d39e013eab88ca7295db55e29fca8541834ee2e0",
+    "lecture/t03/t03_files/libs/revealjs/plugin/search/search.esm.js": "d34e802197489977611611fe2f3af2f8f72c7a22ac98a5510f422c83ef204dc1",
+    "lecture/t03/t03_files/libs/revealjs/plugin/search/search.js": "790fe4787fc747feb7a0c77ea69afc9202047361f5af6c89f802ce10a96dab8f",
+    "lecture/t03/t03_files/libs/revealjs/plugin/zoom/plugin.js": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475",
+    "lecture/t03/t03_files/libs/revealjs/plugin/zoom/zoom.esm.js": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930",
+    "lecture/t03/t03_files/libs/revealjs/plugin/zoom/zoom.js": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296",
+    "lecture/t04/assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
+    "lecture/t04/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
+    "lecture/t04/assets/learning-rates.png": "8cd7b4eed43be876337e65a8330411975a6bbeb1abb20cd7f2ef26337a25d167",
+    "lecture/t04/assets/unstable-scale.png": "11701deeb37bb7c180539689cd142676b59f9c39a935f844d415e62878c79ac9",
+    "lecture/t04/index.html": "7fcd082d41226993764df2ce28a52d3d5fa7422ac50786f574d3d03eb87bdb31",
+    "lecture/t04/t04.css": "d1887570caccd45c3ad9ce468eeb46fa9a58c36cc4a1d9e518f88ab487ba989e",
+    "lecture/t04/t04_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
+    "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
+    "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/live-runtime.js": "1f8b04cdc00eb9246ffd0faf3f0897b43eeac23b119233175e56fe1e777179aa",
+    "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/pyodide-worker.js": "5a9969a50da4a3b82bce9915f421c96ea07a18f70d989d9e16801cb54333a6a6",
+    "lecture/t04/t04_files/libs/quarto-html/light-border.css": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd",
+    "lecture/t04/t04_files/libs/quarto-html/popper.min.js": "4d50586b184724d39ddfe0f6582861664eddd5e806e5a79e0dbaa832361414d0",
+    "lecture/t04/t04_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css": "510c236c766c43cb510a3a0e3aaf045f1f804d918c04350ea78209788253cfeb",
+    "lecture/t04/t04_files/libs/quarto-html/tabby.min.js": "d9bb77bde59c096a08171b67d3f4b797606fb06019ed3ca36028a5aa6f4d5953",
+    "lecture/t04/t04_files/libs/quarto-html/tippy.css": "5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678",
+    "lecture/t04/t04_files/libs/quarto-html/tippy.umd.min.js": "41181eeec6d7ba64cb9165f0e95563e34e026bde79e7c13aeec83270429b6fae",
+    "lecture/t04/t04_files/libs/quarto-ojs/quarto-ojs-runtime.js": "99628b525981d848756bbd4e77111a0002988560ee1dae3cc31ba06ac0fb2b2f",
+    "lecture/t04/t04_files/libs/quarto-ojs/quarto-ojs.css": "471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3",
+    "lecture/t04/t04_files/libs/revealjs/dist/reset.css": "1aa8e84c9cabcbfe4d95b19879fe48b9c2c5e6d54574cbe679bc22edb9fe12b6",
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.css": "9cbc5082797d938f0ee780328790a131ae3d7bc5c09c176e77927c174f29e60a",
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.esm.js": "c9d8c6a59ee4ac89aa28d2829b8153d2b0761b7eadbc8d8ac24ac301beb7b40e",
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.esm.js.map": "90adea032036c83a920ab63a61e58788e25ac838010136d4ecf39edbef950abe",
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.js": "9736bf3d8918e391e8c07c85c53773800d4004dc25f948916e319ca371ca881a",
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.js.map": "ba6170f0af229fc9c9ed3606d9ebff11f6dd97e39e7e00607aed9aa0b8ebf237",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": "f8a741f43a00e8dc1ba89debfe7cc6c760de0315e9ee47406c17474f9246c692",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": "82d18a3cfbde189aefc749cc31d314681e7a41f064141d33ec6687f6fc57223d",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": "8802c66a5594beb2420c8fdb9b0ba87088ff102ca71c819b37e53d4670c93ec8",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": "38fcc72133411c61e3194afe3a11e64ae268c00d403a87cf3c66a5c07e2d9413",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": "5eef6df86135497f2d0a586c8aa3dc3ace8963234762c16081924714658da2db",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": "bb5f5f9b59ff3ab358efed2c5436e8aa2e12444959c4bde82167b874d5db1b1c",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": "ad4b0799608b5dc860cc3bd7ff4781f2d9e13144e48a2e3d9321ce57c5a12f2a",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": "d13268affb2204223a1b6b8483afd989a0e2b20bff853eae05fe5d0d32de8ed9",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": "05d3615fdbe7d35c62d6a1308dc48e3985016b69e65926ed37b99fe7e6b297dc",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": "dce8869d25c3abcecb33a3486a3c70bb76aed17c21a74069ee83949b1d209c9b",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": "c1865d89d798bc2119872b17774361c7406974b9568121a617007e02af344981",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": "d4eaa48ba450f4dd2d024ab5b0e895c73c81475718e5453fd1890254c16b7a57",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": "ebb8918da92bae172dfe322a3947929b3df2330dccc6f13c7d8e8ed3815e1696",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": "a53e27232eff5f0bc1ba1c0af7e0759f0aaaf5c0636370b4c54f83c4652ba924",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": "b0abd2736335424f9fd3eb27974a36d03783b3db141e0801dca7d3a635218b46",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": "dfe0b47abfa0fdb0504d7be14015fa3f1cf9647b97ffd8b3bfcceb25c60f4fa6",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc",
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332",
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/highlight.esm.js": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707",
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/highlight.js": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca",
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/monokai.css": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999",
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/plugin.js": "fd0d79317e81f625ad2e50829ae0b678e82f83f221d57239d7a6eb5a37bca7a8",
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/zenburn.css": "ba1469a7d0194c9ca29aaf4ad3341ffee5bfbb583f22f0620e25e91a9a846431",
+    "lecture/t04/t04_files/libs/revealjs/plugin/markdown/markdown.esm.js": "dc1c5cbfe18950706d7b1197e0420b03875fa1f1341ed184474bb1b17123f887",
+    "lecture/t04/t04_files/libs/revealjs/plugin/markdown/markdown.js": "daef024c44fe63d26ac0a403cd1e2442dd3d15c0a46ad271ecbd11ffb8197215",
+    "lecture/t04/t04_files/libs/revealjs/plugin/markdown/plugin.js": "3fa94d03ebc86fb49ada69dd6f6759f0a1e63249cfa67c9043d848ef4552c6f8",
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/katex.js": "5a3b3c08a7aee2c27b82cbb6a1f1407f23ccdedee65bc21faa182fdb383ff034",
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/math.esm.js": "871848be629469d6dd719e2583a20f3e5a54a069312888760fb4c72f2f51cbbc",
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/math.js": "d88b3f0d43e391c5e951e36f5ab210be1ff23e80d196443a920ab4e6b65ec44d",
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/mathjax2.js": "8f4e74ea68e9f9f4238ce8d516d6602cb532224bd4e99eed6127f855a9ac578e",
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/mathjax3.js": "08d040d053431c166c9a2131f6a04adf796948226116d7a9bfafd1cbd3536e6b",
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/plugin.js": "5953baa37de282e598535d234440d9b3f4e7c640cb9c7fcb54187318ebc5af28",
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/notes.esm.js": "51cce5ff4dcb836c3cda74884e437cf83849b57bf1acad2d8320fe053d798c1e",
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/notes.js": "288fe7cb27ff696a3e1c137b22b0cd117395a84dba2a703e2bfc3136e65612a8",
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/plugin.js": "ac22d7e5b215d5049d80edd5f83f02143c4354d69598c091cda384d6eb36d5ce",
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/speaker-view.html": "cbae92980c488a08dfac298bce6a483a98eaf28ff0cc4f5912d266adf5db837f",
+    "lecture/t04/t04_files/libs/revealjs/plugin/pdf-export/pdfexport.js": "04a7cf66287cee83929567717012f992e1da8da3ee1422afc4d6ed2ccf899db5",
+    "lecture/t04/t04_files/libs/revealjs/plugin/pdf-export/plugin.yml": "ce9bb146827c559d109c1011b22d14695751de65dbc8f1033ccf38a13b029298",
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": "10ca4ebf89e45854dfb209477e5eec3dabadc6afaa3053e156be86b103d46713",
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": "e985a18488170b3206470dd1465d696f19f4396f77a39853fe4ab664f42d043d",
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": "c360344cce59778682800185df97b414ac9ec91213fefda989b9551a10b49e95",
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/footer.css": "12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94",
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/plugin.yml": "b8c1267adaf0f137c83ebe6a12f7ef0ee49ee36676f038edef63288379844bf5",
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/support.js": "556caf13cf55ef74c621dd9b732e7c3dd1a35fdd3f4c8faca8afe70b173dfb15",
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/menu.css": "d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf",
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/menu.js": "5e3a6594eed51e13b55ee755fd495e5a7de02fa3193fff97bc19b46f47e52522",
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/plugin.yml": "572b76cc11ffd42c1abfe9e415fe7c95d76e517f2812a41e4baee3333fc9cf77",
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": "81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b",
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": "031feb02645bc2e4abeaad39b2c017725e667c1ad7e50a3fb7f6035474be2521",
+    "lecture/t04/t04_files/libs/revealjs/plugin/search/plugin.js": "ad68bbdc4a0a23780dfd04f6d39e013eab88ca7295db55e29fca8541834ee2e0",
+    "lecture/t04/t04_files/libs/revealjs/plugin/search/search.esm.js": "d34e802197489977611611fe2f3af2f8f72c7a22ac98a5510f422c83ef204dc1",
+    "lecture/t04/t04_files/libs/revealjs/plugin/search/search.js": "790fe4787fc747feb7a0c77ea69afc9202047361f5af6c89f802ce10a96dab8f",
+    "lecture/t04/t04_files/libs/revealjs/plugin/zoom/plugin.js": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475",
+    "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.esm.js": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930",
+    "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.js": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296",
+    "pyproject.toml": "6a9ff1478ee75677130701d8d0ad1a23ac703d7ba737a9185a20d5e7ac24d75c",
+    "runtime/cloudstudio/README.md": "53d5b6fc19482a448cde4786c04ab0759855ac7fca9e026eaf92c9c6606f195b",
+    "runtime/cloudstudio/check-launch.py": "1ee5716aaeb4222473986e059e39aad530c5aee014f8f5234baef81ea790946d",
+    "runtime/cloudstudio/setup-local.sh": "758d2fcc118b5bd78497f8186bf29970a8a51bf622b78084ae63c118bf2ff9d4",
+    "runtime/cloudstudio/setup-remote.sh": "d7f740b035f561e13094887852c259681081023b369923e2b6fdbaa3e6dc5d9e",
+    "runtime/cloudstudio/start-lab.sh": "6ffa053a9b6f9378ccc76ae0c2b7420ea2d5e461dd690f5aae07a689b6a5a37b",
+    "scripts/prepare-work.py": "8831b7dd0d71ab2a34632eb6ee9e91b54b426a142fd896a87689cfcc679ad805",
+    "units/linear-regression/data/README.md": "2b17e4bfbd8b54099f4e3cf0d8c69d55aeab041b8f2b3044c24eebbd96a61a64",
+    "units/linear-regression/data/regression.csv": "0664a9c3649724c9e1c61df0d217c33cb4a2daff4e32a01772a0e01a070f673a",
+    "units/linear-regression/figures/data-fit.png": "f0374ba88da249c4ad1e37faf80308aa51ee29c0cb863a0e992c59908a6e2344",
+    "units/linear-regression/figures/learning-rates.png": "8cd7b4eed43be876337e65a8330411975a6bbeb1abb20cd7f2ef26337a25d167",
+    "units/linear-regression/figures/loss-contour.png": "caca236238e7fe45c702b473c356befd3544a3a75243bc51a66994a54c2445df",
+    "units/linear-regression/figures/unstable-scale.png": "11701deeb37bb7c180539689cd142676b59f9c39a935f844d415e62878c79ac9",
+    "units/linear-regression/labs/B02-minor.ipynb": "129dfd51d39c1a096b9224534f103b9e1e3304a52963ea1b77ece544f18d2c55",
+    "units/linear-regression/worksheets/student.md": "b8a8f679a7d377a4101340d1d668578c7f8b53593d37a29d15e144935604710c",
+    "units/linear-regression/worksheets/student.pdf": "b54820bc9352f072faae9d41d574044085ccb3a01ca1d6daf5655f82117029ba",
+    "units/split-evaluation/data/README.md": "a0319d271bae181135a2dc3367a3393896f010dc82b21011a28517f5e9178c3e",
+    "units/split-evaluation/data/b01_batches.csv": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1",
+    "units/split-evaluation/figures/validation-mae.png": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932",
+    "units/split-evaluation/labs/B01-minor.ipynb": "0d6bdbc6c6f8c080abb058040de6f6a6948d6e34d962e68cda7b55690a0dc288",
+    "units/split-evaluation/worksheets/student.md": "837584c3ddce618f3ff110f9b6bbc3c43ef887eccf49c472393304364bbcb499",
+    "units/task-data-baseline/worksheets/student.md": "62797f7f679a6169111f2d796367d42fd98d39063deeaa26ef591a72a55a2fa1",
+    "units/task-data-baseline/worksheets/student.pdf": "7bdd294f6c563dde0d4236d6e4683a59f934fa5fcbe33bd7b2aa68f462652bdb",
+    "uv.lock": "f7522126644ac43f9e6158fec4131c412f48eb6f4dfdd2490bc05408cbc710d9",
+    "index.html": "825f5f8aa39a50da26c172beb1fbce8b4c242711785fbfd170eafac186c0825e",
+    "assets/site.css": "12d07a9513605d60a035c869452dd1457e5052face6a7400f47f0dacb03b7cd6",
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
+    "assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
+    "README.html": "b9fca76b68716e1583c0d0ddc62e748e520217b152ab4ca35c946414eb43322c",
+    "docs/course-map.html": "92d58407526e456489ff698d4f134ef21ed3f1849ff0ffc5cad9edff5702916d",
+    "docs/getting-started.html": "7ebe49500c56fcf38e00f6c68edae01f667939f91786dc4e6435eb2a48742bd4",
+    "docs/submission.html": "1643112b617bdce8a435a7ceceaa5249fd7c93dabf0065af99a54681605594a4",
+    "homework/t01-t02/student.html": "8152b7687251113148f0cae94081bbfed216d16f3ecfe313b2e09610ec8fd975",
+    "homework/t03-t04/student.html": "d11c4321556f6781df83840d518322f666661692618cfbc4f82901a94dc3b4ba",
+    "lecture-notes/README.html": "b0345fcac91a0bfc262097d5810e42f688372eb95beea84295ba1507692ad24d",
+    "runtime/cloudstudio/README.html": "5167088b23503a2cca765ab3b3e6a275ed181a6994c9d78d6e52bfceaf4a4a15",
+    "units/linear-regression/data/README.html": "a2c37cd16fb9244a9c22d1003367bd7dab90bd2c97528288531179b9827a81b0",
+    "units/linear-regression/worksheets/student.html": "c02accaf3fea6855b4990c294cc930b10b6e12c26d11205bc71f477f9978a164",
+    "units/split-evaluation/data/README.html": "3ed77575563888021fb5d87815d00c985ab557e5dcc2ad7228007d1f15cafd2a",
+    "units/split-evaluation/worksheets/student.html": "a71157d46898bef0f9207cfc6178262dae52524e23b12469c0d4e9ea4810bffc",
+    "units/task-data-baseline/worksheets/student.html": "2a0660b771cc1e280cc56aa49d6a1e7cc4fdd925c12a9f8519ca66c591a56ac6"
+  },
+  "sources": {
+    "pyproject.toml": {
+      "source": "pyproject.toml",
+      "source_sha256": "6a9ff1478ee75677130701d8d0ad1a23ac703d7ba737a9185a20d5e7ac24d75c"
+    },
+    "uv.lock": {
+      "source": "uv.lock",
+      "source_sha256": "f7522126644ac43f9e6158fec4131c412f48eb6f4dfdd2490bc05408cbc710d9"
+    },
+    ".python-version": {
+      "source": ".python-version",
+      "source_sha256": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb"
+    },
+    ".gitattributes": {
+      "source": ".gitattributes",
+      "source_sha256": "4ad7e01db99cf0c30ff8d4cb2be1ff7f248eafff1c61b6d2f7242bd2ca7c23ec"
+    },
+    "runtime/cloudstudio/setup-local.sh": {
+      "source": "runtime/cloudstudio/setup-local.sh",
+      "source_sha256": "758d2fcc118b5bd78497f8186bf29970a8a51bf622b78084ae63c118bf2ff9d4"
+    },
+    "runtime/cloudstudio/setup-remote.sh": {
+      "source": "runtime/cloudstudio/setup-remote.sh",
+      "source_sha256": "d7f740b035f561e13094887852c259681081023b369923e2b6fdbaa3e6dc5d9e"
+    },
+    "runtime/cloudstudio/start-lab.sh": {
+      "source": "runtime/cloudstudio/start-lab.sh",
+      "source_sha256": "6ffa053a9b6f9378ccc76ae0c2b7420ea2d5e461dd690f5aae07a689b6a5a37b"
+    },
+    "runtime/cloudstudio/check-launch.py": {
+      "source": "runtime/cloudstudio/check-launch.py",
+      "source_sha256": "1ee5716aaeb4222473986e059e39aad530c5aee014f8f5234baef81ea790946d"
+    },
+    "lecture/t01/index.html": {
+      "source": "lecture/t01/index.html",
+      "source_sha256": "8f95699770be740c8d476085508adf37e8bd579ef76d490995ed6da10907f387"
+    },
+    "units/task-data-baseline/worksheets/student.md": {
+      "source": "units/task-data-baseline/worksheets/student.md",
+      "source_sha256": "62797f7f679a6169111f2d796367d42fd98d39063deeaa26ef591a72a55a2fa1"
+    },
+    "lecture/t02/index.html": {
+      "source": "lecture/t02/index.html",
+      "source_sha256": "a6219eb133255df5b6f9752f4b57bd66d150880f2d957d7abf86863b2ab25e30"
+    },
+    "units/split-evaluation/worksheets/student.md": {
+      "source": "units/split-evaluation/worksheets/student.md",
+      "source_sha256": "837584c3ddce618f3ff110f9b6bbc3c43ef887eccf49c472393304364bbcb499"
+    },
+    "units/split-evaluation/figures/validation-mae.png": {
+      "source": "units/split-evaluation/figures/validation-mae.png",
+      "source_sha256": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932"
+    },
+    "units/linear-regression/worksheets/student.md": {
+      "source": "units/linear-regression/worksheets/student.md",
+      "source_sha256": "b8a8f679a7d377a4101340d1d668578c7f8b53593d37a29d15e144935604710c"
+    },
+    "units/linear-regression/worksheets/student.pdf": {
+      "source": "units/linear-regression/worksheets/student.pdf",
+      "source_sha256": "b54820bc9352f072faae9d41d574044085ccb3a01ca1d6daf5655f82117029ba"
+    },
+    "units/linear-regression/figures/data-fit.png": {
+      "source": "units/linear-regression/figures/data-fit.png",
+      "source_sha256": "f0374ba88da249c4ad1e37faf80308aa51ee29c0cb863a0e992c59908a6e2344"
+    },
+    "units/linear-regression/figures/loss-contour.png": {
+      "source": "units/linear-regression/figures/loss-contour.png",
+      "source_sha256": "caca236238e7fe45c702b473c356befd3544a3a75243bc51a66994a54c2445df"
+    },
+    "units/linear-regression/figures/learning-rates.png": {
+      "source": "units/linear-regression/figures/learning-rates.png",
+      "source_sha256": "8cd7b4eed43be876337e65a8330411975a6bbeb1abb20cd7f2ef26337a25d167"
+    },
+    "units/linear-regression/figures/unstable-scale.png": {
+      "source": "units/linear-regression/figures/unstable-scale.png",
+      "source_sha256": "11701deeb37bb7c180539689cd142676b59f9c39a935f844d415e62878c79ac9"
+    },
+    "units/split-evaluation/labs/B01-minor.ipynb": {
+      "source": "units/split-evaluation/labs/B01-minor.ipynb",
+      "source_sha256": "6c71d193a705aeefcf6c5f01aac855a0db16101c579e927c8dec9aac9a7f91c6"
+    },
+    "units/split-evaluation/data/b01_batches.csv": {
+      "source": "units/split-evaluation/data/b01_batches.csv",
+      "source_sha256": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1"
+    },
+    "units/split-evaluation/data/README.md": {
+      "source": "units/split-evaluation/data/README.md",
+      "source_sha256": "d8583b348e16c85efd0dc46ff8617f93d05bceaea01a44dcff3ba3842e1cb086"
+    },
+    "units/linear-regression/labs/B02-minor.ipynb": {
+      "source": "units/linear-regression/labs/B02-minor.ipynb",
+      "source_sha256": "129dfd51d39c1a096b9224534f103b9e1e3304a52963ea1b77ece544f18d2c55"
+    },
+    "units/linear-regression/data/regression.csv": {
+      "source": "units/linear-regression/data/regression.csv",
+      "source_sha256": "0664a9c3649724c9e1c61df0d217c33cb4a2daff4e32a01772a0e01a070f673a"
+    },
+    "units/linear-regression/data/README.md": {
+      "source": "units/linear-regression/data/README.md",
+      "source_sha256": "0c6cb887bbec5959eff9e1ae7fd028a3bec612a63f90368544f7c40ac3695a84"
+    },
+    "lecture/t02/t02.css": {
+      "source": "lecture/t02/t02.css",
+      "source_sha256": "c2d1b2a7e3aeec87edabaade27efb033899d9d10f1db695dbbc3d756664b131a"
+    },
+    "lecture/t02/assets/validation-mae.png": {
+      "source": "lecture/t02/assets/validation-mae.png",
+      "source_sha256": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932"
+    },
+    "lecture/t02/t02_files/libs/clipboard/clipboard.min.js": {
+      "source": "lecture/t02/t02_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9"
+    },
+    "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/live-runtime.css": {
+      "source": "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/live-runtime.css",
+      "source_sha256": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46"
+    },
+    "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/live-runtime.js": {
+      "source": "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/live-runtime.js",
+      "source_sha256": "1f8b04cdc00eb9246ffd0faf3f0897b43eeac23b119233175e56fe1e777179aa"
+    },
+    "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/pyodide-worker.js": {
+      "source": "lecture/t02/t02_files/libs/quarto-contrib/live-runtime/pyodide-worker.js",
+      "source_sha256": "5a9969a50da4a3b82bce9915f421c96ea07a18f70d989d9e16801cb54333a6a6"
+    },
+    "lecture/t02/t02_files/libs/quarto-html/light-border.css": {
+      "source": "lecture/t02/t02_files/libs/quarto-html/light-border.css",
+      "source_sha256": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd"
+    },
+    "lecture/t02/t02_files/libs/quarto-html/popper.min.js": {
+      "source": "lecture/t02/t02_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "4d50586b184724d39ddfe0f6582861664eddd5e806e5a79e0dbaa832361414d0"
+    },
+    "lecture/t02/t02_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css": {
+      "source": "lecture/t02/t02_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css",
+      "source_sha256": "510c236c766c43cb510a3a0e3aaf045f1f804d918c04350ea78209788253cfeb"
+    },
+    "lecture/t02/t02_files/libs/quarto-html/tabby.min.js": {
+      "source": "lecture/t02/t02_files/libs/quarto-html/tabby.min.js",
+      "source_sha256": "d9bb77bde59c096a08171b67d3f4b797606fb06019ed3ca36028a5aa6f4d5953"
+    },
+    "lecture/t02/t02_files/libs/quarto-html/tippy.css": {
+      "source": "lecture/t02/t02_files/libs/quarto-html/tippy.css",
+      "source_sha256": "5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678"
+    },
+    "lecture/t02/t02_files/libs/quarto-html/tippy.umd.min.js": {
+      "source": "lecture/t02/t02_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "41181eeec6d7ba64cb9165f0e95563e34e026bde79e7c13aeec83270429b6fae"
+    },
+    "lecture/t02/t02_files/libs/quarto-ojs/quarto-ojs-runtime.js": {
+      "source": "lecture/t02/t02_files/libs/quarto-ojs/quarto-ojs-runtime.js",
+      "source_sha256": "99628b525981d848756bbd4e77111a0002988560ee1dae3cc31ba06ac0fb2b2f"
+    },
+    "lecture/t02/t02_files/libs/quarto-ojs/quarto-ojs.css": {
+      "source": "lecture/t02/t02_files/libs/quarto-ojs/quarto-ojs.css",
+      "source_sha256": "471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/reset.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/reset.css",
+      "source_sha256": "1aa8e84c9cabcbfe4d95b19879fe48b9c2c5e6d54574cbe679bc22edb9fe12b6"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/reveal.css",
+      "source_sha256": "9cbc5082797d938f0ee780328790a131ae3d7bc5c09c176e77927c174f29e60a"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/reveal.esm.js",
+      "source_sha256": "c9d8c6a59ee4ac89aa28d2829b8153d2b0761b7eadbc8d8ac24ac301beb7b40e"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.esm.js.map": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/reveal.esm.js.map",
+      "source_sha256": "90adea032036c83a920ab63a61e58788e25ac838010136d4ecf39edbef950abe"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/reveal.js",
+      "source_sha256": "9736bf3d8918e391e8c07c85c53773800d4004dc25f948916e319ca371ca881a"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/reveal.js.map": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/reveal.js.map",
+      "source_sha256": "ba6170f0af229fc9c9ed3606d9ebff11f6dd97e39e7e00607aed9aa0b8ebf237"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE",
+      "source_sha256": "f8a741f43a00e8dc1ba89debfe7cc6c760de0315e9ee47406c17474f9246c692"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css",
+      "source_sha256": "82d18a3cfbde189aefc749cc31d314681e7a41f064141d33ec6687f6fc57223d"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot",
+      "source_sha256": "8802c66a5594beb2420c8fdb9b0ba87088ff102ca71c819b37e53d4670c93ec8"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf",
+      "source_sha256": "38fcc72133411c61e3194afe3a11e64ae268c00d403a87cf3c66a5c07e2d9413"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff",
+      "source_sha256": "5eef6df86135497f2d0a586c8aa3dc3ace8963234762c16081924714658da2db"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE",
+      "source_sha256": "bb5f5f9b59ff3ab358efed2c5436e8aa2e12444959c4bde82167b874d5db1b1c"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot",
+      "source_sha256": "ad4b0799608b5dc860cc3bd7ff4781f2d9e13144e48a2e3d9321ce57c5a12f2a"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf",
+      "source_sha256": "d13268affb2204223a1b6b8483afd989a0e2b20bff853eae05fe5d0d32de8ed9"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff",
+      "source_sha256": "05d3615fdbe7d35c62d6a1308dc48e3985016b69e65926ed37b99fe7e6b297dc"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot",
+      "source_sha256": "dce8869d25c3abcecb33a3486a3c70bb76aed17c21a74069ee83949b1d209c9b"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf",
+      "source_sha256": "c1865d89d798bc2119872b17774361c7406974b9568121a617007e02af344981"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff",
+      "source_sha256": "d4eaa48ba450f4dd2d024ab5b0e895c73c81475718e5453fd1890254c16b7a57"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot",
+      "source_sha256": "ebb8918da92bae172dfe322a3947929b3df2330dccc6f13c7d8e8ed3815e1696"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf",
+      "source_sha256": "a53e27232eff5f0bc1ba1c0af7e0759f0aaaf5c0636370b4c54f83c4652ba924"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff",
+      "source_sha256": "b0abd2736335424f9fd3eb27974a36d03783b3db141e0801dca7d3a635218b46"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot",
+      "source_sha256": "dfe0b47abfa0fdb0504d7be14015fa3f1cf9647b97ffd8b3bfcceb25c60f4fa6"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf",
+      "source_sha256": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff",
+      "source_sha256": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css",
+      "source_sha256": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css",
+      "source_sha256": "025f4588f95a254f6a496728006ca8ecb744c136db8e744e38a2b301e272bf48"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css",
+      "source_sha256": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332"
+    },
+    "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-c880b4c6ea04ffd5b1e9ea759ca8768b.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/dist/theme/quarto-c880b4c6ea04ffd5b1e9ea759ca8768b.css",
+      "source_sha256": "df74f533230a94ec0dddf99420903d3c4e816f72ee860aa49edac03556bc4c0b"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/highlight.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/highlight/highlight.esm.js",
+      "source_sha256": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/highlight.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/highlight/highlight.js",
+      "source_sha256": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/monokai.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/highlight/monokai.css",
+      "source_sha256": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/plugin.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/highlight/plugin.js",
+      "source_sha256": "fd0d79317e81f625ad2e50829ae0b678e82f83f221d57239d7a6eb5a37bca7a8"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/highlight/zenburn.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/highlight/zenburn.css",
+      "source_sha256": "ba1469a7d0194c9ca29aaf4ad3341ffee5bfbb583f22f0620e25e91a9a846431"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/markdown/markdown.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/markdown/markdown.esm.js",
+      "source_sha256": "dc1c5cbfe18950706d7b1197e0420b03875fa1f1341ed184474bb1b17123f887"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/markdown/markdown.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/markdown/markdown.js",
+      "source_sha256": "daef024c44fe63d26ac0a403cd1e2442dd3d15c0a46ad271ecbd11ffb8197215"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/markdown/plugin.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/markdown/plugin.js",
+      "source_sha256": "3fa94d03ebc86fb49ada69dd6f6759f0a1e63249cfa67c9043d848ef4552c6f8"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/katex.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/math/katex.js",
+      "source_sha256": "5a3b3c08a7aee2c27b82cbb6a1f1407f23ccdedee65bc21faa182fdb383ff034"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/math.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/math/math.esm.js",
+      "source_sha256": "871848be629469d6dd719e2583a20f3e5a54a069312888760fb4c72f2f51cbbc"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/math.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/math/math.js",
+      "source_sha256": "d88b3f0d43e391c5e951e36f5ab210be1ff23e80d196443a920ab4e6b65ec44d"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/mathjax2.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/math/mathjax2.js",
+      "source_sha256": "8f4e74ea68e9f9f4238ce8d516d6602cb532224bd4e99eed6127f855a9ac578e"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/mathjax3.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/math/mathjax3.js",
+      "source_sha256": "08d040d053431c166c9a2131f6a04adf796948226116d7a9bfafd1cbd3536e6b"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/math/plugin.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/math/plugin.js",
+      "source_sha256": "5953baa37de282e598535d234440d9b3f4e7c640cb9c7fcb54187318ebc5af28"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/notes.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/notes/notes.esm.js",
+      "source_sha256": "51cce5ff4dcb836c3cda74884e437cf83849b57bf1acad2d8320fe053d798c1e"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/notes.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/notes/notes.js",
+      "source_sha256": "288fe7cb27ff696a3e1c137b22b0cd117395a84dba2a703e2bfc3136e65612a8"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/plugin.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/notes/plugin.js",
+      "source_sha256": "ac22d7e5b215d5049d80edd5f83f02143c4354d69598c091cda384d6eb36d5ce"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/notes/speaker-view.html": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/notes/speaker-view.html",
+      "source_sha256": "cbae92980c488a08dfac298bce6a483a98eaf28ff0cc4f5912d266adf5db837f"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/pdf-export/pdfexport.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/pdf-export/pdfexport.js",
+      "source_sha256": "04a7cf66287cee83929567717012f992e1da8da3ee1422afc4d6ed2ccf899db5"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/pdf-export/plugin.yml": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/pdf-export/plugin.yml",
+      "source_sha256": "ce9bb146827c559d109c1011b22d14695751de65dbc8f1033ccf38a13b029298"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css",
+      "source_sha256": "10ca4ebf89e45854dfb209477e5eec3dabadc6afaa3053e156be86b103d46713"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js",
+      "source_sha256": "e985a18488170b3206470dd1465d696f19f4396f77a39853fe4ab664f42d043d"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml",
+      "source_sha256": "c360344cce59778682800185df97b414ac9ec91213fefda989b9551a10b49e95"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/footer.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/footer.css",
+      "source_sha256": "12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/plugin.yml": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/plugin.yml",
+      "source_sha256": "b8c1267adaf0f137c83ebe6a12f7ef0ee49ee36676f038edef63288379844bf5"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/support.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/quarto-support/support.js",
+      "source_sha256": "556caf13cf55ef74c621dd9b732e7c3dd1a35fdd3f4c8faca8afe70b173dfb15"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/menu.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/menu.css",
+      "source_sha256": "d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/menu.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/menu.js",
+      "source_sha256": "5e3a6594eed51e13b55ee755fd495e5a7de02fa3193fff97bc19b46f47e52522"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/plugin.yml": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/plugin.yml",
+      "source_sha256": "572b76cc11ffd42c1abfe9e415fe7c95d76e517f2812a41e4baee3333fc9cf77"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css",
+      "source_sha256": "81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js",
+      "source_sha256": "031feb02645bc2e4abeaad39b2c017725e667c1ad7e50a3fb7f6035474be2521"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/search/plugin.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/search/plugin.js",
+      "source_sha256": "ad68bbdc4a0a23780dfd04f6d39e013eab88ca7295db55e29fca8541834ee2e0"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/search/search.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/search/search.esm.js",
+      "source_sha256": "d34e802197489977611611fe2f3af2f8f72c7a22ac98a5510f422c83ef204dc1"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/search/search.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/search/search.js",
+      "source_sha256": "790fe4787fc747feb7a0c77ea69afc9202047361f5af6c89f802ce10a96dab8f"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/zoom/plugin.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/zoom/plugin.js",
+      "source_sha256": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/zoom/zoom.esm.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/zoom/zoom.esm.js",
+      "source_sha256": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930"
+    },
+    "lecture/t02/t02_files/libs/revealjs/plugin/zoom/zoom.js": {
+      "source": "lecture/t02/t02_files/libs/revealjs/plugin/zoom/zoom.js",
+      "source_sha256": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296"
+    },
+    "lecture/t02/assets/fonts/latinmodern-math.otf": {
+      "source": "lecture/t02/assets/fonts/latinmodern-math.otf",
+      "source_sha256": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f"
+    },
+    "lecture/t02/assets/fonts/GUST-FONT-LICENSE.txt": {
+      "source": "lecture/t02/assets/fonts/GUST-FONT-LICENSE.txt",
+      "source_sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    "lecture-notes/README.md": {
+      "source": "lecture-notes/student-minor.md",
+      "source_sha256": "e4864e63fd9e11d7ec7b5c8d1f6f1e59a57a53fc40630b3b2da4e15eda8466be"
+    },
+    "lecture-notes/pdf/minor-48/t01.pdf": {
+      "source": "lecture-notes/pdf/minor-48/t01.pdf",
+      "source_sha256": "36cf4ee92f638bc7a132af22a489bc72fe5f1676f3b0493d9280da548a45d135"
+    },
+    "lecture-notes/pdf/minor-48/t02.pdf": {
+      "source": "lecture-notes/pdf/minor-48/t02.pdf",
+      "source_sha256": "b0155144cd9bb3aaf19f870723ca959186c12985b161f67503b885ba0c5e9267"
+    },
+    "units/task-data-baseline/worksheets/student.pdf": {
+      "source": "units/task-data-baseline/worksheets/student.pdf",
+      "source_sha256": "7bdd294f6c563dde0d4236d6e4683a59f934fa5fcbe33bd7b2aa68f462652bdb"
+    },
+    "homework/t01-t02/student.md": {
+      "source": "homework/t01-t02/student.md",
+      "source_sha256": "1da0e06c7093b7f86929592dcb67a1c258cd8431e62009a62ff3b68521996544"
+    },
+    "homework/t03-t04/student.md": {
+      "source": "homework/t03-t04/student.md",
+      "source_sha256": "2270dcd902ac2a3ea8839c992d58e68f50b816b000a868a2c1555143129001d1"
+    },
+    "lecture/t03/index.html": {
+      "source": "lecture/t03/index.html",
+      "source_sha256": "e5dc1bf559133287f1d3d6acc138c115f9be00781abe0fd7520c30a845021cc3"
+    },
+    "lecture/t03/t03.css": {
+      "source": "lecture/t03/t03.css",
+      "source_sha256": "eb3fc5b1cc1a6512631a1ed06c8c2061a2e75dc8114d7f84107a9cb0b48364ea"
+    },
+    "lecture/t03/assets/data-fit.png": {
+      "source": "lecture/t03/assets/data-fit.png",
+      "source_sha256": "f0374ba88da249c4ad1e37faf80308aa51ee29c0cb863a0e992c59908a6e2344"
+    },
+    "lecture/t03/assets/fonts/GUST-FONT-LICENSE.txt": {
+      "source": "lecture/t03/assets/fonts/GUST-FONT-LICENSE.txt",
+      "source_sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    "lecture/t03/assets/fonts/latinmodern-math.otf": {
+      "source": "lecture/t03/assets/fonts/latinmodern-math.otf",
+      "source_sha256": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f"
+    },
+    "lecture/t03/t03_files/libs/clipboard/clipboard.min.js": {
+      "source": "lecture/t03/t03_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9"
+    },
+    "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/live-runtime.css": {
+      "source": "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/live-runtime.css",
+      "source_sha256": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46"
+    },
+    "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/live-runtime.js": {
+      "source": "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/live-runtime.js",
+      "source_sha256": "1f8b04cdc00eb9246ffd0faf3f0897b43eeac23b119233175e56fe1e777179aa"
+    },
+    "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/pyodide-worker.js": {
+      "source": "lecture/t03/t03_files/libs/quarto-contrib/live-runtime/pyodide-worker.js",
+      "source_sha256": "5a9969a50da4a3b82bce9915f421c96ea07a18f70d989d9e16801cb54333a6a6"
+    },
+    "lecture/t03/t03_files/libs/quarto-html/light-border.css": {
+      "source": "lecture/t03/t03_files/libs/quarto-html/light-border.css",
+      "source_sha256": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd"
+    },
+    "lecture/t03/t03_files/libs/quarto-html/popper.min.js": {
+      "source": "lecture/t03/t03_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "4d50586b184724d39ddfe0f6582861664eddd5e806e5a79e0dbaa832361414d0"
+    },
+    "lecture/t03/t03_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css": {
+      "source": "lecture/t03/t03_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css",
+      "source_sha256": "510c236c766c43cb510a3a0e3aaf045f1f804d918c04350ea78209788253cfeb"
+    },
+    "lecture/t03/t03_files/libs/quarto-html/tabby.min.js": {
+      "source": "lecture/t03/t03_files/libs/quarto-html/tabby.min.js",
+      "source_sha256": "d9bb77bde59c096a08171b67d3f4b797606fb06019ed3ca36028a5aa6f4d5953"
+    },
+    "lecture/t03/t03_files/libs/quarto-html/tippy.css": {
+      "source": "lecture/t03/t03_files/libs/quarto-html/tippy.css",
+      "source_sha256": "5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678"
+    },
+    "lecture/t03/t03_files/libs/quarto-html/tippy.umd.min.js": {
+      "source": "lecture/t03/t03_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "41181eeec6d7ba64cb9165f0e95563e34e026bde79e7c13aeec83270429b6fae"
+    },
+    "lecture/t03/t03_files/libs/quarto-ojs/quarto-ojs-runtime.js": {
+      "source": "lecture/t03/t03_files/libs/quarto-ojs/quarto-ojs-runtime.js",
+      "source_sha256": "99628b525981d848756bbd4e77111a0002988560ee1dae3cc31ba06ac0fb2b2f"
+    },
+    "lecture/t03/t03_files/libs/quarto-ojs/quarto-ojs.css": {
+      "source": "lecture/t03/t03_files/libs/quarto-ojs/quarto-ojs.css",
+      "source_sha256": "471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/reset.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/reset.css",
+      "source_sha256": "1aa8e84c9cabcbfe4d95b19879fe48b9c2c5e6d54574cbe679bc22edb9fe12b6"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/reveal.css",
+      "source_sha256": "9cbc5082797d938f0ee780328790a131ae3d7bc5c09c176e77927c174f29e60a"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/reveal.esm.js",
+      "source_sha256": "c9d8c6a59ee4ac89aa28d2829b8153d2b0761b7eadbc8d8ac24ac301beb7b40e"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.esm.js.map": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/reveal.esm.js.map",
+      "source_sha256": "90adea032036c83a920ab63a61e58788e25ac838010136d4ecf39edbef950abe"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/reveal.js",
+      "source_sha256": "9736bf3d8918e391e8c07c85c53773800d4004dc25f948916e319ca371ca881a"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/reveal.js.map": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/reveal.js.map",
+      "source_sha256": "ba6170f0af229fc9c9ed3606d9ebff11f6dd97e39e7e00607aed9aa0b8ebf237"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE",
+      "source_sha256": "f8a741f43a00e8dc1ba89debfe7cc6c760de0315e9ee47406c17474f9246c692"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css",
+      "source_sha256": "82d18a3cfbde189aefc749cc31d314681e7a41f064141d33ec6687f6fc57223d"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot",
+      "source_sha256": "8802c66a5594beb2420c8fdb9b0ba87088ff102ca71c819b37e53d4670c93ec8"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf",
+      "source_sha256": "38fcc72133411c61e3194afe3a11e64ae268c00d403a87cf3c66a5c07e2d9413"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff",
+      "source_sha256": "5eef6df86135497f2d0a586c8aa3dc3ace8963234762c16081924714658da2db"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE",
+      "source_sha256": "bb5f5f9b59ff3ab358efed2c5436e8aa2e12444959c4bde82167b874d5db1b1c"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot",
+      "source_sha256": "ad4b0799608b5dc860cc3bd7ff4781f2d9e13144e48a2e3d9321ce57c5a12f2a"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf",
+      "source_sha256": "d13268affb2204223a1b6b8483afd989a0e2b20bff853eae05fe5d0d32de8ed9"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff",
+      "source_sha256": "05d3615fdbe7d35c62d6a1308dc48e3985016b69e65926ed37b99fe7e6b297dc"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot",
+      "source_sha256": "dce8869d25c3abcecb33a3486a3c70bb76aed17c21a74069ee83949b1d209c9b"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf",
+      "source_sha256": "c1865d89d798bc2119872b17774361c7406974b9568121a617007e02af344981"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff",
+      "source_sha256": "d4eaa48ba450f4dd2d024ab5b0e895c73c81475718e5453fd1890254c16b7a57"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot",
+      "source_sha256": "ebb8918da92bae172dfe322a3947929b3df2330dccc6f13c7d8e8ed3815e1696"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf",
+      "source_sha256": "a53e27232eff5f0bc1ba1c0af7e0759f0aaaf5c0636370b4c54f83c4652ba924"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff",
+      "source_sha256": "b0abd2736335424f9fd3eb27974a36d03783b3db141e0801dca7d3a635218b46"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot",
+      "source_sha256": "dfe0b47abfa0fdb0504d7be14015fa3f1cf9647b97ffd8b3bfcceb25c60f4fa6"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf",
+      "source_sha256": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff",
+      "source_sha256": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css",
+      "source_sha256": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc"
+    },
+    "lecture/t03/t03_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css",
+      "source_sha256": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/highlight.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/highlight/highlight.esm.js",
+      "source_sha256": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/highlight.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/highlight/highlight.js",
+      "source_sha256": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/monokai.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/highlight/monokai.css",
+      "source_sha256": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/plugin.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/highlight/plugin.js",
+      "source_sha256": "fd0d79317e81f625ad2e50829ae0b678e82f83f221d57239d7a6eb5a37bca7a8"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/highlight/zenburn.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/highlight/zenburn.css",
+      "source_sha256": "ba1469a7d0194c9ca29aaf4ad3341ffee5bfbb583f22f0620e25e91a9a846431"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/markdown/markdown.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/markdown/markdown.esm.js",
+      "source_sha256": "dc1c5cbfe18950706d7b1197e0420b03875fa1f1341ed184474bb1b17123f887"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/markdown/markdown.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/markdown/markdown.js",
+      "source_sha256": "daef024c44fe63d26ac0a403cd1e2442dd3d15c0a46ad271ecbd11ffb8197215"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/markdown/plugin.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/markdown/plugin.js",
+      "source_sha256": "3fa94d03ebc86fb49ada69dd6f6759f0a1e63249cfa67c9043d848ef4552c6f8"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/katex.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/math/katex.js",
+      "source_sha256": "5a3b3c08a7aee2c27b82cbb6a1f1407f23ccdedee65bc21faa182fdb383ff034"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/math.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/math/math.esm.js",
+      "source_sha256": "871848be629469d6dd719e2583a20f3e5a54a069312888760fb4c72f2f51cbbc"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/math.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/math/math.js",
+      "source_sha256": "d88b3f0d43e391c5e951e36f5ab210be1ff23e80d196443a920ab4e6b65ec44d"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/mathjax2.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/math/mathjax2.js",
+      "source_sha256": "8f4e74ea68e9f9f4238ce8d516d6602cb532224bd4e99eed6127f855a9ac578e"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/mathjax3.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/math/mathjax3.js",
+      "source_sha256": "08d040d053431c166c9a2131f6a04adf796948226116d7a9bfafd1cbd3536e6b"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/math/plugin.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/math/plugin.js",
+      "source_sha256": "5953baa37de282e598535d234440d9b3f4e7c640cb9c7fcb54187318ebc5af28"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/notes.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/notes/notes.esm.js",
+      "source_sha256": "51cce5ff4dcb836c3cda74884e437cf83849b57bf1acad2d8320fe053d798c1e"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/notes.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/notes/notes.js",
+      "source_sha256": "288fe7cb27ff696a3e1c137b22b0cd117395a84dba2a703e2bfc3136e65612a8"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/plugin.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/notes/plugin.js",
+      "source_sha256": "ac22d7e5b215d5049d80edd5f83f02143c4354d69598c091cda384d6eb36d5ce"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/notes/speaker-view.html": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/notes/speaker-view.html",
+      "source_sha256": "cbae92980c488a08dfac298bce6a483a98eaf28ff0cc4f5912d266adf5db837f"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/pdf-export/pdfexport.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/pdf-export/pdfexport.js",
+      "source_sha256": "04a7cf66287cee83929567717012f992e1da8da3ee1422afc4d6ed2ccf899db5"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/pdf-export/plugin.yml": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/pdf-export/plugin.yml",
+      "source_sha256": "ce9bb146827c559d109c1011b22d14695751de65dbc8f1033ccf38a13b029298"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css",
+      "source_sha256": "10ca4ebf89e45854dfb209477e5eec3dabadc6afaa3053e156be86b103d46713"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js",
+      "source_sha256": "e985a18488170b3206470dd1465d696f19f4396f77a39853fe4ab664f42d043d"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml",
+      "source_sha256": "c360344cce59778682800185df97b414ac9ec91213fefda989b9551a10b49e95"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/footer.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/footer.css",
+      "source_sha256": "12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/plugin.yml": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/plugin.yml",
+      "source_sha256": "b8c1267adaf0f137c83ebe6a12f7ef0ee49ee36676f038edef63288379844bf5"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/support.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/quarto-support/support.js",
+      "source_sha256": "556caf13cf55ef74c621dd9b732e7c3dd1a35fdd3f4c8faca8afe70b173dfb15"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/menu.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/menu.css",
+      "source_sha256": "d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/menu.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/menu.js",
+      "source_sha256": "5e3a6594eed51e13b55ee755fd495e5a7de02fa3193fff97bc19b46f47e52522"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/plugin.yml": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/plugin.yml",
+      "source_sha256": "572b76cc11ffd42c1abfe9e415fe7c95d76e517f2812a41e4baee3333fc9cf77"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css",
+      "source_sha256": "81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js",
+      "source_sha256": "031feb02645bc2e4abeaad39b2c017725e667c1ad7e50a3fb7f6035474be2521"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/search/plugin.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/search/plugin.js",
+      "source_sha256": "ad68bbdc4a0a23780dfd04f6d39e013eab88ca7295db55e29fca8541834ee2e0"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/search/search.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/search/search.esm.js",
+      "source_sha256": "d34e802197489977611611fe2f3af2f8f72c7a22ac98a5510f422c83ef204dc1"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/search/search.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/search/search.js",
+      "source_sha256": "790fe4787fc747feb7a0c77ea69afc9202047361f5af6c89f802ce10a96dab8f"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/zoom/plugin.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/zoom/plugin.js",
+      "source_sha256": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/zoom/zoom.esm.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/zoom/zoom.esm.js",
+      "source_sha256": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930"
+    },
+    "lecture/t03/t03_files/libs/revealjs/plugin/zoom/zoom.js": {
+      "source": "lecture/t03/t03_files/libs/revealjs/plugin/zoom/zoom.js",
+      "source_sha256": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296"
+    },
+    "lecture-notes/pdf/minor-48/t03.pdf": {
+      "source": "lecture-notes/pdf/minor-48/t03.pdf",
+      "source_sha256": "da367dc647c4d08965c0a7e24fb103a197bf255fe823a2737bb279c6b43c0999"
+    },
+    "lecture/t04/index.html": {
+      "source": "lecture/t04/index.html",
+      "source_sha256": "7fcd082d41226993764df2ce28a52d3d5fa7422ac50786f574d3d03eb87bdb31"
+    },
+    "lecture/t04/t04.css": {
+      "source": "lecture/t04/t04.css",
+      "source_sha256": "d1887570caccd45c3ad9ce468eeb46fa9a58c36cc4a1d9e518f88ab487ba989e"
+    },
+    "lecture/t04/assets/fonts/GUST-FONT-LICENSE.txt": {
+      "source": "lecture/t04/assets/fonts/GUST-FONT-LICENSE.txt",
+      "source_sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    "lecture/t04/assets/fonts/latinmodern-math.otf": {
+      "source": "lecture/t04/assets/fonts/latinmodern-math.otf",
+      "source_sha256": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f"
+    },
+    "lecture/t04/assets/learning-rates.png": {
+      "source": "lecture/t04/assets/learning-rates.png",
+      "source_sha256": "8cd7b4eed43be876337e65a8330411975a6bbeb1abb20cd7f2ef26337a25d167"
+    },
+    "lecture/t04/assets/unstable-scale.png": {
+      "source": "lecture/t04/assets/unstable-scale.png",
+      "source_sha256": "11701deeb37bb7c180539689cd142676b59f9c39a935f844d415e62878c79ac9"
+    },
+    "lecture/t04/t04_files/libs/clipboard/clipboard.min.js": {
+      "source": "lecture/t04/t04_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9"
+    },
+    "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/live-runtime.css": {
+      "source": "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/live-runtime.css",
+      "source_sha256": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46"
+    },
+    "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/live-runtime.js": {
+      "source": "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/live-runtime.js",
+      "source_sha256": "1f8b04cdc00eb9246ffd0faf3f0897b43eeac23b119233175e56fe1e777179aa"
+    },
+    "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/pyodide-worker.js": {
+      "source": "lecture/t04/t04_files/libs/quarto-contrib/live-runtime/pyodide-worker.js",
+      "source_sha256": "5a9969a50da4a3b82bce9915f421c96ea07a18f70d989d9e16801cb54333a6a6"
+    },
+    "lecture/t04/t04_files/libs/quarto-html/light-border.css": {
+      "source": "lecture/t04/t04_files/libs/quarto-html/light-border.css",
+      "source_sha256": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd"
+    },
+    "lecture/t04/t04_files/libs/quarto-html/popper.min.js": {
+      "source": "lecture/t04/t04_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "4d50586b184724d39ddfe0f6582861664eddd5e806e5a79e0dbaa832361414d0"
+    },
+    "lecture/t04/t04_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css": {
+      "source": "lecture/t04/t04_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css",
+      "source_sha256": "510c236c766c43cb510a3a0e3aaf045f1f804d918c04350ea78209788253cfeb"
+    },
+    "lecture/t04/t04_files/libs/quarto-html/tabby.min.js": {
+      "source": "lecture/t04/t04_files/libs/quarto-html/tabby.min.js",
+      "source_sha256": "d9bb77bde59c096a08171b67d3f4b797606fb06019ed3ca36028a5aa6f4d5953"
+    },
+    "lecture/t04/t04_files/libs/quarto-html/tippy.css": {
+      "source": "lecture/t04/t04_files/libs/quarto-html/tippy.css",
+      "source_sha256": "5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678"
+    },
+    "lecture/t04/t04_files/libs/quarto-html/tippy.umd.min.js": {
+      "source": "lecture/t04/t04_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "41181eeec6d7ba64cb9165f0e95563e34e026bde79e7c13aeec83270429b6fae"
+    },
+    "lecture/t04/t04_files/libs/quarto-ojs/quarto-ojs-runtime.js": {
+      "source": "lecture/t04/t04_files/libs/quarto-ojs/quarto-ojs-runtime.js",
+      "source_sha256": "99628b525981d848756bbd4e77111a0002988560ee1dae3cc31ba06ac0fb2b2f"
+    },
+    "lecture/t04/t04_files/libs/quarto-ojs/quarto-ojs.css": {
+      "source": "lecture/t04/t04_files/libs/quarto-ojs/quarto-ojs.css",
+      "source_sha256": "471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/reset.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/reset.css",
+      "source_sha256": "1aa8e84c9cabcbfe4d95b19879fe48b9c2c5e6d54574cbe679bc22edb9fe12b6"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/reveal.css",
+      "source_sha256": "9cbc5082797d938f0ee780328790a131ae3d7bc5c09c176e77927c174f29e60a"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/reveal.esm.js",
+      "source_sha256": "c9d8c6a59ee4ac89aa28d2829b8153d2b0761b7eadbc8d8ac24ac301beb7b40e"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.esm.js.map": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/reveal.esm.js.map",
+      "source_sha256": "90adea032036c83a920ab63a61e58788e25ac838010136d4ecf39edbef950abe"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/reveal.js",
+      "source_sha256": "9736bf3d8918e391e8c07c85c53773800d4004dc25f948916e319ca371ca881a"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/reveal.js.map": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/reveal.js.map",
+      "source_sha256": "ba6170f0af229fc9c9ed3606d9ebff11f6dd97e39e7e00607aed9aa0b8ebf237"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE",
+      "source_sha256": "f8a741f43a00e8dc1ba89debfe7cc6c760de0315e9ee47406c17474f9246c692"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css",
+      "source_sha256": "82d18a3cfbde189aefc749cc31d314681e7a41f064141d33ec6687f6fc57223d"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot",
+      "source_sha256": "8802c66a5594beb2420c8fdb9b0ba87088ff102ca71c819b37e53d4670c93ec8"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf",
+      "source_sha256": "38fcc72133411c61e3194afe3a11e64ae268c00d403a87cf3c66a5c07e2d9413"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff",
+      "source_sha256": "5eef6df86135497f2d0a586c8aa3dc3ace8963234762c16081924714658da2db"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE",
+      "source_sha256": "bb5f5f9b59ff3ab358efed2c5436e8aa2e12444959c4bde82167b874d5db1b1c"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot",
+      "source_sha256": "ad4b0799608b5dc860cc3bd7ff4781f2d9e13144e48a2e3d9321ce57c5a12f2a"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf",
+      "source_sha256": "d13268affb2204223a1b6b8483afd989a0e2b20bff853eae05fe5d0d32de8ed9"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff",
+      "source_sha256": "05d3615fdbe7d35c62d6a1308dc48e3985016b69e65926ed37b99fe7e6b297dc"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot",
+      "source_sha256": "dce8869d25c3abcecb33a3486a3c70bb76aed17c21a74069ee83949b1d209c9b"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf",
+      "source_sha256": "c1865d89d798bc2119872b17774361c7406974b9568121a617007e02af344981"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff",
+      "source_sha256": "d4eaa48ba450f4dd2d024ab5b0e895c73c81475718e5453fd1890254c16b7a57"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot",
+      "source_sha256": "ebb8918da92bae172dfe322a3947929b3df2330dccc6f13c7d8e8ed3815e1696"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf",
+      "source_sha256": "a53e27232eff5f0bc1ba1c0af7e0759f0aaaf5c0636370b4c54f83c4652ba924"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff",
+      "source_sha256": "b0abd2736335424f9fd3eb27974a36d03783b3db141e0801dca7d3a635218b46"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot",
+      "source_sha256": "dfe0b47abfa0fdb0504d7be14015fa3f1cf9647b97ffd8b3bfcceb25c60f4fa6"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf",
+      "source_sha256": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff",
+      "source_sha256": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css",
+      "source_sha256": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc"
+    },
+    "lecture/t04/t04_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css",
+      "source_sha256": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/highlight.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/highlight/highlight.esm.js",
+      "source_sha256": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/highlight.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/highlight/highlight.js",
+      "source_sha256": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/monokai.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/highlight/monokai.css",
+      "source_sha256": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/plugin.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/highlight/plugin.js",
+      "source_sha256": "fd0d79317e81f625ad2e50829ae0b678e82f83f221d57239d7a6eb5a37bca7a8"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/highlight/zenburn.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/highlight/zenburn.css",
+      "source_sha256": "ba1469a7d0194c9ca29aaf4ad3341ffee5bfbb583f22f0620e25e91a9a846431"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/markdown/markdown.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/markdown/markdown.esm.js",
+      "source_sha256": "dc1c5cbfe18950706d7b1197e0420b03875fa1f1341ed184474bb1b17123f887"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/markdown/markdown.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/markdown/markdown.js",
+      "source_sha256": "daef024c44fe63d26ac0a403cd1e2442dd3d15c0a46ad271ecbd11ffb8197215"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/markdown/plugin.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/markdown/plugin.js",
+      "source_sha256": "3fa94d03ebc86fb49ada69dd6f6759f0a1e63249cfa67c9043d848ef4552c6f8"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/katex.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/math/katex.js",
+      "source_sha256": "5a3b3c08a7aee2c27b82cbb6a1f1407f23ccdedee65bc21faa182fdb383ff034"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/math.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/math/math.esm.js",
+      "source_sha256": "871848be629469d6dd719e2583a20f3e5a54a069312888760fb4c72f2f51cbbc"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/math.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/math/math.js",
+      "source_sha256": "d88b3f0d43e391c5e951e36f5ab210be1ff23e80d196443a920ab4e6b65ec44d"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/mathjax2.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/math/mathjax2.js",
+      "source_sha256": "8f4e74ea68e9f9f4238ce8d516d6602cb532224bd4e99eed6127f855a9ac578e"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/mathjax3.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/math/mathjax3.js",
+      "source_sha256": "08d040d053431c166c9a2131f6a04adf796948226116d7a9bfafd1cbd3536e6b"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/math/plugin.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/math/plugin.js",
+      "source_sha256": "5953baa37de282e598535d234440d9b3f4e7c640cb9c7fcb54187318ebc5af28"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/notes.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/notes/notes.esm.js",
+      "source_sha256": "51cce5ff4dcb836c3cda74884e437cf83849b57bf1acad2d8320fe053d798c1e"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/notes.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/notes/notes.js",
+      "source_sha256": "288fe7cb27ff696a3e1c137b22b0cd117395a84dba2a703e2bfc3136e65612a8"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/plugin.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/notes/plugin.js",
+      "source_sha256": "ac22d7e5b215d5049d80edd5f83f02143c4354d69598c091cda384d6eb36d5ce"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/notes/speaker-view.html": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/notes/speaker-view.html",
+      "source_sha256": "cbae92980c488a08dfac298bce6a483a98eaf28ff0cc4f5912d266adf5db837f"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/pdf-export/pdfexport.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/pdf-export/pdfexport.js",
+      "source_sha256": "04a7cf66287cee83929567717012f992e1da8da3ee1422afc4d6ed2ccf899db5"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/pdf-export/plugin.yml": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/pdf-export/plugin.yml",
+      "source_sha256": "ce9bb146827c559d109c1011b22d14695751de65dbc8f1033ccf38a13b029298"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css",
+      "source_sha256": "10ca4ebf89e45854dfb209477e5eec3dabadc6afaa3053e156be86b103d46713"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js",
+      "source_sha256": "e985a18488170b3206470dd1465d696f19f4396f77a39853fe4ab664f42d043d"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml",
+      "source_sha256": "c360344cce59778682800185df97b414ac9ec91213fefda989b9551a10b49e95"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/footer.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/footer.css",
+      "source_sha256": "12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/plugin.yml": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/plugin.yml",
+      "source_sha256": "b8c1267adaf0f137c83ebe6a12f7ef0ee49ee36676f038edef63288379844bf5"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/support.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/quarto-support/support.js",
+      "source_sha256": "556caf13cf55ef74c621dd9b732e7c3dd1a35fdd3f4c8faca8afe70b173dfb15"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/menu.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/menu.css",
+      "source_sha256": "d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/menu.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/menu.js",
+      "source_sha256": "5e3a6594eed51e13b55ee755fd495e5a7de02fa3193fff97bc19b46f47e52522"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/plugin.yml": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/plugin.yml",
+      "source_sha256": "572b76cc11ffd42c1abfe9e415fe7c95d76e517f2812a41e4baee3333fc9cf77"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css",
+      "source_sha256": "81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js",
+      "source_sha256": "031feb02645bc2e4abeaad39b2c017725e667c1ad7e50a3fb7f6035474be2521"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/search/plugin.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/search/plugin.js",
+      "source_sha256": "ad68bbdc4a0a23780dfd04f6d39e013eab88ca7295db55e29fca8541834ee2e0"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/search/search.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/search/search.esm.js",
+      "source_sha256": "d34e802197489977611611fe2f3af2f8f72c7a22ac98a5510f422c83ef204dc1"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/search/search.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/search/search.js",
+      "source_sha256": "790fe4787fc747feb7a0c77ea69afc9202047361f5af6c89f802ce10a96dab8f"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/zoom/plugin.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/zoom/plugin.js",
+      "source_sha256": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.esm.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.esm.js",
+      "source_sha256": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930"
+    },
+    "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.js": {
+      "source": "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.js",
+      "source_sha256": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296"
+    },
+    "lecture-notes/pdf/minor-48/t04.pdf": {
+      "source": "lecture-notes/pdf/minor-48/t04.pdf",
+      "source_sha256": "61c2ad1aac28c4bf901e2a3709a9c20f4b412659f98bae03508b065393ea5f1d"
+    }
+  },
+  "generated_student_files": [
+    ".gitignore",
+    ".nojekyll",
+    "README.html",
+    "README.md",
+    "assets/fonts/GUST-FONT-LICENSE.txt",
+    "assets/fonts/latinmodern-math.otf",
+    "assets/site.css",
+    "docs/course-map.html",
+    "docs/course-map.md",
+    "docs/getting-started.html",
+    "docs/getting-started.md",
+    "docs/submission.html",
+    "docs/submission.md",
+    "homework/t01-t02/student.html",
+    "homework/t03-t04/student.html",
+    "index.html",
+    "lecture-notes/README.html",
+    "runtime/cloudstudio/README.html",
+    "runtime/cloudstudio/README.md",
+    "scripts/prepare-work.py",
+    "units/linear-regression/data/README.html",
+    "units/linear-regression/worksheets/student.html",
+    "units/split-evaluation/data/README.html",
+    "units/split-evaluation/worksheets/student.html",
+    "units/task-data-baseline/worksheets/student.html"
+  ],
+  "student_text_transformations": [
+    {
+      "source": "units/split-evaluation/labs/B01-minor.ipynb",
+      "change": "remove non-minor prerequisite reference; code unchanged"
+    },
+    {
+      "source": "units/split-evaluation/data/README.md",
+      "change": "remove non-minor lab references"
+    },
+    {
+      "source": "units/linear-regression/data/README.md",
+      "change": "remove non-minor lab reference"
+    },
+    {
+      "source": ".gitattributes",
+      "change": "Default text checkout uses LF; explicit Windows-script CRLF overrides retained."
+    }
+  ],
+  "external_publication": false,
+  "pending": [
+    "student timing",
+    "physical printing",
+    "classroom setup and browser runtime cold start"
+  ],
+  "note": "Local student package; teacher answers and major/future materials excluded. RELEASE.json does not hash itself; personal work is not part of the release.",
+  "site": {
+    "entry": "index.html",
+    "jekyll": false,
+    "reading_pages": "locally generated HTML; original Markdown retained"
+  }
+}

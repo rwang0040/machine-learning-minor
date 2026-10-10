@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>环境与启动 · 机器学习</title><link rel="stylesheet" href="../assets/site.css"></head><body><main class="reading"><a class="back" href="../index.html">← 返回课程首页</a>
+<h1 id="环境与启动">环境与启动</h1>
+<p>本包使用Python 3.13.16和根目录uv.lock中的固定依赖。不要自行更换版本；已有教师配置的课程环境可以直接使用。</p>
+<h2 id="debian-wsl或cloud-studio">Debian WSL或Cloud Studio</h2>
+<p>在课程根目录执行：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cloud Studio：保持平台默认下载源</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> runtime/cloudstudio/setup-remote.sh</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 本机需要沿用个人uv镜像时，改用下面这一条</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bash runtime/cloudstudio/setup-local.sh</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> runtime/cloudstudio/start-lab.sh</span></code></pre></div>
+<p>首次安装需要网络和下载时间。启动脚本显示Jupyter访问地址；本机默认只监听127.0.0.1。Cloud Studio按平台预览方式访问；如平台要求绑定全部接口，可设置<code>ML_JUPYTER_IP=0.0.0.0</code>后启动。不要公开访问令牌。</p>
+<h2 id="windows原生终端">Windows原生终端</h2>
+<p>已有uv时，在课程根目录执行：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>uv sync <span class="op">--</span>locked</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\python<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>m ipykernel install <span class="op">--</span>prefix <span class="op">.</span><span class="fu">venv</span> <span class="op">--</span>name ml-course <span class="op">--</span>display-name <span class="st">&quot;机器学习 · Python 3.13&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\python<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>m jupyterlab</span></code></pre></div>
+<p>选择“机器学习 · Python 3.13”内核。安装受限或网络慢时，按教师安排改用WSL或Cloud Studio，不要求为一次作业重装环境。</p>
+<h2 id="课件http浏览">课件HTTP浏览</h2>
+<p>不需要安装Quarto或LaTeX。在课程根目录使用已安装的Python启动静态服务：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># WSL / Cloud Studio</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> <span class="at">-m</span> http.server 8000 <span class="at">--bind</span> 127.0.0.1</span></code></pre></div>
+<p>Windows使用<code>.\.venv\Scripts\python.exe -m http.server 8000 --bind 127.0.0.1</code>。本机浏览器打开<code>http://127.0.0.1:8000/</code>，从首页进入课件。Cloud Studio可通过平台端口预览；按平台要求调整绑定地址。不要仅上传HTML，需保留对应资源目录。交互运行要下载Pyodide，首次可能较慢；讲义、纸笔题和静态核对不依赖交互运行。</p>
+
+</main></body></html>

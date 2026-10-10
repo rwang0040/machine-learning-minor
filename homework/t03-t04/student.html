@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>作业二：从模型参数到可信的更新结果（T03—T04） · 机器学习</title><link rel="stylesheet" href="../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../index.html">← 返回课程首页</a>
+<h1 id="作业二从模型参数到可信的更新结果t03t04">作业二：从模型参数到可信的更新结果（T03—T04）</h1>
+<p>姓名：________　班级：________　日期：________</p>
+<p><strong>预计用时：60分钟；原始满分：100分。</strong> 这是设计目标，不是限时考试。可以查阅T03、T04讲义并使用普通计算器；代码题只需阅读和写出修改，不要求安装环境、运行程序或先完成实验。</p>
+<p>请独立组织答案，计算保留关键代入步骤，解释直接回答问题。提交一份按题号组织的答案，电子文本或清晰的手写照片均可；不另交Notebook、运行截图或长报告。具体渠道与截止时间以教师发布为准。</p>
+<p>情境与数值均为合成教学示例。第一、二、四部分的数据彼此独立；第三部分只沿用第二部分的小样本。统一使用残差 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>=</mo><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>i</mi></msub><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">e_i=\hat y_i-y_i</annotation></semantics></math>，损失 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo>∑</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J=\sum e_i^2/(2n)</annotation></semantics></math>。可保留分数，或将结果保留四位小数。</p>
+<h2 id="一参数表达了什么20分建议10分钟">一、参数表达了什么？（20分，建议10分钟）</h2>
+<p>校内打印室希望在开始一项任务前，根据已确定的计划印量，预测完成这项任务的总耗时。用 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> 表示计划印量，单位为“百页”；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> 表示实际总耗时，单位为“分钟”。历史训练记录中的计划印量在2—10百页之间。</p>
+<p>现在给定一个候选模型：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>5</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\hat y=3x+5.
+</annotation></semantics></math></p>
+<ol type="1">
+<li>指出特征、标签以及两个模型参数。计算计划印量为6百页时的预测；保持参数不变，印量从6增加到7百页，预测改变多少？（8分）</li>
+<li>写出斜率和截距的单位。能否直接把截距5解释为打印室真实的固定准备耗时？结合观测范围说明理由。（12分）</li>
+</ol>
+<p><strong>我的答案：</strong></p>
+<ol type="1">
+<li></li>
+<li></li>
+</ol>
+<h2 id="二算清一次参数更新35分建议18分钟">二、算清一次参数更新（35分，建议18分钟）</h2>
+<p>本题使用两个抽象样本，不代表第一部分打印室的实际取值或单位：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>y</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+x=[1,2],\qquad y=[3,5].
+</annotation></semantics></math></p>
+<p>旧参数为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">w=1,b=1</annotation></semantics></math>，学习率 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">\eta=0.2</annotation></semantics></math>。两个梯度必须由同一组旧参数计算：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>w</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>∑</mo><msub><mi>e</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>g</mi><mi>b</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>∑</mo><msub><mi>e</mi><mi>i</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+g_w=\frac1n\sum e_ix_i,\qquad g_b=\frac1n\sum e_i.
+</annotation></semantics></math></p>
+<ol type="1">
+<li>补全下面的表，计算旧损失 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J(1,1)</annotation></semantics></math>。（10分）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math></th>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>i</mi></msub><annotation encoding="application/x-tex">y_i</annotation></semantics></math></th>
+<th style="text-align: right;">旧预测 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>i</mi></msub><annotation encoding="application/x-tex">\hat y_i</annotation></semantics></math></th>
+<th style="text-align: right;">残差 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>i</mi></msub><annotation encoding="application/x-tex">e_i</annotation></semantics></math></th>
+<th style="text-align: right;">平方误差 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">e_i^2</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>计算 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>w</mi></msub><mo>,</mo><msub><mi>g</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">g_w,g_b</annotation></semantics></math>，保留代入步骤。（10分）</li>
+<li>按 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">w</mi></mrow></msub><mo>=</mo><mi>w</mi><mo>−</mo><mi>η</mi><msub><mi>g</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">w_{\mathrm{new}}=w-\eta g_w</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">w</mi></mrow></msub><mo>=</mo><mi>b</mi><mo>−</mo><mi>η</mi><msub><mi>g</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">b_{\mathrm{new}}=b-\eta g_b</annotation></semantics></math> 完成一次同步更新，写出新参数、新预测与新损失，并核对损失是否下降。训练损失下降是否足以说明验证表现也会改善？（15分）</li>
+</ol>
+<p>不需要继续计算第二次更新，也不需要计算本题RMSE。</p>
+<p><strong>我的计算与解释：</strong></p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<h2 id="三代码能运行就实现了同步更新吗20分建议12分钟">三、代码能运行，就实现了同步更新吗？（20分，建议12分钟）</h2>
+<p>下面的Python代码想对第二部分的数据完成一次同步更新。<code>zip</code> 将两个列表中相同位置的值配成对，<code>sum</code> 求和，<code>len(x)</code> 表示样本数。无需运行即可判断。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">5</span>]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>w, b, eta <span class="op">=</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>error_old <span class="op">=</span> [w <span class="op">*</span> xi <span class="op">+</span> b <span class="op">-</span> yi <span class="cf">for</span> xi, yi <span class="kw">in</span> <span class="bu">zip</span>(x, y)]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>gw <span class="op">=</span> <span class="bu">sum</span>(e <span class="op">*</span> xi <span class="cf">for</span> e, xi <span class="kw">in</span> <span class="bu">zip</span>(error_old, x)) <span class="op">/</span> <span class="bu">len</span>(x)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> w <span class="op">-</span> eta <span class="op">*</span> gw</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>error_new <span class="op">=</span> [w <span class="op">*</span> xi <span class="op">+</span> b <span class="op">-</span> yi <span class="cf">for</span> xi, yi <span class="kw">in</span> <span class="bu">zip</span>(x, y)]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> <span class="bu">sum</span>(error_new) <span class="op">/</span> <span class="bu">len</span>(x)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> b <span class="op">-</span> eta <span class="op">*</span> gb</span></code></pre></div>
+<ol type="1">
+<li><code>gw</code> 和 <code>gb</code> 分别根据哪一组参数计算？这段代码与同步更新规则哪里不一致？可以用“旧／新参数”或具体数值说明。（10分）</li>
+<li>给出最小修改，使两个梯度都来自旧参数。若两个梯度已由旧参数算好，<code>w</code> 和 <code>b</code> 的赋值是否必须写在同一行？说明理由。（10分）</li>
+</ol>
+<p>只需写出需要替换的代码或清楚描述修改步骤；不必重新抄写整段程序，也不要求重算错误代码的最后损失。</p>
+<p><strong>我的答案：</strong></p>
+<ol type="1">
+<li></li>
+<li></li>
+</ol>
+<h2 id="四尺度比较与结论范围25分建议15分钟">四、尺度、比较与结论范围（25分，建议15分钟）</h2>
+<p>以下是另一组独立数据和一张假设结果表，不是课堂批次数据的运行结果。</p>
+<ol type="1">
+<li>两个训练输入为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>10</mn><mo>,</mo><mn>14</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[10,14]</annotation></semantics></math>，一个验证输入为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>18</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[18]</annotation></semantics></math>。按训练样本数为分母计算均值 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>μ</mi><annotation encoding="application/x-tex">\mu</annotation></semantics></math> 和标准差 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>，再计算验证输入的标准化值。解释为什么应使用训练统计量，以及为什么不能给验证数据另建一套坐标。（10分）</li>
+</ol>
+<p>一名同学比较两个运行。数据划分、训练统计量、损失定义相同，训练使用标准化输入：</p>
+<table>
+<thead>
+<tr>
+<th>运行</th>
+<th style="text-align: right;">学习率</th>
+<th>初始参数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w,b)</annotation></semantics></math></th>
+<th style="text-align: right;">已完成更新次数</th>
+<th style="text-align: right;">验证RMSE（分钟）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">0.01</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0)</annotation></semantics></math></td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">0.1</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0)</annotation></semantics></math></td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>为什么不能把验证误差的差距全部归因于学习率？如果目的是比较学习率，应怎样修改比较条件？（5分）</li>
+<li>同学已经根据这组验证结果选择B，但没有另留独立测试数据。他写道：“B已通过独立最终测试，学习率0.1对所有任务都是最好的。”指出这句话中两项超出证据的说法，并改写为包含实际数值和数据范围的恰当结论。（10分）</li>
+</ol>
+<p><strong>我的答案：</strong></p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<h2 id="提交前核对建议5分钟">提交前核对（建议5分钟）</h2>
+<p>检查残差方向、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math> 的分母、两个梯度是否来自同一组旧参数，以及标准化和比较的条件。确认结论写明数据用途与适用范围。</p>
+<p>在答案末尾补充：</p>
+<ul>
+<li>实际用时约____分钟（用于调整题量，不按快慢评分）。</li>
+<li>最耗时的环节：理解题意／查阅讲义／计算书写／代码阅读／提交整理（可多选）。</li>
+<li>最卡住的一处：____（没有可写“无”）。</li>
+<li>使用的辅助工具及用途：____（例如讲义、计算器或AI辅助）。无论使用何种工具，都应能独立解释提交的关键答案。</li>
+</ul>
+
+</main></body></html>

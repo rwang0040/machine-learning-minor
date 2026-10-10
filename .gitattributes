@@ -1,0 +1,66 @@
+# Normalize text automatically; use explicit rules for course source files.
+* text=auto eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.python-version text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.ipynb text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.js text eol=lf
+*.svg text eol=lf
+*.qmd text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+
+# Windows command scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Preserve binary artifacts byte-for-byte.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.7z binary
+*.joblib binary
+*.pkl binary
+*.pickle binary
+*.npy binary
+*.npz binary
+*.mp4 binary
+*.mp3 binary
+*.wav binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# Rendered teaching slides do not represent the repository's code language mix.
+units/**/slides/*.html linguist-generated=true
+
+# Pinned Quarto extensions are third-party source dependencies.
+_extensions/** linguist-vendored=true
