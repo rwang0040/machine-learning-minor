@@ -11,18 +11,18 @@
   ],
   "source_revision": "8787da27d94bd35d316838537c14133767516854",
   "source_includes_uncommitted_release_preparation": true,
-  "manifest_sha256": "2ff22a47757a599991820f97cd0adeded2eada5bafca8de915b17e42172e5856",
+  "manifest_sha256": "79b160acdb5065afa1d164f20e05d49af7715b54736f953b9693f5673dde970b",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
     ".python-version": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb",
     "README.md": "628292013b4d6b1977b3a8d6e871fea3700dc8cf1f76fcc0ca126db38eca97fa",
-    "docs/course-map.md": "4e8714b07ea4ccc4068991aef89a527728105d06ee65cf5e5f629d099c4781c3",
+    "docs/course-map.md": "dd4fb1780bb0c192e7f1a736425c0c9c31326a8b0fe26502a7d3a8ba7c60dd3f",
     "docs/getting-started.md": "19163d6f09d5dfc70fe2ee29a8e951e26df1af785eaf60f346c5d3972b134caa",
     "docs/submission.md": "921cfd736858de4b4330431673a60f67e687a8ff0c4a3f1f3d9af3e42c730348",
     "homework/t01-t02/student.md": "1da0e06c7093b7f86929592dcb67a1c258cd8431e62009a62ff3b68521996544",
     "homework/t03-t04/student.md": "2270dcd902ac2a3ea8839c992d58e68f50b816b000a868a2c1555143129001d1",
-    "lecture-notes/README.md": "e4864e63fd9e11d7ec7b5c8d1f6f1e59a57a53fc40630b3b2da4e15eda8466be",
+    "lecture-notes/README.md": "000baa305bfb97975ccc57a9f94cb203129414575f792c961323c315f84288fd",
     "lecture-notes/pdf/minor-48/t01.pdf": "36cf4ee92f638bc7a132af22a489bc72fe5f1676f3b0493d9280da548a45d135",
     "lecture-notes/pdf/minor-48/t02.pdf": "b0155144cd9bb3aaf19f870723ca959186c12985b161f67503b885ba0c5e9267",
     "lecture-notes/pdf/minor-48/t03.pdf": "da367dc647c4d08965c0a7e24fb103a197bf255fe823a2737bb279c6b43c0999",
@@ -291,28 +291,29 @@
     "units/split-evaluation/data/b01_batches.csv": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1",
     "units/split-evaluation/figures/validation-mae.png": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932",
     "units/split-evaluation/labs/B01-minor.ipynb": "0d6bdbc6c6f8c080abb058040de6f6a6948d6e34d962e68cda7b55690a0dc288",
-    "units/split-evaluation/worksheets/student.md": "837584c3ddce618f3ff110f9b6bbc3c43ef887eccf49c472393304364bbcb499",
+    "units/split-evaluation/worksheets/student.md": "a4d8221fd297310e299bd2f1f11f83fbb55562129128d1ca5405ba54c688e8ce",
     "units/task-data-baseline/worksheets/student.md": "62797f7f679a6169111f2d796367d42fd98d39063deeaa26ef591a72a55a2fa1",
     "units/task-data-baseline/worksheets/student.pdf": "7bdd294f6c563dde0d4236d6e4683a59f934fa5fcbe33bd7b2aa68f462652bdb",
     "uv.lock": "f7522126644ac43f9e6158fec4131c412f48eb6f4dfdd2490bc05408cbc710d9",
-    "index.html": "825f5f8aa39a50da26c172beb1fbce8b4c242711785fbfd170eafac186c0825e",
+    "index.html": "8273ca6f816c90c38e2fe1208c76f2f0171c3304f7f584d9017c8138c3dc6de7",
     "assets/site.css": "12d07a9513605d60a035c869452dd1457e5052face6a7400f47f0dacb03b7cd6",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
     "README.html": "b9fca76b68716e1583c0d0ddc62e748e520217b152ab4ca35c946414eb43322c",
-    "docs/course-map.html": "92d58407526e456489ff698d4f134ef21ed3f1849ff0ffc5cad9edff5702916d",
+    "docs/course-map.html": "ec14354be257f474f1daa5a4750547c77c1ba0ddb9451fbcd9d03e49aefa0ea7",
     "docs/getting-started.html": "7ebe49500c56fcf38e00f6c68edae01f667939f91786dc4e6435eb2a48742bd4",
     "docs/submission.html": "1643112b617bdce8a435a7ceceaa5249fd7c93dabf0065af99a54681605594a4",
     "homework/t01-t02/student.html": "8152b7687251113148f0cae94081bbfed216d16f3ecfe313b2e09610ec8fd975",
     "homework/t03-t04/student.html": "d11c4321556f6781df83840d518322f666661692618cfbc4f82901a94dc3b4ba",
-    "lecture-notes/README.html": "b0345fcac91a0bfc262097d5810e42f688372eb95beea84295ba1507692ad24d",
+    "lecture-notes/README.html": "436eddaa25952217127a3560cfe82562b59aa8a1c5765e0462f4d58a0960035a",
     "runtime/cloudstudio/README.html": "5167088b23503a2cca765ab3b3e6a275ed181a6994c9d78d6e52bfceaf4a4a15",
     "units/linear-regression/data/README.html": "a2c37cd16fb9244a9c22d1003367bd7dab90bd2c97528288531179b9827a81b0",
     "units/linear-regression/worksheets/student.html": "c02accaf3fea6855b4990c294cc930b10b6e12c26d11205bc71f477f9978a164",
     "units/split-evaluation/data/README.html": "3ed77575563888021fb5d87815d00c985ab557e5dcc2ad7228007d1f15cafd2a",
-    "units/split-evaluation/worksheets/student.html": "a71157d46898bef0f9207cfc6178262dae52524e23b12469c0d4e9ea4810bffc",
-    "units/task-data-baseline/worksheets/student.html": "2a0660b771cc1e280cc56aa49d6a1e7cc4fdd925c12a9f8519ca66c591a56ac6"
+    "units/split-evaluation/worksheets/student.html": "ae1d79c71bd5e6faf43d7d17f576f729f6eb09b038ee3a5bee990702bb3b1092",
+    "units/task-data-baseline/worksheets/student.html": "2a0660b771cc1e280cc56aa49d6a1e7cc4fdd925c12a9f8519ca66c591a56ac6",
+    "units/split-evaluation/worksheets/student.pdf": "1f906dced43065d9f097f8ea0ec5f3fe52ae084c85b8b9d4a5494b304b469ad9"
   },
   "sources": {
     "pyproject.toml": {
@@ -361,7 +362,7 @@
     },
     "units/split-evaluation/worksheets/student.md": {
       "source": "units/split-evaluation/worksheets/student.md",
-      "source_sha256": "837584c3ddce618f3ff110f9b6bbc3c43ef887eccf49c472393304364bbcb499"
+      "source_sha256": "a4d8221fd297310e299bd2f1f11f83fbb55562129128d1ca5405ba54c688e8ce"
     },
     "units/split-evaluation/figures/validation-mae.png": {
       "source": "units/split-evaluation/figures/validation-mae.png",
@@ -741,7 +742,7 @@
     },
     "lecture-notes/README.md": {
       "source": "lecture-notes/student-minor.md",
-      "source_sha256": "e4864e63fd9e11d7ec7b5c8d1f6f1e59a57a53fc40630b3b2da4e15eda8466be"
+      "source_sha256": "000baa305bfb97975ccc57a9f94cb203129414575f792c961323c315f84288fd"
     },
     "lecture-notes/pdf/minor-48/t01.pdf": {
       "source": "lecture-notes/pdf/minor-48/t01.pdf",
@@ -1414,6 +1415,10 @@
     "lecture-notes/pdf/minor-48/t04.pdf": {
       "source": "lecture-notes/pdf/minor-48/t04.pdf",
       "source_sha256": "61c2ad1aac28c4bf901e2a3709a9c20f4b412659f98bae03508b065393ea5f1d"
+    },
+    "units/split-evaluation/worksheets/student.pdf": {
+      "source": "units/split-evaluation/worksheets/student.pdf",
+      "source_sha256": "1f906dced43065d9f097f8ea0ec5f3fe52ae084c85b8b9d4a5494b304b469ad9"
     }
   },
   "generated_student_files": [

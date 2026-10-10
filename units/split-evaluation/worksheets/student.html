@@ -11,6 +11,8 @@
 <li>要预测未来月份，用未来记录参与训练，再评价过去记录。</li>
 <li>本次只有训练与验证数据，报告“在本次验证集上候选优于基线”，同时说明没有独立最终测试。</li>
 </ol>
+<!-- print:answer-lines=12 -->
+<!-- print:pagebreak -->
 <h2 id="b回归误差">B．回归误差</h2>
 <table>
 <thead>
@@ -43,18 +45,20 @@
 </tr>
 </tbody>
 </table>
-<p>MAE=绝对误差之和÷样本数；RMSE=√(平方误差之和÷样本数)。</p>
+<p>MAE＝绝对误差之和÷样本数；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">M</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mrow><mtext mathvariant="normal">平方误差之和</mtext><mi>/</mi><mtext mathvariant="normal">样本数</mtext></mrow></msqrt></mrow><annotation encoding="application/x-tex">\mathrm{RMSE}=\sqrt{\text{平方误差之和}/\text{样本数}}</annotation></semantics></math>。</p>
 <ol type="1">
 <li>写出四行绝对误差与平方误差，计算MAE、RMSE（可保留根号）。</li>
 <li>若目标单位为kWh，两种指标的单位是什么？</li>
 <li>为什么不能拿模型甲的MAE与模型乙的RMSE直接判断谁更好？</li>
 </ol>
+<!-- print:answer-lines=12 -->
+<!-- print:pagebreak -->
 <h2 id="c识别超限批次">C．识别超限批次</h2>
 <p>将“超限”定义为正类，以下100个样本均为未用于训练的检查样本。</p>
 <table>
 <thead>
 <tr>
-<th>实际</th>
+<th>实际／预测</th>
 <th style="text-align: right;">预测超限</th>
 <th style="text-align: right;">预测正常</th>
 </tr>
@@ -79,6 +83,8 @@
 <li>全部预测正常的基线准确率是多少？它能识别多少超限？</li>
 <li>若漏掉超限的代价很高，你会优先关注什么？是否意味着误报可以完全不考虑？</li>
 </ol>
+<!-- print:answer-lines=12 -->
+<!-- print:pagebreak -->
 <h2 id="d该相信哪个分数">D．该相信哪个分数？</h2>
 <p>下表为假设情境，三个方法使用相同训练/验证划分和MAE。方法乙的原理本讲不考查。</p>
 <table>
@@ -113,7 +119,9 @@
 <li>若甲改用了更容易的验证样本，再把新分数与乙的旧分数比较，是否公平？</li>
 <li>当前结果能否直接称为最终测试表现？</li>
 </ol>
+<!-- print:answer-lines=8 -->
 <h2 id="e离堂检查">E．离堂检查</h2>
 <p>某同学说：“训练误差最低的模型一定最好；测试集可以反复看，直到找到最高分。”请指出两处问题，并各写一句正确做法。</p>
+<!-- print:answer-lines=5 -->
 
 </main></body></html>

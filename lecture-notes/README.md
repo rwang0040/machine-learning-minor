@@ -5,7 +5,7 @@
 | 章节 | 讲义 | 课堂材料 | 实验衔接 |
 |---|---|---|---|
 | T01 任务、数据与基线 | [PDF，10页](pdf/minor-48/t01.pdf) | [投影片](../lecture/t01/index.html) · [纸笔活动PDF，4页](../units/task-data-baseline/worksheets/student.pdf) · [文字版](../units/task-data-baseline/worksheets/student.md) | 输入整理在B01中提供支持 |
-| T02 划分与基本评价 | [PDF，13页](pdf/minor-48/t02.pdf) | [投影片](../lecture/t02/index.html) · [纸笔活动](../units/split-evaluation/worksheets/student.md) | T02后完成[B01辅修练习](../units/split-evaluation/labs/B01-minor.ipynb) |
+| T02 划分与基本评价 | [PDF，13页](pdf/minor-48/t02.pdf) | [投影片](../lecture/t02/index.html) · [纸笔活动PDF，4页](../units/split-evaluation/worksheets/student.pdf) · [文字版](../units/split-evaluation/worksheets/student.md) | T02后完成[B01辅修练习](../units/split-evaluation/labs/B01-minor.ipynb) |
 | T03 线性模型与平方损失 | [PDF，8页](pdf/minor-48/t03.pdf) | [投影片](../lecture/t03/index.html) · [纸笔活动PDF，4页](../units/linear-regression/worksheets/student.pdf) · [文字版](../units/linear-regression/worksheets/student.md) | 用纸笔核对参数、预测与损失 |
 | T04 梯度下降、学习率与尺度 | [PDF，11页](pdf/minor-48/t04.pdf) | [投影片](../lecture/t04/index.html) · 上述纸笔活动的T04部分 | T04后完成[B02练习](../units/linear-regression/labs/B02-minor.ipynb) |
 
