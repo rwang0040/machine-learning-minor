@@ -9,9 +9,9 @@
     "T03",
     "T04"
   ],
-  "source_revision": "608de5b363d0ddd7b7b2b5baa472e6d54d7f23f3",
+  "source_revision": "2b313f6963e5817661f9905e5c72959d7aa9ce4f",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "0898897baae96a38e7297ff64b4634b46cc17d0814162b98535dec6262a3096c",
+  "manifest_sha256": "ac899da6de1aa52da49a4f4b9e8c0dad950d7e8815a7019a9064bfbf76361921",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -271,26 +271,26 @@
     "lecture/t04/t04_files/libs/revealjs/plugin/zoom/plugin.js": "01826f83b492ebe3ef90f78964218c31c6ab3d864f8f66d2f0b941bc0de35475",
     "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.esm.js": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930",
     "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.js": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296",
-    "pyproject.toml": "6a9ff1478ee75677130701d8d0ad1a23ac703d7ba737a9185a20d5e7ac24d75c",
+    "pyproject.toml": "38ba3f7a572d319809f2de7f0050c2bcffe887e0944f6de0db04107a440934df",
     "runtime/cloudstudio/README.md": "ccd4c6eb20bb66a6ea9aa397beea150fb879e97abfdda1f910042f561e5941e2",
-    "runtime/cloudstudio/check-launch.py": "1ee5716aaeb4222473986e059e39aad530c5aee014f8f5234baef81ea790946d",
+    "runtime/cloudstudio/check-launch.py": "9e19c422d0aefb2b9b001ecf7836eac8702de87dcc964eb227e69c41ea5c0839",
     "runtime/cloudstudio/setup-local.sh": "758d2fcc118b5bd78497f8186bf29970a8a51bf622b78084ae63c118bf2ff9d4",
     "runtime/cloudstudio/setup-remote.sh": "d7f740b035f561e13094887852c259681081023b369923e2b6fdbaa3e6dc5d9e",
     "runtime/cloudstudio/start-lab.sh": "6ffa053a9b6f9378ccc76ae0c2b7420ea2d5e461dd690f5aae07a689b6a5a37b",
-    "scripts/prepare-work.py": "8831b7dd0d71ab2a34632eb6ee9e91b54b426a142fd896a87689cfcc679ad805",
+    "scripts/prepare-work.py": "25950a0e4fbf1acfd5e8b54b6da1cdeab452195ef7bb4816ce2dd80efe04e210",
     "units/linear-regression/data/README.md": "eee6d43141d9a9d9fb4c4d9059bd238d1d37ad81c58a5a29d3d06870a2a951e2",
     "units/linear-regression/data/regression.csv": "0664a9c3649724c9e1c61df0d217c33cb4a2daff4e32a01772a0e01a070f673a",
     "units/linear-regression/figures/data-fit.png": "f0374ba88da249c4ad1e37faf80308aa51ee29c0cb863a0e992c59908a6e2344",
     "units/linear-regression/figures/learning-rates.png": "8cd7b4eed43be876337e65a8330411975a6bbeb1abb20cd7f2ef26337a25d167",
     "units/linear-regression/figures/loss-contour.png": "caca236238e7fe45c702b473c356befd3544a3a75243bc51a66994a54c2445df",
     "units/linear-regression/figures/unstable-scale.png": "11701deeb37bb7c180539689cd142676b59f9c39a935f844d415e62878c79ac9",
-    "units/linear-regression/labs/B02-minor.ipynb": "129dfd51d39c1a096b9224534f103b9e1e3304a52963ea1b77ece544f18d2c55",
+    "units/linear-regression/labs/B02-minor.ipynb": "376451995c2ceea7bc4b0e32c5b9c3befe8af2eb546832009434788f75eccfcd",
     "units/linear-regression/worksheets/student.md": "b8a8f679a7d377a4101340d1d668578c7f8b53593d37a29d15e144935604710c",
     "units/linear-regression/worksheets/student.pdf": "b54820bc9352f072faae9d41d574044085ccb3a01ca1d6daf5655f82117029ba",
     "units/split-evaluation/data/README.md": "f32584053ef1073e546c25febd9a4c1fa5b8c5053158e27b53f5bb82a7f85696",
     "units/split-evaluation/data/b01_batches.csv": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1",
     "units/split-evaluation/figures/validation-mae.png": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932",
-    "units/split-evaluation/labs/B01-minor.ipynb": "0d6bdbc6c6f8c080abb058040de6f6a6948d6e34d962e68cda7b55690a0dc288",
+    "units/split-evaluation/labs/B01-minor.ipynb": "9faff1fb424682d3efe3e008571ecf2204d2f6993aaf5d425948d6d2f5ff433b",
     "units/split-evaluation/worksheets/student.md": "9f275d90f5c5fac440736650984b09484fc85dbd2c160c351d396b49ecaa35b2",
     "units/task-data-baseline/worksheets/student.md": "b70505d83bbca43cf3826d0dbfd398badfdce435b1606d7c8afd4662abfda59a",
     "units/task-data-baseline/worksheets/student.pdf": "7bdd294f6c563dde0d4236d6e4683a59f934fa5fcbe33bd7b2aa68f462652bdb",
@@ -318,7 +318,7 @@
   "sources": {
     "pyproject.toml": {
       "source": "pyproject.toml",
-      "source_sha256": "6a9ff1478ee75677130701d8d0ad1a23ac703d7ba737a9185a20d5e7ac24d75c"
+      "source_sha256": "38ba3f7a572d319809f2de7f0050c2bcffe887e0944f6de0db04107a440934df"
     },
     "uv.lock": {
       "source": "uv.lock",
@@ -346,7 +346,7 @@
     },
     "runtime/cloudstudio/check-launch.py": {
       "source": "runtime/cloudstudio/check-launch.py",
-      "source_sha256": "1ee5716aaeb4222473986e059e39aad530c5aee014f8f5234baef81ea790946d"
+      "source_sha256": "9e19c422d0aefb2b9b001ecf7836eac8702de87dcc964eb227e69c41ea5c0839"
     },
     "lecture/t01/index.html": {
       "source": "lecture/t01/index.html",
@@ -394,7 +394,7 @@
     },
     "units/split-evaluation/labs/B01-minor.ipynb": {
       "source": "units/split-evaluation/labs/B01-minor.ipynb",
-      "source_sha256": "6c71d193a705aeefcf6c5f01aac855a0db16101c579e927c8dec9aac9a7f91c6"
+      "source_sha256": "6ca045bf15d73a35f4210e5b230c080c1348b821c676bec92a73dfa060c04b60"
     },
     "units/split-evaluation/data/b01_batches.csv": {
       "source": "units/split-evaluation/data/b01_batches.csv",
@@ -406,7 +406,7 @@
     },
     "units/linear-regression/labs/B02-minor.ipynb": {
       "source": "units/linear-regression/labs/B02-minor.ipynb",
-      "source_sha256": "129dfd51d39c1a096b9224534f103b9e1e3304a52963ea1b77ece544f18d2c55"
+      "source_sha256": "376451995c2ceea7bc4b0e32c5b9c3befe8af2eb546832009434788f75eccfcd"
     },
     "units/linear-regression/data/regression.csv": {
       "source": "units/linear-regression/data/regression.csv",
