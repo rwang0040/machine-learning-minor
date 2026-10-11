@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>B01 批次能耗数据 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
 <h1 id="b01-批次能耗数据">B01 批次能耗数据</h1>
-<p>120个独立合成批次，固定生成种子20260927。计划产量为20—120件的随机整数，总能耗按40＋2.5×计划产量＋标准差15的正态噪声生成，保留两位小数；最终电费为能耗×0.8，仅作未来信息示例，不代表实际电价或企业记录。</p>
+<p>120 个独立合成批次，固定生成种子 20260927。计划产量为 20—120 件的随机整数，总能耗按 40＋2.5×计划产量＋标准差 15 的正态噪声生成，保留两位小数；最终电费为能耗×0.8，仅作未来信息示例，不代表实际电价或企业记录。</p>
 <table>
 <thead>
 <tr>
@@ -38,8 +38,8 @@
 </tr>
 </tbody>
 </table>
-<p>本表无缺失、无重复编号，与T01小表分开维护，本次数据无需缺失筛选。实际世界中计划与实际产量可能不同，本合成任务仅用于教学，不能声称具有企业预测效力。</p>
-<p>使用 <code>train_test_split</code>，固定 <code>random_state=42</code>、<code>test_size=1/3</code>，得到80训练、40验证，X/y/编号一起划分。各批次按稳定独立过程模拟，故采用随机划分；无设备重复或时间关系。CSV不存预定split列，学生需执行划分并核验。</p>
+<p>本表无缺失、无重复编号，与 T01 小表分开维护，本次数据无需缺失筛选。实际世界中计划与实际产量可能不同，本合成任务仅用于教学，不能声称具有企业预测效力。</p>
+<p>使用 <code>train_test_split</code>，固定 <code>random_state=42</code>、<code>test_size=1/3</code>，得到 80 训练、40 验证，X/y/编号一起划分。各批次按稳定独立过程模拟，故采用随机划分；无设备重复或时间关系。CSV 不存预定 split 列，学生需执行划分并核验。</p>
 <p>本单元没有独立最终测试集；验证结果仅用于预设模型比较。无个人信息、无需联网下载；不要把人为生成关系当作真实因果规律。</p>
 
 </main></body></html>

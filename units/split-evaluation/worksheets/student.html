@@ -47,14 +47,14 @@
 </table>
 <p>MAE＝绝对误差之和÷样本数；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">M</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mrow><mtext mathvariant="normal">平方误差之和</mtext><mi>/</mi><mtext mathvariant="normal">样本数</mtext></mrow></msqrt></mrow><annotation encoding="application/x-tex">\mathrm{RMSE}=\sqrt{\text{平方误差之和}/\text{样本数}}</annotation></semantics></math>。</p>
 <ol type="1">
-<li>写出四行绝对误差与平方误差，计算MAE、RMSE（可保留根号）。</li>
-<li>若目标单位为kWh，两种指标的单位是什么？</li>
-<li>为什么不能拿模型甲的MAE与模型乙的RMSE直接判断谁更好？</li>
+<li>写出四行绝对误差与平方误差，计算 MAE、RMSE（可保留根号）。</li>
+<li>若目标单位为 kWh，两种指标的单位是什么？</li>
+<li>为什么不能拿模型甲的 MAE 与模型乙的 RMSE 直接判断谁更好？</li>
 </ol>
 <!-- print:answer-lines=12 -->
 <!-- print:pagebreak -->
 <h2 id="c识别超限批次">C．识别超限批次</h2>
-<p>将“超限”定义为正类，以下100个样本均为未用于训练的检查样本。</p>
+<p>将“超限”定义为正类，以下 100 个样本均为未用于训练的检查样本。</p>
 <table>
 <thead>
 <tr>
@@ -86,13 +86,13 @@
 <!-- print:answer-lines=12 -->
 <!-- print:pagebreak -->
 <h2 id="d该相信哪个分数">D．该相信哪个分数？</h2>
-<p>下表为假设情境，三个方法使用相同训练/验证划分和MAE。方法乙的原理本讲不考查。</p>
+<p>下表为假设情境，三个方法使用相同训练/验证划分和 MAE。方法乙的原理本讲不考查。</p>
 <table>
 <thead>
 <tr>
 <th>方法</th>
-<th style="text-align: right;">训练MAE</th>
-<th style="text-align: right;">验证MAE</th>
+<th style="text-align: right;">训练 MAE</th>
+<th style="text-align: right;">验证 MAE</th>
 </tr>
 </thead>
 <tbody>
@@ -115,7 +115,7 @@
 </table>
 <ol type="1">
 <li>当前更有依据选择哪个候选，为什么？</li>
-<li>乙的训练误差为0，为什么仍不能宣布它最好？</li>
+<li>乙的训练误差为 0，为什么仍不能宣布它最好？</li>
 <li>若甲改用了更容易的验证样本，再把新分数与乙的旧分数比较，是否公平？</li>
 <li>当前结果能否直接称为最终测试表现？</li>
 </ol>

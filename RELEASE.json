@@ -9,9 +9,9 @@
     "T03",
     "T04"
   ],
-  "source_revision": "8787da27d94bd35d316838537c14133767516854",
-  "source_includes_uncommitted_release_preparation": true,
-  "manifest_sha256": "79b160acdb5065afa1d164f20e05d49af7715b54736f953b9693f5673dde970b",
+  "source_revision": "608de5b363d0ddd7b7b2b5baa472e6d54d7f23f3",
+  "source_includes_uncommitted_release_preparation": false,
+  "manifest_sha256": "0898897baae96a38e7297ff64b4634b46cc17d0814162b98535dec6262a3096c",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -20,8 +20,8 @@
     "docs/course-map.md": "207d48b66abf32d58cfb345d4a9dc1887384d48fd080b536dfb2c5164d4c26d9",
     "docs/getting-started.md": "4d90af411e42d15e979a104a9cfc794afd63620346234bda4b610ae839099ec8",
     "docs/submission.md": "7eaa3e3adad67c429646336262b07200eb24abe0746f66ecbe1b9b082b2c1fd6",
-    "homework/t01-t02/student.md": "1da0e06c7093b7f86929592dcb67a1c258cd8431e62009a62ff3b68521996544",
-    "homework/t03-t04/student.md": "2270dcd902ac2a3ea8839c992d58e68f50b816b000a868a2c1555143129001d1",
+    "homework/t01-t02/student.md": "5b8271f2ade682acb9ab7d0f3229698a16a74c72ca52ae391133d7f9a7e1c6ca",
+    "homework/t03-t04/student.md": "4cdd3c81161fdcfffe95cacbd20fbd253b638e980d36dc0047ae247e469a4aa6",
     "lecture-notes/README.md": "8c6251d14bf19ebc862f97b1bd3225ba1178abbe5fa7741be77ac47ec0364ec1",
     "lecture-notes/pdf/minor-48/t01.pdf": "36cf4ee92f638bc7a132af22a489bc72fe5f1676f3b0493d9280da548a45d135",
     "lecture-notes/pdf/minor-48/t02.pdf": "b0155144cd9bb3aaf19f870723ca959186c12985b161f67503b885ba0c5e9267",
@@ -272,13 +272,13 @@
     "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.esm.js": "f33afcee9351a8273d98caa6aa81d9f9fb2e65a79b23bb46b48e2d59c6d25930",
     "lecture/t04/t04_files/libs/revealjs/plugin/zoom/zoom.js": "a46ab0fcab035e80f7838658365085f8761c57a4b806115323f4de0e37b23296",
     "pyproject.toml": "6a9ff1478ee75677130701d8d0ad1a23ac703d7ba737a9185a20d5e7ac24d75c",
-    "runtime/cloudstudio/README.md": "53d5b6fc19482a448cde4786c04ab0759855ac7fca9e026eaf92c9c6606f195b",
+    "runtime/cloudstudio/README.md": "ccd4c6eb20bb66a6ea9aa397beea150fb879e97abfdda1f910042f561e5941e2",
     "runtime/cloudstudio/check-launch.py": "1ee5716aaeb4222473986e059e39aad530c5aee014f8f5234baef81ea790946d",
     "runtime/cloudstudio/setup-local.sh": "758d2fcc118b5bd78497f8186bf29970a8a51bf622b78084ae63c118bf2ff9d4",
     "runtime/cloudstudio/setup-remote.sh": "d7f740b035f561e13094887852c259681081023b369923e2b6fdbaa3e6dc5d9e",
     "runtime/cloudstudio/start-lab.sh": "6ffa053a9b6f9378ccc76ae0c2b7420ea2d5e461dd690f5aae07a689b6a5a37b",
     "scripts/prepare-work.py": "8831b7dd0d71ab2a34632eb6ee9e91b54b426a142fd896a87689cfcc679ad805",
-    "units/linear-regression/data/README.md": "2b17e4bfbd8b54099f4e3cf0d8c69d55aeab041b8f2b3044c24eebbd96a61a64",
+    "units/linear-regression/data/README.md": "eee6d43141d9a9d9fb4c4d9059bd238d1d37ad81c58a5a29d3d06870a2a951e2",
     "units/linear-regression/data/regression.csv": "0664a9c3649724c9e1c61df0d217c33cb4a2daff4e32a01772a0e01a070f673a",
     "units/linear-regression/figures/data-fit.png": "f0374ba88da249c4ad1e37faf80308aa51ee29c0cb863a0e992c59908a6e2344",
     "units/linear-regression/figures/learning-rates.png": "8cd7b4eed43be876337e65a8330411975a6bbeb1abb20cd7f2ef26337a25d167",
@@ -287,12 +287,12 @@
     "units/linear-regression/labs/B02-minor.ipynb": "129dfd51d39c1a096b9224534f103b9e1e3304a52963ea1b77ece544f18d2c55",
     "units/linear-regression/worksheets/student.md": "b8a8f679a7d377a4101340d1d668578c7f8b53593d37a29d15e144935604710c",
     "units/linear-regression/worksheets/student.pdf": "b54820bc9352f072faae9d41d574044085ccb3a01ca1d6daf5655f82117029ba",
-    "units/split-evaluation/data/README.md": "a0319d271bae181135a2dc3367a3393896f010dc82b21011a28517f5e9178c3e",
+    "units/split-evaluation/data/README.md": "f32584053ef1073e546c25febd9a4c1fa5b8c5053158e27b53f5bb82a7f85696",
     "units/split-evaluation/data/b01_batches.csv": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1",
     "units/split-evaluation/figures/validation-mae.png": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932",
     "units/split-evaluation/labs/B01-minor.ipynb": "0d6bdbc6c6f8c080abb058040de6f6a6948d6e34d962e68cda7b55690a0dc288",
-    "units/split-evaluation/worksheets/student.md": "a4d8221fd297310e299bd2f1f11f83fbb55562129128d1ca5405ba54c688e8ce",
-    "units/task-data-baseline/worksheets/student.md": "62797f7f679a6169111f2d796367d42fd98d39063deeaa26ef591a72a55a2fa1",
+    "units/split-evaluation/worksheets/student.md": "9f275d90f5c5fac440736650984b09484fc85dbd2c160c351d396b49ecaa35b2",
+    "units/task-data-baseline/worksheets/student.md": "b70505d83bbca43cf3826d0dbfd398badfdce435b1606d7c8afd4662abfda59a",
     "units/task-data-baseline/worksheets/student.pdf": "7bdd294f6c563dde0d4236d6e4683a59f934fa5fcbe33bd7b2aa68f462652bdb",
     "uv.lock": "f7522126644ac43f9e6158fec4131c412f48eb6f4dfdd2490bc05408cbc710d9",
     "index.html": "8273ca6f816c90c38e2fe1208c76f2f0171c3304f7f584d9017c8138c3dc6de7",
@@ -304,15 +304,15 @@
     "docs/course-map.html": "e3b0ce977da6dfc8b690ae93998548e5fd40300f0b16fb89db8e9afb3692b315",
     "docs/getting-started.html": "fb2676149c22ced322a9e6e17854ffd96673689561157254cbbbff5ba6e6ab2b",
     "docs/submission.html": "41df412a6702c99bad9b441453a4e0a547a7e855fb17d3e61bff8927207195c0",
-    "homework/t01-t02/student.html": "8152b7687251113148f0cae94081bbfed216d16f3ecfe313b2e09610ec8fd975",
-    "homework/t03-t04/student.html": "d11c4321556f6781df83840d518322f666661692618cfbc4f82901a94dc3b4ba",
+    "homework/t01-t02/student.html": "4b76cb44fdd2e4069b044bf85582a395ac5e12c93246cadd13e9185e258a90f6",
+    "homework/t03-t04/student.html": "0676a4cce98883472d7971d36b36dafc917750329d43d032267638646335f2be",
     "lecture-notes/README.html": "07bb5457aa0a9ba82bc3517752bf86d5e650f65f5a3c42ae5a21fc6f86ed5254",
-    "runtime/cloudstudio/README.html": "5167088b23503a2cca765ab3b3e6a275ed181a6994c9d78d6e52bfceaf4a4a15",
-    "units/linear-regression/data/README.html": "a2c37cd16fb9244a9c22d1003367bd7dab90bd2c97528288531179b9827a81b0",
+    "runtime/cloudstudio/README.html": "19356fe8b3e48be86661bd758b4b8431c85a3cff8130cf0812b4623ce14b8edd",
+    "units/linear-regression/data/README.html": "9c5785f89994341b302da4b19391ce4185d9ac3c421988374800d87f34f122ee",
     "units/linear-regression/worksheets/student.html": "c02accaf3fea6855b4990c294cc930b10b6e12c26d11205bc71f477f9978a164",
-    "units/split-evaluation/data/README.html": "3ed77575563888021fb5d87815d00c985ab557e5dcc2ad7228007d1f15cafd2a",
-    "units/split-evaluation/worksheets/student.html": "ae1d79c71bd5e6faf43d7d17f576f729f6eb09b038ee3a5bee990702bb3b1092",
-    "units/task-data-baseline/worksheets/student.html": "2a0660b771cc1e280cc56aa49d6a1e7cc4fdd925c12a9f8519ca66c591a56ac6",
+    "units/split-evaluation/data/README.html": "92823f96323bb294e4ddd6e50af60dacb231f561438a6b028336cc4f77a92d9b",
+    "units/split-evaluation/worksheets/student.html": "6fe973d5a865c2bac3567b318092efcf36674aa13a8c106fa76abbf61b27ea80",
+    "units/task-data-baseline/worksheets/student.html": "c3609c4ae4317ef3a89523f1432d3a1aacbabd7c0e1e7616fc59493e8e1fd0bc",
     "units/split-evaluation/worksheets/student.pdf": "1f906dced43065d9f097f8ea0ec5f3fe52ae084c85b8b9d4a5494b304b469ad9"
   },
   "sources": {
@@ -354,7 +354,7 @@
     },
     "units/task-data-baseline/worksheets/student.md": {
       "source": "units/task-data-baseline/worksheets/student.md",
-      "source_sha256": "62797f7f679a6169111f2d796367d42fd98d39063deeaa26ef591a72a55a2fa1"
+      "source_sha256": "b70505d83bbca43cf3826d0dbfd398badfdce435b1606d7c8afd4662abfda59a"
     },
     "lecture/t02/index.html": {
       "source": "lecture/t02/index.html",
@@ -362,7 +362,7 @@
     },
     "units/split-evaluation/worksheets/student.md": {
       "source": "units/split-evaluation/worksheets/student.md",
-      "source_sha256": "a4d8221fd297310e299bd2f1f11f83fbb55562129128d1ca5405ba54c688e8ce"
+      "source_sha256": "9f275d90f5c5fac440736650984b09484fc85dbd2c160c351d396b49ecaa35b2"
     },
     "units/split-evaluation/figures/validation-mae.png": {
       "source": "units/split-evaluation/figures/validation-mae.png",
@@ -402,7 +402,7 @@
     },
     "units/split-evaluation/data/README.md": {
       "source": "units/split-evaluation/data/README.md",
-      "source_sha256": "d8583b348e16c85efd0dc46ff8617f93d05bceaea01a44dcff3ba3842e1cb086"
+      "source_sha256": "81486e903831c7fff579cd77c0a94ae2302714a5a13df14908d08f283d63fe0d"
     },
     "units/linear-regression/labs/B02-minor.ipynb": {
       "source": "units/linear-regression/labs/B02-minor.ipynb",
@@ -414,7 +414,7 @@
     },
     "units/linear-regression/data/README.md": {
       "source": "units/linear-regression/data/README.md",
-      "source_sha256": "0c6cb887bbec5959eff9e1ae7fd028a3bec612a63f90368544f7c40ac3695a84"
+      "source_sha256": "cf702e6df14103831744dd7399e4c9555c7f279383e04553c850a0a84dd8d426"
     },
     "lecture/t02/t02.css": {
       "source": "lecture/t02/t02.css",
@@ -742,7 +742,7 @@
     },
     "lecture-notes/README.md": {
       "source": "lecture-notes/student-minor.md",
-      "source_sha256": "000baa305bfb97975ccc57a9f94cb203129414575f792c961323c315f84288fd"
+      "source_sha256": "8c6251d14bf19ebc862f97b1bd3225ba1178abbe5fa7741be77ac47ec0364ec1"
     },
     "lecture-notes/pdf/minor-48/t01.pdf": {
       "source": "lecture-notes/pdf/minor-48/t01.pdf",
@@ -758,11 +758,11 @@
     },
     "homework/t01-t02/student.md": {
       "source": "homework/t01-t02/student.md",
-      "source_sha256": "1da0e06c7093b7f86929592dcb67a1c258cd8431e62009a62ff3b68521996544"
+      "source_sha256": "5b8271f2ade682acb9ab7d0f3229698a16a74c72ca52ae391133d7f9a7e1c6ca"
     },
     "homework/t03-t04/student.md": {
       "source": "homework/t03-t04/student.md",
-      "source_sha256": "2270dcd902ac2a3ea8839c992d58e68f50b816b000a868a2c1555143129001d1"
+      "source_sha256": "4cdd3c81161fdcfffe95cacbd20fbd253b638e980d36dc0047ae247e469a4aa6"
     },
     "lecture/t03/index.html": {
       "source": "lecture/t03/index.html",
