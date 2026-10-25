@@ -11,9 +11,9 @@
     "T05",
     "T06"
   ],
-  "source_revision": "80221fc07728f6c91bf7045c061e1c44b0902d27",
+  "source_revision": "513e84d92cb6e01c8bb11b2674fbaa192019099b",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "ce4b210e5ec0c6aadd85856207da96c74d2b620cb922c1772b8cf1a28a64d469",
+  "manifest_sha256": "c2c85ccd1aa9511f8564c3d1396179edd73cab15dcfbac18862025713b4a3ee2",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -460,7 +460,7 @@
     "units/regularization/data/README.md": "efad78737244eaed376d79f9b58cc5739f5dd60c1e2870aecb54fd8622d08280",
     "units/regularization/data/classification.csv": "91184dec79190c30324dbad4c5bbc5647ba8f7c246ea3440adc3b279029ca03d",
     "units/regularization/data/regression.csv": "e11b5a266c18d2d3d7afc9ab2f9cc05d34716feb164d9513e23405e74b5536a9",
-    "units/regularization/labs/B03-minor.ipynb": "805fb013fd45d2ec9e4feb03b5cfcb47eb6c09d68ee0b7ddf6cdaeb9ca8f1bb3",
+    "units/regularization/labs/B03-minor.ipynb": "fca409fc65f1cc2cf9c019704eda9bf48f28c98e5c8b244deb7ddcc0026ce7d3",
     "units/regularization/worksheets/student.md": "ca28d1d43a4ecca09b9eb47533c465fc100020cb504dc86188aee7b097c95bf5",
     "units/split-evaluation/data/README.md": "f32584053ef1073e546c25febd9a4c1fa5b8c5053158e27b53f5bb82a7f85696",
     "units/split-evaluation/data/b01_batches.csv": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1",
@@ -603,7 +603,7 @@
     },
     "units/regularization/labs/B03-minor.ipynb": {
       "source": "units/regularization/labs/B03-minor.ipynb",
-      "source_sha256": "805fb013fd45d2ec9e4feb03b5cfcb47eb6c09d68ee0b7ddf6cdaeb9ca8f1bb3"
+      "source_sha256": "fca409fc65f1cc2cf9c019704eda9bf48f28c98e5c8b244deb7ddcc0026ce7d3"
     },
     "units/regularization/data/regression.csv": {
       "source": "units/regularization/data/regression.csv",
@@ -2359,5 +2359,17 @@
     ],
     "pages_each": 4,
     "physical_printing_verified": false
+  },
+  "b03_checks_update": {
+    "date": "2026-10-25",
+    "scope": "B03 minor student Notebook only; other released materials and homework scope preserved",
+    "checks": [
+      "actual model alpha",
+      "independent training loss and coefficient-only penalty",
+      "positive-label probability column",
+      "threshold equality retained"
+    ],
+    "teacher_and_major_materials_published": false,
+    "student_timing_verified": false
   }
 }
