@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T06 纸笔活动 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t06-纸笔活动">T06 纸笔活动</h1>
+<p>姓名________ 班级________ 日期________。</p>
+<h2 id="a同一目标中的两种代价">A．同一目标中的两种代价</h2>
+<p>J=训练半均方误差＋λΣw²/2，偏置不惩罚。</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th style="text-align: right;">训练半均方误差</th>
+<th>w</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>甲</td>
+<td style="text-align: right;">1</td>
+<td>[3,4]</td>
+</tr>
+<tr>
+<td>乙</td>
+<td style="text-align: right;">2</td>
+<td>[1,2]</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>计算两个方案的Σw²。</li>
+<li>λ=0 和λ=0.2 时，两方案的 J 分别是多少？</li>
+<li>按当前 J 选择方案，是否等于已经证明它在验证集上最好？</li>
+</ol>
+<h2 id="b固定验证集选方案">B．固定验证集选方案</h2>
+<p>下表为假设结果，所有行使用相同划分、标准化和 MAE。</p>
+<table>
+<thead>
+<tr>
+<th>λ</th>
+<th style="text-align: right;">训练 MAE</th>
+<th style="text-align: right;">验证 MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>选哪一个？为什么不只看训练误差或λ大小？下次换数据是否一定仍选同一个？</p>
+<h2 id="c单位会改变惩罚吗">C．单位会改变惩罚吗？</h2>
+<p>同一距离用米表示 x，或用厘米表示 x′=100x。同一预测关系可写为ŷ=2x，或ŷ=0.02x′。</p>
+<ol type="1">
+<li>两式预测是否相同？系数平方分别是多少？</li>
+<li>不统一尺度，直接对原系数使用同一惩罚强度，会出现什么问题？</li>
+<li>为什么不能用训练＋验证的均值和标准差，再声称验证完全没参与处理？</li>
+</ol>
+<h2 id="d离堂检查">D．离堂检查</h2>
+<p>某同学说：“先在全表标准化，再划分；λ越大模型越可靠；Lasso 留下的变量就是原因。”指出三处问题，并各给一句修正。</p>
+
+</main></body></html>

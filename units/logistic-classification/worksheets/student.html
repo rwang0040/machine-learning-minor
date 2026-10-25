@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T05 纸笔活动 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t05-纸笔活动">T05 纸笔活动</h1>
+<p>姓名________ 班级________ 日期________。无需电脑，所需对数值已提供。</p>
+<h2 id="a分数到概率">A．分数到概率</h2>
+<p>p=1/(1+exp(−z))。给定 exp(0)=1、exp(−ln3)=1/3。</p>
+<ol type="1">
+<li>z=0 和 z=ln3 时，p 分别是多少？</li>
+<li>p=0.75 时，阈值 0.5 和 0.8 分别给出什么类别？约定 p≥阈值判 1。</li>
+<li>这两次分类决定之间，模型的分数或概率一定改变了吗？</li>
+</ol>
+<h2 id="b固定概率比较阈值">B．固定概率，比较阈值</h2>
+<p>正类为超限。四行概率来自同一固定模型。</p>
+<table>
+<thead>
+<tr>
+<th>样本</th>
+<th style="text-align: right;">真实 y</th>
+<th style="text-align: right;">p</th>
+<th>t=0.5 的预测</th>
+<th>t=0.3 的预测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.6</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.4</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>填表，分别统计 TP、FP、FN、TN。</li>
+<li>分别计算精确率和召回率。</li>
+<li>哪一行发生改变？阈值下降是否保证精确率总会提高？</li>
+<li>若重视漏报，你会如何说明本次比较结果及局限？</li>
+</ol>
+<h2 id="c交叉熵在惩罚什么">C．交叉熵在惩罚什么？</h2>
+<p>ℓ=−[y ln p+(1−y)ln(1−p)]。已知−ln0.8≈0.223、−ln0.2≈1.609、−ln0.5≈0.693。</p>
+<ol type="1">
+<li>当 y=1，p=0.8 与 0.2 的损失分别是多少？哪种属于自信地预测错误？</li>
+<li>当 y=0，p=0.8 的损失是多少？</li>
+<li>若真实 y=[1,0]，概率 p=[0.8,0.2]，平均交叉熵是多少？</li>
+<li>对相同概率改变分类阈值，交叉熵是否改变？用公式说明。</li>
+</ol>
+<h2 id="d离堂检查">D．离堂检查</h2>
+<p>模型对某批次输出 p=0.4，阈值从 0.5 改为 0.3。</p>
+<p>写出前后类别；说明 w、b、p 与分类决定中哪些改变、哪些不必改变。若真实标签 y=1，为什么不能把改阈值说成“模型已经重新训练、损失已经下降”？</p>
+
+</main></body></html>

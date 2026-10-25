@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<script src="t06_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t06_files/libs/quarto-html/tabby.min.js"></script>
+<script src="t06_files/libs/quarto-html/popper.min.js"></script>
+<script src="t06_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="t06_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t06_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="t06_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t06_files/libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="t06_files/libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
+
+  <title>正则化与模型复杂度</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="t06_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="t06_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="t06_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css">
+  <link rel="stylesheet" href="t06.css">
+  <link href="t06_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="t06_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="t06_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="t06_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="t06_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="t06_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">正则化与模型复杂度</h1>
+  <p class="subtitle">T06 · 机器学习 · 共同理论 · 2 学时</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="t06-overview" class="slide level2">
+<h2>拟合更紧，为什么未必预测更好？</h2>
+<div class="flow">
+<p>检查训练与验证 → 加入参数惩罚 → 比较有限强度 → 验证选择 → 解释局限</p>
+</div>
+<ul>
+<li>计算训练误差与参数代价组成的目标。</li>
+<li>解释强度和尺度怎样影响拟合。</li>
+<li>根据验证结果选择，不按系数最小或训练满分选择。</li>
+</ul>
+<aside class="notes">
+<p>0—10 分钟，本页至训练/验证解释。承接 T05 参数训练，回顾 T02 过拟合，不把验证差直接诊断为模型复杂度过高。共同理论，无分版任务、无需学生电脑。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fit-comparison" class="slide level2">
+<h2>同一划分下，先判断三个方案</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>方案</th>
+<th style="text-align: right;">训练 MAE</th>
+<th style="text-align: right;">验证 MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+<p>按事先确定的验证 MAE，应选择谁？</p>
+<div class="fragment" data-fragment-index="0">
+<p>选择 B。A 提示可能拟合不足，C 提示可能过度适应训练记录。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>这些是假设结果，不是 B03 输出；迹象不等于原因已经查明。</p>
+</div>
+</section>
+<section id="fit-capacity" class="slide level2">
+<h2>拟合能力、训练充分和泛化是不同问题</h2>
+<ul>
+<li>模型形式、输入和约束影响它能表达哪些关系。</li>
+<li>约束过强，可能连有用变化都无法表达：欠拟合。</li>
+<li>对训练中的偶然细节适应过度，可能导致过拟合。</li>
+</ul>
+<div class="fragment">
+<p>还要检查优化是否充分、数据质量及训练与验证的分布差异。</p>
+</div>
+</section>
+<section id="data-objective" class="slide level2">
+<h2>先写清数据上的训练误差</h2>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> 个样本、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math> 个特征：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>i</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></munderover><msub><mi>w</mi><mi>j</mi></msub><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+\hat y_i=\sum_{j=1}^{d}w_jx_{ij}+b
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>n</mi></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false" form="prefix">(</mo><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>i</mi></msub><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+J_{\mathrm{data}}=\frac1{2n}\sum_{i=1}^{n}(\hat y_i-y_i)^2
+</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> 标记样本，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> 标记特征；所有样本共用一组系数。</p>
+<aside class="notes">
+<p>10—25 分钟，本页至纸笔 A 核对。回顾半均方误差，保留 n 样本、d 特征的区分。理论只需理解与手算，不要求矩阵求解。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ridge-objective" class="slide level2">
+<h2>岭回归：误差之外，再付参数代价</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>λ</mi></msub><mo>=</mo><msub><mi>J</mi><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi></mrow></msub><mo>+</mo><mfrac><mi>λ</mi><mn>2</mn></mfrac><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></munderover><msubsup><mi>w</mi><mi>j</mi><mn>2</mn></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>λ</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+J_\lambda=J_{\mathrm{data}}+\frac\lambda2\sum_{j=1}^{d}w_j^2,
+\qquad\lambda\ge0
+</annotation></semantics></math></p>
+<ul>
+<li>第一项衡量训练拟合，第二项限制系数大小。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> 是控制惩罚的设置，不是模型拟合出的特征系数。</li>
+<li>本章不惩罚截距 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>，保留调整整体预测水平的自由。</li>
+</ul>
+<div class="fragment">
+<p>降低误差若需要更大系数，还要看改善能否抵消新增惩罚。</p>
+</div>
+</section>
+<section id="paper-a" class="slide level2">
+<h2>同一目标中的两种代价，先算再选</h2>
+<div class="activity-label">
+<p>纸笔 A · 先计算，再比较目标值</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>方案</th>
+<th style="text-align: right;">训练半均方误差</th>
+<th>系数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">1</td>
+<td>[3,4]</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">2</td>
+<td>[1,2]</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>求两组系数的平方和。</li>
+<li>分别取 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda=0</annotation></semantics></math> 和 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.2</mn><annotation encoding="application/x-tex">0.2</annotation></semantics></math>，计算两方案的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>λ</mi></msub><annotation encoding="application/x-tex">J_\lambda</annotation></semantics></math>。</li>
+<li>训练目标较小，是否已证明验证最好？</li>
+</ol>
+</section>
+<section id="paper-a-answer" class="slide level2">
+<h2>核对：惩罚会改变参数比较的结果</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>方案</th>
+<th style="text-align: right;">系数平方和</th>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mn>0</mn></msub><annotation encoding="application/x-tex">J_0</annotation></semantics></math></th>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mn>0.2</mn></msub><annotation encoding="application/x-tex">J_{0.2}</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>0.2</mn><mo>×</mo><mn>25</mn><mi>/</mi><mn>2</mn><mo>=</mo><mn>3.5</mn></mrow><annotation encoding="application/x-tex">1+0.2\times25/2=3.5</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>+</mo><mn>0.2</mn><mo>×</mo><mn>5</mn><mi>/</mi><mn>2</mn><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">2+0.2\times5/2=2.5</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment" data-fragment-index="0">
+<p>不加惩罚时 A 较小；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">\lambda=0.2</annotation></semantics></math> 时 B 较小。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>固定强度比较给定参数的训练目标；泛化仍需验证证据。</p>
+</div>
+</section>
+<section id="coefficient-shrinkage" class="slide level2">
+<h2>更强约束，会把整组系数向零收缩</h2>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda=0</annotation></semantics></math> 回到普通最小二乘，不表示必然过拟合。</li>
+<li>加强约束通常降低整组系数的大小。</li>
+<li>约束太强，也可能损失有用的拟合能力。</li>
+</ul>
+<div class="fragment">
+<p>不保证每个系数按相同比例或逐个单调缩小；观察范数不等于判断验证最好。</p>
+</div>
+<aside class="notes">
+<p>25—40 分钟，本页至纸笔 B 核对。范数为平方和的平方根。先读曲线、再做独立的小表判断，不把九点示范改成学生搜索任务。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ridge-curve" class="slide level2">
+<h2>同一数据上，看九个实际计算点</h2>
+
+<img class="plot-large r-stretch" src="assets/ridge-strength-curve.png" alt="九个强度的训练与验证MAE曲线，原三候选最佳0.1，九候选最佳0.3"><div class="compact">
+<p>32 个训练、48 个验证样本；只用训练数据估计标准化。0 附近线性、其余对数刻度；连线仅辅助观察。</p>
+</div>
+</section>
+<section id="ridge-curve-reading" class="slide level2">
+<h2>差距缩小，也可能是两边都变差</h2>
+<div class="fragment" data-fragment-index="0">
+<p>中等约束：训练 MAE 略升，验证 MAE 下降，当前数据上限制有帮助。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>较强约束：两种误差都升高，且逐渐接近，与拟合不足的情况一致。</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p>不能只追求训练与验证差距小；验证曲线也不保证总是 U 形。</p>
+</div>
+</section>
+<section id="paper-b" class="slide level2">
+<h2>固定验证表，你会选哪个强度？</h2>
+<div class="activity-label">
+<p>纸笔 B · 假设结果，不是前图数值</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></th>
+<th style="text-align: right;">训练 MAE</th>
+<th style="text-align: right;">验证 MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>为什么不只看训练误差或 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> 大小？下次换数据一定相同吗？</p>
+</section>
+<section id="paper-b-answer" class="slide level2">
+<h2>核对：选的是当前验证依据</h2>
+<div class="conclusion">
+<p>三个候选中选择 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\lambda=0.1</annotation></semantics></math>，验证 MAE 为 6。</p>
+</div>
+<ul>
+<li>最低训练误差不等于最低验证误差。</li>
+<li>最强约束也不等于预测最可靠。</li>
+<li>结论限于当前数据、划分、指标与三个候选。</li>
+</ul>
+<p>这不是对所有强度的最优证明，也不是独立最终测试。</p>
+</section>
+<section id="three-settings" class="slide level2">
+<h2>三种设置，作用在不同位置</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>设置</th>
+<th>改变什么</th>
+<th>是否改变训练目标</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>学习率</td>
+<td>参数更新的步幅</td>
+<td>不直接改变</td>
+</tr>
+<tr class="even">
+<td>正则化强度</td>
+<td>拟合与参数代价的取舍</td>
+<td>改变</td>
+</tr>
+<tr class="odd">
+<td>分类阈值</td>
+<td>已有概率对应的类别</td>
+<td>不改变</td>
+</tr>
+</tbody>
+</table>
+<p>比较强度时，每个候选需要重新训练；固定模型只改阈值则不重新训练。</p>
+</section>
+<section id="paper-c" class="slide level2">
+<h2>换个单位，预测和惩罚会怎样？</h2>
+<div class="activity-label">
+<p>纸笔 C · 先解释相同预测，再计算系数平方</p>
+</div>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mn>100</mn><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>0.02</mn><msup><mi>x</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">
+x'=100x,\qquad\hat y=2x=0.02x'
+</annotation></semantics></math></p>
+<ol type="1">
+<li>输入为 2 米或 200 厘米时，两式预测相同吗？</li>
+<li>系数平方分别是多少？固定 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> 后惩罚相同吗？</li>
+<li>不统一尺度，直接惩罚原始系数有什么问题？</li>
+</ol>
+<aside class="notes">
+<p>40—55 分钟，本页至标准化坐标。按同一物理量换单位解释，不说单位“更大”的含糊表述。纸笔 C 第3问衔接后面的拟合范围。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paper-c-answer" class="slide level2">
+<h2>核对：计量方式会影响原始系数代价</h2>
+<p>预测相同，但系数平方为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn><mo>,</mo><mspace width="2.0em"></mspace><msup><mn>0.02</mn><mn>2</mn></msup><mo>=</mo><mn>0.0004</mn></mrow><annotation encoding="application/x-tex">
+2^2=4,\qquad0.02^2=0.0004
+</annotation></semantics></math></p>
+<p>相差一万倍。相同预测因单位不同受到不同惩罚。</p>
+<div class="fragment">
+<p>先统一输入尺度，再解释系数惩罚，避免约束被计量方式主导。</p>
+</div>
+</section>
+<section id="training-scaler" class="slide level2">
+<h2>标准化参数只能从训练数据取得</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>−</mo><msub><mi>μ</mi><mi>j</mi></msub></mrow><msub><mi>σ</mi><mi>j</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">
+z_{ij}=\frac{x_{ij}-\mu_j}{\sigma_j}
+</annotation></semantics></math></p>
+<p>训练输入 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,5]</annotation></semantics></math>：均值 3、标准差 2，变换为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-1,1]</annotation></semantics></math>。</p>
+<div class="fragment" data-fragment-index="0">
+<p>验证输入为 7，使用同一变换：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>7</mn><mo>−</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">(7-3)/2=2</annotation></semantics></math>。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>全表估计会让验证输入参与训练坐标的确定，即使没有读取验证标签。</p>
+</div>
+</section>
+<section id="coefficient-coordinates" class="slide level2">
+<h2>范数应在哪一套坐标上计算？</h2>
+<ul>
+<li>标准化后，系数乘的是标准化输入。</li>
+<li>系数表示输入增加一个训练标准差时，预测改变多少。</li>
+<li>原始坐标与标准化坐标可能表达相同预测，却有不同系数大小。</li>
+</ul>
+<div class="fragment">
+<p>实验惩罚与系数范数都使用标准化坐标；不能混入原始系数或截距。</p>
+</div>
+</section>
+<section id="lasso-shape" class="slide level2">
+<h2>L1 与 L2：零点附近的代价不同</h2>
+
+<img class="plot-large r-stretch" src="assets/l1-l2.png" alt="单系数绝对值惩罚和半平方惩罚，前者零点有尖角后者逐渐变平"><aside class="notes">
+<p>55—70 分钟，本页至分类正则化。Lasso 只解释直觉，不推导求解算法、不增加上机要求。图的lambda均取1，目的比较形状，不宣称两种惩罚同强度或一种普遍更好。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lasso-sparsity" class="slide level2">
+<h2>收缩与稀疏，含义不同</h2>
+<ul>
+<li>岭回归使用平方惩罚，通常使系数缩小。</li>
+<li>Lasso 使用绝对值惩罚，可能使部分系数精确为零。</li>
+<li>保留的非零系数表示当前模型使用了该特征，不证明因果关系。</li>
+</ul>
+<div class="fragment">
+<p>岭的惩罚在零附近逐渐变平；Lasso 保留非零系数仍要付出线性增长的代价，可能直接选择零。</p>
+</div>
+</section>
+<section id="classification-penalty" class="slide level2">
+<h2>分类也可以在交叉熵之外加入惩罚</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>λ</mi></msub><mo>=</mo><mi>L</mi><mo>+</mo><mfrac><mi>λ</mi><mn>2</mn></mfrac><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></munderover><msubsup><mi>w</mi><mi>j</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">
+L_\lambda=L+\frac\lambda2\sum_{j=1}^{d}w_j^2
+</annotation></semantics></math></p>
+<ul>
+<li>仍由分数经 Sigmoid 得到概率，但训练目标改变。</li>
+<li>训练出的参数、分数和概率可能因此改变。</li>
+<li>本次库分类模型固定 <code>C=1.0</code>；较小 <code>C</code> 表示较强约束，不能直接当作岭的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>。</li>
+</ul>
+</section>
+<section id="penalty-demo" class="slide level2">
+<h2>教师演示：改变强度，比较给定参数</h2>
+<p>将 <code>lam</code> 从 0 改为 0.2；先判断 A、B 谁的训练目标较小。</p>
+<div>
+<div id="pyodide-1" class="exercise-cell">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlY2hvIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJydW5idXR0b24iOnRydWV9LCJjb2RlIjoibGFtID0gMC4wXG5jYW5kaWRhdGVzID0gWyhcIkFcIiwgMSwgWzIsIDRdKSwgKFwiQlwiLCAyLCBbMSwgMV0pXVxuZm9yIG5hbWUsIGRhdGFfbG9zcywgd2VpZ2h0cyBpbiBjYW5kaWRhdGVzOlxuICAgIG5vcm0yID0gc3VtKHcqdyBmb3IgdyBpbiB3ZWlnaHRzKVxuICAgIHBlbmFsdHkgPSBsYW0gKiBub3JtMiAvIDJcbiAgICBwcmludChuYW1lLCBcIuaVsOaNruivr+W3ru+8mlwiLCBkYXRhX2xvc3MsXG4gICAgICAgICAgXCLmg6nnvZrvvJpcIiwgcm91bmQocGVuYWx0eSwgMyksXG4gICAgICAgICAgXCLnm67moIfvvJpcIiwgcm91bmQoZGF0YV9sb3NzICsgcGVuYWx0eSwgMykpIn0=
+</script>
+</div>
+<div class="fragment demo-reference">
+<p>静态核对：λ=0 时目标为 A=1、B=2；λ=0.2 时为 A=3、B=2.2。本演示比较给定参数，没有重新求最优参数。</p>
+</div>
+<aside class="notes">
+<p>70—80 分钟，本页至实际表格比较。每个强度下比较给定参数，不把切换此变量误称训练。代码与纸笔A数值不同，避免混淆。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ridge-results" class="slide level2">
+<h2>读实际结果表：三个标准指向同一个候选吗？</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></th>
+<th style="text-align: right;">训练 MAE</th>
+<th style="text-align: right;">验证 MAE</th>
+<th style="text-align: right;">系数 L2 范数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9.422</td>
+<td style="text-align: right;">18.021</td>
+<td style="text-align: right;">25.767</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">9.582</td>
+<td style="text-align: right;">17.362</td>
+<td style="text-align: right;">22.427</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14.079</td>
+<td style="text-align: right;">17.651</td>
+<td style="text-align: right;">11.569</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment" data-fragment-index="0">
+<p>最低训练 MAE：0；最低验证 MAE：0.1；最小系数范数：1。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>按验证 MAE，在这三个候选中选择 0.1；九点图中的最低点是 0.3，候选范围必须说明。</p>
+</div>
+</section>
+<section id="objective-versus-metric" class="slide level2">
+<h2>训练目标与评价指标，分别负责什么？</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>计算量</th>
+<th>本次用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>平方误差＋系数惩罚</td>
+<td>训练每个候选、确定参数</td>
+</tr>
+<tr class="even">
+<td>同一验证集的 MAE</td>
+<td>比较候选、支持选择</td>
+</tr>
+<tr class="odd">
+<td>系数范数</td>
+<td>观察整组参数大小</td>
+</tr>
+</tbody>
+</table>
+<p>不能用不同强度下的最小训练目标，代替验证选择。</p>
+<p>当前结果没有独立最终测试，也未完成显著性检验。</p>
+</section>
+<section id="t06-summary" class="slide level2">
+<h2>约束改变训练，验证支持选择</h2>
+<div class="flow">
+<p>明确损失与坐标 → 设定有限强度 → 分别训练 → 同条件验证 → 限定结论</p>
+</div>
+<ul>
+<li>惩罚强度不是越大越好。</li>
+<li>统一尺度后解释系数；标准化只从训练数据估计。</li>
+<li>收缩、稀疏、预测改善和因果解释不是同一个结论。</li>
+</ul>
+<aside class="notes">
+<p>80—85 分钟。后续 B03 在已有支持下完成回归强度与分类阈值两段，不在共同理论展示实验分版说明。T07 讨论交叉验证及每折拟合范围。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="t06-exit" class="slide level2">
+<h2>离堂检查：三句话分别错在哪里？</h2>
+<div class="activity-label">
+<p>纸笔 D · 5 分钟 · 独立作答</p>
+</div>
+<p>某同学说：</p>
+<ol type="1">
+<li>“先对全表标准化，再划分就可以。”</li>
+<li>“λ 越大，模型越可靠。”</li>
+<li>“Lasso 留下的变量就是原因。”</li>
+</ol>
+<p>指出三处问题，并各给一句修正。</p>
+<aside class="notes">
+<p>85—90 分钟，沿用纸笔D，课堂即时反馈不宣称是未见过的独立迁移任务。此页不提前显示答案，不新增报告。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOC4xL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIl19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8xID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>机器学习 · T06</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="t06_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="t06_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="t06_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="t06_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="t06_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="t06_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="t06_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="t06_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="t06_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 8.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../../../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "已复制");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "已复制");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

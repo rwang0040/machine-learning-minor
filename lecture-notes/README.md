@@ -9,9 +9,12 @@
 | T03 线性模型与平方损失 | [PDF，8 页](pdf/minor-48/t03.pdf) | [投影片](../lecture/t03/index.html) · [纸笔活动 PDF，4 页](../units/linear-regression/worksheets/student.pdf) · [文字版](../units/linear-regression/worksheets/student.md) | 用纸笔核对参数、预测与损失 |
 | T04 梯度下降、学习率与尺度 | [PDF，11 页](pdf/minor-48/t04.pdf) | [投影片](../lecture/t04/index.html) · 上述纸笔活动的 T04 部分 | T04 后完成 [B02 练习](../units/linear-regression/labs/B02-minor.ipynb) |
 
-实验遇到划分、训练、预测或指标函数问题时，回看 T02 第 8 节；B02 的梯度、更新和结果核对回看 T04 第 8 节。完成 TODO 后删除该处停止提示，保留检查代码；重启内核并运行全部，保存自己的 Notebook。B01 和 B02 只有训练集和验证集，结果不能称为独立最终测试表现。
+| T05 逻辑回归与分类损失 | [PDF，9 页](pdf/minor-48/t05.pdf) | [投影片](../lecture/t05/index.html) · [纸笔活动](../units/logistic-classification/worksheets/student.md) | 核对概率、阈值与交叉熵 |
+| T06 正则化与模型复杂度 | [PDF，11 页](pdf/minor-48/t06.pdf) | [投影片](../lecture/t06/index.html) · [纸笔活动](../units/regularization/worksheets/student.md) | T06 后完成 [B03 练习](../units/regularization/labs/B03-minor.ipynb) |
 
-请保留课程文件的相对目录结构，不单独移动 PDF 或 Notebook。投影片通过课程 HTTP 预览入口打开；T02—T04 交互演示首次加载需要联网，运行不成时可以使用页面的静态算例。后续讲义会随授课进度补充到此入口。
+实验遇到划分、训练、预测或指标函数问题时，回看 T02 第 8 节；B02 的梯度、更新和结果核对回看 T04 第 8 节。B03 的惩罚、尺度和概率操作回看 T05—T06 的活动与实验查阅。完成 TODO 后删除该处停止提示，保留检查代码；重启内核并运行全部，保存自己的 Notebook。B01、B02 和 B03 只有训练集和验证集，结果不能称为独立最终测试表现。
+
+请保留课程文件的相对目录结构，不单独移动 PDF 或 Notebook。投影片通过课程 HTTP 预览入口打开；T02—T06 交互演示首次加载需要联网，运行不成时可以使用页面的静态算例。后续讲义会随授课进度补充到此入口。
 
 ## 课后作业
 

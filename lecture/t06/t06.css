@@ -1,0 +1,26 @@
+.reveal h2::before { content: "T06 / 正则化与选择"; }
+.reveal #title-slide::before { content: "机器学习 / 理论单元 06"; }
+.reveal #title-slide::after { content: "约束改变训练，验证支持选择"; }
+.reveal #t06-overview h2::before, .reveal #t06-summary h2::before { content: "T06 / 全章流程"; }
+.reveal #t06-exit h2::before { content: "T06 / 课堂反馈"; }
+.reveal .exercise-editor .cm-editor { font-size: 19px; line-height: 1.25; }
+.reveal .exercise-editor .card-header { font-size: 17px; }
+.reveal .exercise-cell .exercise-output, .reveal .exercise-cell pre { font-size: 20px; line-height: 1.3; }
+.reveal .exercise-cell { margin: .15em 0; }
+.reveal .demo-reference { font-size: .65em; color: var(--ml-muted); margin-top: .35em; }
+.reveal .cell-output-container-pyodide > div.sourceCode { display: none; }
+.reveal section > p > img { max-height: 345px; margin: 0 auto; display: block; }
+@font-face {
+  font-family: "ML Latin Modern Math";
+  src: url("assets/fonts/latinmodern-math.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+}
+.reveal math { font-family: "ML Latin Modern Math", math; line-height: normal; }
+
+.reveal .plot-large { max-height: 435px; width: auto; display: block; margin: 0 auto; }
+.reveal .compact { font-size: .82em; }
+.reveal .demo-reference p { margin: .12em 0; }
+
+.reveal #title-slide { box-sizing: border-box; }

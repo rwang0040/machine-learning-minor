@@ -1,6 +1,6 @@
 # 个人文件、保存与提交
 
-在课程根目录执行下面命令，创建自己的 B01、B02 完整单元副本（将学号替换为自己的标识）：
+在课程根目录执行下面命令，创建自己的 B01、B02、B03 完整单元副本（将学号替换为自己的标识）：
 
 ```bash
 # WSL / Cloud Studio
@@ -8,6 +8,14 @@
 ```
 
 Windows 使用 `.\.venv\Scripts\python.exe scripts\prepare-work.py 学号`。副本放在 `work/<学号>/units/`，数据与 Notebook 的相对关系保持不变；脚本发现已有目录即停止，不覆盖旧答案。分别在对应单元的 `labs/` 里完成 Notebook。
+
+已有个人目录的同学，只添加 B03 时使用：
+
+```bash
+.venv/bin/python scripts/prepare-work.py 学号 --unit regularization
+```
+
+Windows 同样把命令开头替换为 `.\.venv\Scripts\python.exe`。只会添加尚不存在的 B03 单元，保留原 B01/B02；B03 目录已经存在时仍停止，避免覆盖答案。
 
 - 记录姓名、日期和辅助工具用途；完成 TODO 后删除该处停止提示，保留检查代码。
 - 提交前重启内核并运行全部，确认输出来自当前代码，保存一份自己的 Notebook。
