@@ -11,9 +11,9 @@
     "T05",
     "T06"
   ],
-  "source_revision": "4049a8ebd3b3783000c61c712ea708571929f724",
+  "source_revision": "80221fc07728f6c91bf7045c061e1c44b0902d27",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "d8871f9a42562839c964c9cf12e4e962aeb379faca0c3ef0cbcb68613f594ef0",
+  "manifest_sha256": "ce4b210e5ec0c6aadd85856207da96c74d2b620cb922c1772b8cf1a28a64d469",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -21,13 +21,13 @@
     ".python-version": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb",
     "README.md": "3092ab47f45ad50dea04f25a81454af7602962d9d086874c1b4b03e46a4c4565",
     "assets/site.css": "12d07a9513605d60a035c869452dd1457e5052face6a7400f47f0dacb03b7cd6",
-    "docs/course-map.md": "4ca1711e0ede40925c1e9dba4a8d2cf0465bdf3f59c90e5eedd286dad41519c6",
+    "docs/course-map.md": "c11bf86f647604397fdb51ce3757eca43205478f6ec33a27c44ba258b1303d4c",
     "docs/getting-started.md": "4d90af411e42d15e979a104a9cfc794afd63620346234bda4b610ae839099ec8",
     "docs/submission.md": "5e25018fe6be5429adcd77aaff0c662288a5569992330ced5a4a712b43ed77de",
     "homework/t01-t02/student.md": "5b8271f2ade682acb9ab7d0f3229698a16a74c72ca52ae391133d7f9a7e1c6ca",
     "homework/t03-t04/student.md": "4cdd3c81161fdcfffe95cacbd20fbd253b638e980d36dc0047ae247e469a4aa6",
-    "index.html": "d745f4b090366737c929cafe0f92577ee72b22e9800194ef6e61c1f487ac95db",
-    "lecture-notes/README.md": "6cde1d70fc40675be5b05646d6de37b3b0a5b02d9a2b0680d4300a1d65f4cd33",
+    "index.html": "543fe71585bd073d2a0bc9f3120c96cb2518ba6009a9f7ea5eebe0e5611a6f32",
+    "lecture-notes/README.md": "1e08b377ba64fdde434c0c03beb81f6efc26daf9c9f55d36b8228f106e53cf5d",
     "lecture-notes/pdf/minor-48/t01.pdf": "36cf4ee92f638bc7a132af22a489bc72fe5f1676f3b0493d9280da548a45d135",
     "lecture-notes/pdf/minor-48/t02.pdf": "b0155144cd9bb3aaf19f870723ca959186c12985b161f67503b885ba0c5e9267",
     "lecture-notes/pdf/minor-48/t03.pdf": "da367dc647c4d08965c0a7e24fb103a197bf255fe823a2737bb279c6b43c0999",
@@ -456,12 +456,12 @@
     "units/linear-regression/labs/B02-minor.ipynb": "376451995c2ceea7bc4b0e32c5b9c3befe8af2eb546832009434788f75eccfcd",
     "units/linear-regression/worksheets/student.md": "b8a8f679a7d377a4101340d1d668578c7f8b53593d37a29d15e144935604710c",
     "units/linear-regression/worksheets/student.pdf": "b54820bc9352f072faae9d41d574044085ccb3a01ca1d6daf5655f82117029ba",
-    "units/logistic-classification/worksheets/student.md": "bb9f49a3af7e1362aaa562d667154d33de4400e6ce8d591b3d089bfc1399a287",
+    "units/logistic-classification/worksheets/student.md": "734e306e95696a110e0078a9222d590b4b5fb357212def9151ece7d29fbcac84",
     "units/regularization/data/README.md": "efad78737244eaed376d79f9b58cc5739f5dd60c1e2870aecb54fd8622d08280",
     "units/regularization/data/classification.csv": "91184dec79190c30324dbad4c5bbc5647ba8f7c246ea3440adc3b279029ca03d",
     "units/regularization/data/regression.csv": "e11b5a266c18d2d3d7afc9ab2f9cc05d34716feb164d9513e23405e74b5536a9",
     "units/regularization/labs/B03-minor.ipynb": "805fb013fd45d2ec9e4feb03b5cfcb47eb6c09d68ee0b7ddf6cdaeb9ca8f1bb3",
-    "units/regularization/worksheets/student.md": "b96356a8d264f17abf923e2f4581619959e278d40fcca88f76b0cc22db24cd7e",
+    "units/regularization/worksheets/student.md": "ca28d1d43a4ecca09b9eb47533c465fc100020cb504dc86188aee7b097c95bf5",
     "units/split-evaluation/data/README.md": "f32584053ef1073e546c25febd9a4c1fa5b8c5053158e27b53f5bb82a7f85696",
     "units/split-evaluation/data/b01_batches.csv": "665e6e335f699b2305ebcff06e92a412ac285450b3a3bffd86eb6b01c78e51a1",
     "units/split-evaluation/figures/validation-mae.png": "9b19880bd1c01b7a295831188ca4883c1bb398f7f75dd4e4b2d45e66c21e6932",
@@ -474,21 +474,23 @@
     "assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
     "README.html": "83499c6e32f36bf527b3346e2b1900797083ae8f0315635adbc1a61c73311056",
-    "docs/course-map.html": "bc6786242fca043b1e15a30dffeef5a263d08e89b32091faa5187a1207809605",
+    "docs/course-map.html": "2f75b5bd20ec746fba3e9d6e46c4b52dc4678b164dc0bb3916e6c88eba1a47e4",
     "docs/getting-started.html": "fb2676149c22ced322a9e6e17854ffd96673689561157254cbbbff5ba6e6ab2b",
     "docs/submission.html": "e5a4040bb20df65c33b7cd9b69cf60fdb9cd711ba0ead586b02164f86a679111",
     "homework/t01-t02/student.html": "4b76cb44fdd2e4069b044bf85582a395ac5e12c93246cadd13e9185e258a90f6",
     "homework/t03-t04/student.html": "0676a4cce98883472d7971d36b36dafc917750329d43d032267638646335f2be",
-    "lecture-notes/README.html": "48454abe99dc2e1a2e1da5e07b4bc034c8af796ff3576cf0421b72e211af8d59",
+    "lecture-notes/README.html": "53410c77d3ce3f602210df03195a0e57ec875d23d9347a9798fa86e6f577d456",
     "runtime/cloudstudio/README.html": "19356fe8b3e48be86661bd758b4b8431c85a3cff8130cf0812b4623ce14b8edd",
     "units/linear-regression/data/README.html": "9c5785f89994341b302da4b19391ce4185d9ac3c421988374800d87f34f122ee",
     "units/linear-regression/worksheets/student.html": "c02accaf3fea6855b4990c294cc930b10b6e12c26d11205bc71f477f9978a164",
-    "units/logistic-classification/worksheets/student.html": "611b3bb6f417e93d13d702b04def27d43fc8f4c404b22a4055b2a24e9149271a",
+    "units/logistic-classification/worksheets/student.html": "c23be86b7d6361b4b36de0cbd185443358748cfcf6abaa6ceec8e10838e0a104",
     "units/regularization/data/README.html": "0be8577de84c90116be1ddbe8a215b854dddf55bffac9a7b881513460733481b",
-    "units/regularization/worksheets/student.html": "b596e02ad4d1ee06255188d16c5d15217eea0ba292d5d2e521eae7fa07e5a585",
+    "units/regularization/worksheets/student.html": "57630ff8bdc23e0344c12062fd79d0be3efdf628c447b1e06adaa1a5110630ea",
     "units/split-evaluation/data/README.html": "92823f96323bb294e4ddd6e50af60dacb231f561438a6b028336cc4f77a92d9b",
     "units/split-evaluation/worksheets/student.html": "6fe973d5a865c2bac3567b318092efcf36674aa13a8c106fa76abbf61b27ea80",
-    "units/task-data-baseline/worksheets/student.html": "c3609c4ae4317ef3a89523f1432d3a1aacbabd7c0e1e7616fc59493e8e1fd0bc"
+    "units/task-data-baseline/worksheets/student.html": "c3609c4ae4317ef3a89523f1432d3a1aacbabd7c0e1e7616fc59493e8e1fd0bc",
+    "units/logistic-classification/worksheets/student.pdf": "a9dc10cbca84b58fdf9ece766f9ae08e76a633f48ec2533b4c0d05d7a070df6f",
+    "units/regularization/worksheets/student.pdf": "ced9e46e34c4f1e9d92ab77e9c129210bfa52931889d17beeb86cf1a7f831619"
   },
   "sources": {
     "pyproject.toml": {
@@ -569,11 +571,11 @@
     },
     "units/logistic-classification/worksheets/student.md": {
       "source": "units/logistic-classification/worksheets/student.md",
-      "source_sha256": "bb9f49a3af7e1362aaa562d667154d33de4400e6ce8d591b3d089bfc1399a287"
+      "source_sha256": "734e306e95696a110e0078a9222d590b4b5fb357212def9151ece7d29fbcac84"
     },
     "units/regularization/worksheets/student.md": {
       "source": "units/regularization/worksheets/student.md",
-      "source_sha256": "b96356a8d264f17abf923e2f4581619959e278d40fcca88f76b0cc22db24cd7e"
+      "source_sha256": "ca28d1d43a4ecca09b9eb47533c465fc100020cb504dc86188aee7b097c95bf5"
     },
     "units/split-evaluation/labs/B01-minor.ipynb": {
       "source": "units/split-evaluation/labs/B01-minor.ipynb",
@@ -941,7 +943,7 @@
     },
     "lecture-notes/README.md": {
       "source": "lecture-notes/student-minor.md",
-      "source_sha256": "6cde1d70fc40675be5b05646d6de37b3b0a5b02d9a2b0680d4300a1d65f4cd33"
+      "source_sha256": "1e08b377ba64fdde434c0c03beb81f6efc26daf9c9f55d36b8228f106e53cf5d"
     },
     "lecture-notes/pdf/minor-48/t01.pdf": {
       "source": "lecture-notes/pdf/minor-48/t01.pdf",
@@ -2274,6 +2276,14 @@
     "lecture-notes/pdf/minor-48/t06.pdf": {
       "source": "lecture-notes/pdf/minor-48/t06.pdf",
       "source_sha256": "3ba4d192a3dcc34697519b18f3e7013e528ecb2035272a13b326ab27098e73aa"
+    },
+    "units/logistic-classification/worksheets/student.pdf": {
+      "source": "units/logistic-classification/worksheets/student.pdf",
+      "source_sha256": "a9dc10cbca84b58fdf9ece766f9ae08e76a633f48ec2533b4c0d05d7a070df6f"
+    },
+    "units/regularization/worksheets/student.pdf": {
+      "source": "units/regularization/worksheets/student.pdf",
+      "source_sha256": "ced9e46e34c4f1e9d92ab77e9c129210bfa52931889d17beeb86cf1a7f831619"
     }
   },
   "generated_student_files": [
@@ -2340,5 +2350,14 @@
     "jekyll": false,
     "reading_pages": "locally generated HTML; original Markdown retained"
   },
-  "previous_release_id": "minor-48-t01-t04-2026-10-10"
+  "previous_release_id": "minor-48-t01-t04-2026-10-10",
+  "worksheet_pdf_update": {
+    "date": "2026-10-25",
+    "chapters": [
+      "T05",
+      "T06"
+    ],
+    "pages_each": 4,
+    "physical_printing_verified": false
+  }
 }

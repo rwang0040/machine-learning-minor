@@ -3,22 +3,25 @@
 <h1 id="t05-纸笔活动">T05 纸笔活动</h1>
 <p>姓名________ 班级________ 日期________。无需电脑，所需对数值已提供。</p>
 <h2 id="a分数到概率">A．分数到概率</h2>
-<p>p=1/(1+exp(−z))。给定 exp(0)=1、exp(−ln3)=1/3。</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p=1/(1+\exp(-z))</annotation></semantics></math>。给定 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\exp(0)=1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\exp(-\ln3)=1/3</annotation></semantics></math>。</p>
 <ol type="1">
-<li>z=0 和 z=ln3 时，p 分别是多少？</li>
-<li>p=0.75 时，阈值 0.5 和 0.8 分别给出什么类别？约定 p≥阈值判 1。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math> 和 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">z=\ln3</annotation></semantics></math> 时，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> 分别是多少？</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">p=0.75</annotation></semantics></math> 时，阈值 0.5 和 0.8 分别给出什么类别？约定 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">p\ge t</annotation></semantics></math> 判为 1。</li>
 <li>这两次分类决定之间，模型的分数或概率一定改变了吗？</li>
 </ol>
+<!-- print:answer-lines=14 -->
+<!-- print:pagebreak -->
 <h2 id="b固定概率比较阈值">B．固定概率，比较阈值</h2>
 <p>正类为超限。四行概率来自同一固定模型。</p>
+<!-- print:table-stretch=2.2 -->
 <table>
 <thead>
 <tr>
 <th>样本</th>
-<th style="text-align: right;">真实 y</th>
-<th style="text-align: right;">p</th>
-<th>t=0.5 的预测</th>
-<th>t=0.3 的预测</th>
+<th style="text-align: right;">真实 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></th>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">t=0.5</annotation></semantics></math> 预测</th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">t=0.3</annotation></semantics></math> 预测</th>
 </tr>
 </thead>
 <tbody>
@@ -52,22 +55,31 @@
 </tr>
 </tbody>
 </table>
+<!-- print:table-stretch=1.65 -->
 <ol type="1">
 <li>填表，分别统计 TP、FP、FN、TN。</li>
 <li>分别计算精确率和召回率。</li>
 <li>哪一行发生改变？阈值下降是否保证精确率总会提高？</li>
 <li>若重视漏报，你会如何说明本次比较结果及局限？</li>
 </ol>
+<!-- print:answer-lines=11 -->
+<!-- print:pagebreak -->
 <h2 id="c交叉熵在惩罚什么">C．交叉熵在惩罚什么？</h2>
-<p>ℓ=−[y ln p+(1−y)ln(1−p)]。已知−ln0.8≈0.223、−ln0.2≈1.609、−ln0.5≈0.693。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><mi>−</mi><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mi>p</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\ell=-[y\ln p+(1-y)\ln(1-p)].
+</annotation></semantics></math></p>
+<p>已知 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mn>0.8</mn><mo>≈</mo><mn>0.223</mn></mrow><annotation encoding="application/x-tex">-\ln0.8\approx0.223</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mn>0.2</mn><mo>≈</mo><mn>1.609</mn></mrow><annotation encoding="application/x-tex">-\ln0.2\approx1.609</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mn>0.5</mn><mo>≈</mo><mn>0.693</mn></mrow><annotation encoding="application/x-tex">-\ln0.5\approx0.693</annotation></semantics></math>。</p>
 <ol type="1">
-<li>当 y=1，p=0.8 与 0.2 的损失分别是多少？哪种属于自信地预测错误？</li>
-<li>当 y=0，p=0.8 的损失是多少？</li>
-<li>若真实 y=[1,0]，概率 p=[0.8,0.2]，平均交叉熵是多少？</li>
+<li>当 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y=1</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">p=0.8</annotation></semantics></math> 与 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.2</mn><annotation encoding="application/x-tex">0.2</annotation></semantics></math> 的损失分别是多少？哪种属于自信地预测错误？</li>
+<li>当 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">p=0.8</annotation></semantics></math> 的损失是多少？</li>
+<li>若真实 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">y=[1,0]</annotation></semantics></math>，概率 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>0.8</mn><mo>,</mo><mn>0.2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">p=[0.8,0.2]</annotation></semantics></math>，平均交叉熵是多少？</li>
 <li>对相同概率改变分类阈值，交叉熵是否改变？用公式说明。</li>
 </ol>
+<!-- print:answer-lines=13 -->
+<!-- print:pagebreak -->
 <h2 id="d离堂检查">D．离堂检查</h2>
-<p>模型对某批次输出 p=0.4，阈值从 0.5 改为 0.3。</p>
-<p>写出前后类别；说明 w、b、p 与分类决定中哪些改变、哪些不必改变。若真实标签 y=1，为什么不能把改阈值说成“模型已经重新训练、损失已经下降”？</p>
+<p>模型对某批次输出 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">p=0.4</annotation></semantics></math>，阈值从 0.5 改为 0.3。</p>
+<p>写出前后类别；说明 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> 与分类决定中哪些改变、哪些不必改变。若真实标签 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y=1</annotation></semantics></math>，为什么不能把改阈值说成“模型已经重新训练、损失已经下降”？</p>
+<!-- print:answer-lines=16 -->
 
 </main></body></html>

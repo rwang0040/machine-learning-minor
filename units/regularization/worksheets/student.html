@@ -3,70 +3,83 @@
 <h1 id="t06-纸笔活动">T06 纸笔活动</h1>
 <p>姓名________ 班级________ 日期________。</p>
 <h2 id="a同一目标中的两种代价">A．同一目标中的两种代价</h2>
-<p>J=训练半均方误差＋λΣw²/2，偏置不惩罚。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mtext mathvariant="normal">训练半均方误差</mtext><mo>+</mo><mfrac><mi>λ</mi><mn>2</mn></mfrac><munder><mo>∑</mo><mi>j</mi></munder><msubsup><mi>w</mi><mi>j</mi><mn>2</mn></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J=\text{训练半均方误差}+\frac{\lambda}{2}\sum_j w_j^2.
+</annotation></semantics></math></p>
+<p>偏置不惩罚。</p>
 <table>
 <thead>
 <tr>
 <th>方案</th>
 <th style="text-align: right;">训练半均方误差</th>
-<th>w</th>
+<th>系数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐰</mi><annotation encoding="application/x-tex">\boldsymbol w</annotation></semantics></math></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>甲</td>
+<td>A</td>
 <td style="text-align: right;">1</td>
-<td>[3,4]</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[3,4]</annotation></semantics></math></td>
 </tr>
 <tr>
-<td>乙</td>
+<td>B</td>
 <td style="text-align: right;">2</td>
-<td>[1,2]</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,2]</annotation></semantics></math></td>
 </tr>
 </tbody>
 </table>
 <ol type="1">
-<li>计算两个方案的Σw²。</li>
-<li>λ=0 和λ=0.2 时，两方案的 J 分别是多少？</li>
-<li>按当前 J 选择方案，是否等于已经证明它在验证集上最好？</li>
+<li>计算两个方案的系数平方和 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>j</mi></msub><msubsup><mi>w</mi><mi>j</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\sum_j w_j^2</annotation></semantics></math>。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda=0</annotation></semantics></math> 和 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">\lambda=0.2</annotation></semantics></math> 时，两方案的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math> 分别是多少？</li>
+<li>按当前 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math> 选择方案，是否等于已经证明它在验证集上最好？</li>
 </ol>
+<!-- print:answer-lines=12 -->
+<!-- print:pagebreak -->
 <h2 id="b固定验证集选方案">B．固定验证集选方案</h2>
 <p>下表为假设结果，所有行使用相同划分、标准化和 MAE。</p>
 <table>
 <thead>
 <tr>
-<th>λ</th>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></th>
 <th style="text-align: right;">训练 MAE</th>
 <th style="text-align: right;">验证 MAE</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">9</td>
 </tr>
 <tr>
-<td>0.1</td>
+<td style="text-align: right;">0.1</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">6</td>
 </tr>
 <tr>
-<td>1</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">10</td>
 </tr>
 </tbody>
 </table>
-<p>选哪一个？为什么不只看训练误差或λ大小？下次换数据是否一定仍选同一个？</p>
+<p>选哪一个？为什么不只看训练误差或 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> 大小？下次换数据是否一定仍选同一个？</p>
+<!-- print:answer-lines=15 -->
+<!-- print:pagebreak -->
 <h2 id="c单位会改变惩罚吗">C．单位会改变惩罚吗？</h2>
-<p>同一距离用米表示 x，或用厘米表示 x′=100x。同一预测关系可写为ŷ=2x，或ŷ=0.02x′。</p>
+<p>同一距离用米表示为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>，或用厘米表示为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mn>100</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">x&#39;=100x</annotation></semantics></math>。同一预测关系可写为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mn>2</mn><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mn>0.02</mn><msup><mi>x</mi><mo>′</mo></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\hat y=2x,\qquad\hat y=0.02x&#39;.
+</annotation></semantics></math></p>
 <ol type="1">
 <li>两式预测是否相同？系数平方分别是多少？</li>
 <li>不统一尺度，直接对原系数使用同一惩罚强度，会出现什么问题？</li>
-<li>为什么不能用训练＋验证的均值和标准差，再声称验证完全没参与处理？</li>
+<li>为什么不能用训练与验证数据合并计算均值和标准差，再声称验证完全没参与处理？</li>
 </ol>
+<!-- print:answer-lines=15 -->
+<!-- print:pagebreak -->
 <h2 id="d离堂检查">D．离堂检查</h2>
-<p>某同学说：“先在全表标准化，再划分；λ越大模型越可靠；Lasso 留下的变量就是原因。”指出三处问题，并各给一句修正。</p>
+<p>某同学说：“先在全表标准化，再划分；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> 越大模型越可靠；Lasso 留下的变量就是原因。”指出三处问题，并各给一句修正。</p>
+<!-- print:answer-lines=17 -->
 
 </main></body></html>
