@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<script src="t08_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t08_files/libs/quarto-html/tabby.min.js"></script>
+<script src="t08_files/libs/quarto-html/popper.min.js"></script>
+<script src="t08_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="t08_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t08_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="t08_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t08_files/libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="t08_files/libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
+
+  <title>决策树与深度选择</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="t08_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="t08_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="t08_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css">
+  <link rel="stylesheet" href="t08.css">
+  <link href="t08_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="t08_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="t08_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="t08_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="t08_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="t08_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">决策树与深度选择</h1>
+  <p class="subtitle">T08 · 机器学习 · 共同理论 · 2 学时</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="t08-overview" class="slide level2">
+<h2>一连串条件，怎样从数据中学出来？</h2>
+<div class="flow">
+<p>沿条件预测 → 衡量节点不纯度 → 比较划分 → 继续生长并约束 → 验证选择深度</p>
+</div>
+<ul>
+<li>从六条记录完成一次划分与预测。</li>
+<li>分清“训练节点更纯”与“新对象预测更好”。</li>
+<li>沿用 T07 的折内预处理与交叉验证。</li>
+</ul>
+<aside class="notes">
+<p>0—10 分钟，本页至路径。两版共同理论，不依赖学生电脑；详细实现留在 B04 支持材料。根、内部节点、叶的概念通过口头画图逐步建立。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conditional-rule" class="slide level2">
+<h2>预测可以是一串“如果……否则……”</h2>
+<p>先判断特征是否满足 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">x\le2.5</annotation></semantics></math>：</p>
+<div class="fold-grid">
+<div class="fold-block">
+<p>满足条件：走左边</p>
+</div>
+<div class="fold-block">
+<p>否则：走右边</p>
+</div>
+<div class="fold-block">
+<p>到达叶节点：输出预测</p>
+</div>
+</div>
+<p>最上方是根节点；提出条件的是内部节点；不再分裂的是叶节点。</p>
+<p>左边对应条件成立，是本章使用的约定。</p>
+</section>
+<section id="path" class="slide level2">
+<h2>一条路径，是同时成立的一组条件</h2>
+<p>例如：先判断负荷是否较高，再在高负荷分支判断环境指数。</p>
+<ul>
+<li>一次分裂通常检查一个特征，不同节点可以换特征。</li>
+<li>到达一个叶，意味着经过的各项条件或其否定同时成立。</li>
+<li>同一叶中的对象使用相同预测；跨过边界才可能换叶。</li>
+</ul>
+<p>预测只读取输入，不需要先知道真实类别。</p>
+</section>
+<section id="purity" class="slide level2">
+<h2>怎样判断一组样本容易给出什么类别？</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>节点训练标签</th>
+<th>多数类输出</th>
+<th>节点特性</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>全部正常</td>
+<td>正常</td>
+<td>纯节点</td>
+</tr>
+<tr class="even">
+<td>99 正常、1 超限</td>
+<td>正常</td>
+<td>少量混杂</td>
+</tr>
+<tr class="odd">
+<td>50 正常、50 超限</td>
+<td>需要并列规则</td>
+<td>两类均衡混杂</td>
+</tr>
+</tbody>
+</table>
+<p>这些描述的是当前训练标签，尚未评价新对象。</p>
+<aside class="notes">
+<p>10—30 分钟，本页至纸笔 A 核对。A 共约 11 分钟，计算量较大，留足子节点比例与加权步骤。先讲公式，再发题，不提前展示划分答案。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gini" class="slide level2">
+<h2>Gini 用类别比例表示不纯度</h2>
+<p>两类比例为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub><mo>,</mo><msub><mi>p</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">p_0,p_1</annotation></semantics></math>，且 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub><mo>+</mo><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p_0+p_1=1</annotation></semantics></math>：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mn>1</mn><mo>−</mo><msubsup><mi>p</mi><mn>0</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>p</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><mn>2</mn><msub><mi>p</mi><mn>0</mn></msub><msub><mi>p</mi><mn>1</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+G=1-p_0^2-p_1^2=2p_0p_1.
+</annotation></semantics></math></p>
+<ul>
+<li>全部同类：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G=0</annotation></semantics></math>；各占一半：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">G=0.5</annotation></semantics></math>。</li>
+<li>二分类中，数值越小表示类别越集中。</li>
+<li>有放回、均匀抽两条记录，类别不同的概率就是 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>。</li>
+</ul>
+<p>它不是叶节点采用多数类输出时的误判率。</p>
+</section>
+<section id="weighted-gini" class="slide level2">
+<h2>划分后的不纯度，需要按样本数加权</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>L</mi></msub><mi>n</mi></mfrac><msub><mi>G</mi><mi>L</mi></msub><mo>+</mo><mfrac><msub><mi>n</mi><mi>R</mi></msub><mi>n</mi></mfrac><msub><mi>G</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">
+G_{\mathrm{split}}=\frac{n_L}{n}G_L+\frac{n_R}{n}G_R
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>G</mi><mo>=</mo><msub><mi>G</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>−</mo><msub><mi>G</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">
+\Delta G=G_{\mathrm{parent}}-G_{\mathrm{split}}
+</annotation></semantics></math></p>
+<p>样本更多的子节点，对整体混杂应占更大权重。</p>
+<p>同一父节点下，加权不纯度越低，下降量越大。</p>
+</section>
+<section id="paper-a" class="slide level2">
+<h2>纸笔 A：两个候选，哪个划分更好？</h2>
+<div class="activity-label">
+<p>约 11 分钟 · 沿用讲义六条抽象记录</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>样本</th>
+<th style="text-align: right;">A</th>
+<th style="text-align: right;">B</th>
+<th style="text-align: right;">C</th>
+<th style="text-align: right;">D</th>
+<th style="text-align: right;">E</th>
+<th style="text-align: right;">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>分别尝试 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">x\le2.5</annotation></semantics></math> 与 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mn>3.5</mn></mrow><annotation encoding="application/x-tex">x\le3.5</annotation></semantics></math>。</p>
+<p>写出左右标签、子节点 Gini、加权结果与下降量，再作选择。</p>
+<p>为什么左右人数不同时，不能直接等权平均？</p>
+</section>
+<section id="paper-a-answer-one" class="slide level2">
+<h2>核对一：阈值 2.5</h2>
+<p>左组 <code>[0,0]</code>，右组 <code>[1,1,0,1]</code>；父节点两类各 3 条。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>L</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>G</mi><mi>R</mi></msub><mo>=</mo><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mn>3</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">
+G_L=0,\qquad G_R=1-(1/4)^2-(3/4)^2=3/8
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mfrac><mn>2</mn><mn>6</mn></mfrac><mo>×</mo><mn>0</mn><mo>+</mo><mfrac><mn>4</mn><mn>6</mn></mfrac><mo>×</mo><mfrac><mn>3</mn><mn>8</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">
+G_{\mathrm{split}}=\frac26\times0+\frac46\times\frac38=\frac14
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>G</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">
+\Delta G=\frac12-\frac14=\frac14
+</annotation></semantics></math></p>
+</section>
+<section id="paper-a-answer-two" class="slide level2">
+<h2>核对二：阈值 3.5</h2>
+<p>左组 <code>[0,0,1]</code>，右组 <code>[1,0,1]</code>；两边 Gini 都为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">4/9</annotation></semantics></math>。</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">阈值</th>
+<th style="text-align: right;">加权 Gini</th>
+<th style="text-align: right;">下降量</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">4/9</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>18</mn></mrow><annotation encoding="application/x-tex">1/18</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment" data-fragment-index="0">
+<p>在这两个候选中选择 2.5；没有宣称已经枚举所有阈值。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>阈值 2.5 时右组占 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">4/6</annotation></semantics></math>，不能只给它 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math> 权重。</p>
+</div>
+</section>
+<section id="paper-b" class="slide level2">
+<h2>纸笔 B：规则执行正确，仍可能判错吗？</h2>
+<div class="activity-label">
+<p>约 5 分钟 · 根按 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">x\le2.5</annotation></semantics></math> 分裂，叶按训练多数类预测</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">输入</th>
+<th>到达哪个叶？</th>
+<th>预测类别</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td>待判断</td>
+<td>待判断</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.5</td>
+<td>待判断</td>
+<td>待判断</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>待判断</td>
+<td>待判断</td>
+</tr>
+</tbody>
+</table>
+<p>E 的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x=5</annotation></semantics></math>、标签为 0：预测错误是否意味着规则执行错误？</p>
+<p>右叶的超限比例是多少？特征阈值与概率阈值有何不同？</p>
+<aside class="notes">
+<p>30—45 分钟，本页至两种阈值。先作 B 后显示树图，树图包含叶输出，不能提前作为题目配图。纸笔的计算条件已明确，不需要看图才能作答。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paper-b-answer" class="slide level2">
+<h2>核对：叶预测的是一组对象</h2>
+
+<img class="plot-large r-stretch" src="assets/one-split-tree.png" alt="根节点按x不大于2.5分裂，左叶输出正常0，右叶输出超限1；右叶有一个正常训练样本"><p>输入 2、2.5 到左叶，输出 0；输入 5 到右叶，输出 1。</p>
+</section>
+<section id="leaf-probability" class="slide level2">
+<h2>误判、叶内比例与真实风险</h2>
+<ul>
+<li>E 按右叶规则输出 1，实际为 0：这是模型误判。</li>
+<li>右叶有 3 个超限、1 个正常，概率估计为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3/4</annotation></semantics></math>。</li>
+<li>训练准确率为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">5/6</annotation></semantics></math>，而加权 Gini 为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>；两者含义不同。</li>
+</ul>
+<div class="fragment">
+<p>叶内频率是概率估计，不证明未来每个对象的真实风险恰好为 75%。</p>
+</div>
+</section>
+<section id="two-thresholds" class="slide level2">
+<h2>两种“阈值”，作用在不同位置</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>界限</th>
+<th>作用于</th>
+<th>决定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>特征阈值 2.5</td>
+<td>输入 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></td>
+<td>进入哪个分支</td>
+</tr>
+<tr class="even">
+<td>概率阈值 0.5</td>
+<td>正类概率 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td>输出哪个类别</td>
+</tr>
+</tbody>
+</table>
+<p>右叶 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">p=0.75</annotation></semantics></math>：概率阈值为 0.5 时输出 1，改为 0.8 时输出 0。</p>
+<p>这个改动没有移动树中的特征分裂界限。</p>
+</section>
+<section id="grow-tree" class="slide level2">
+<h2>子节点可以继续寻找划分</h2>
+<ul>
+<li>比较当前节点中不同特征、阈值的加权不纯度。</li>
+<li>选择当前最有利的一步，再在子节点内继续。</li>
+<li>数值阈值常取相邻不同训练值之间的中点。</li>
+</ul>
+<div class="fragment" data-fragment-index="0">
+<p>这种逐步选择叫贪心划分；局部最好一步，不保证整棵树全局最优。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>输入完全相同却标签不同，可能无法再按这些输入区分。</p>
+</div>
+<aside class="notes">
+<p>45—60 分钟，本页至小叶限制。不展开完整剪枝算法。中点对现有记录的分组可相同，但对未来位于间隙内的输入，具体界限仍有影响。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="depth" class="slide level2">
+<h2>深度限制一条路径最多问多少次</h2>
+<p>根深度为 0；经过一条分支，深度加 1。</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">最大深度</th>
+<th style="text-align: right;">一条预测路径最多判断</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1 次</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3 次</td>
+</tr>
+</tbody>
+</table>
+<p>最大深度是上限，不要求每条路径都长到同样深度。</p>
+</section>
+<section id="deep-path" class="slide level2">
+<h2>三次判断，可以隔离一条训练记录</h2>
+<p>对 E 的 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x=5</annotation></semantics></math>，可以走过以下路径：</p>
+<div class="flow">
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">x&gt;2.5</annotation></semantics></math> → <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>4.5</mn></mrow><annotation encoding="application/x-tex">x&gt;4.5</annotation></semantics></math> → <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mn>5.5</mn></mrow><annotation encoding="application/x-tex">x\le5.5</annotation></semantics></math> → 正常叶</p>
+</div>
+<p>对应每一步的节点深度：0 → 1 → 2，最终叶深度为 3。</p>
+<div class="fragment">
+<p>这能把 E 单独识别出来，但狭小正常区域反映的是规律还是偶然细节？六条训练记录不能回答。</p>
+</div>
+</section>
+<section id="small-leaf" class="slide level2">
+<h2>小叶为什么容易受个别记录影响？</h2>
+<p>4 条记录中改 1 个标签，正类比例变化幅度为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>；2 条中改 1 个，变化为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>。</p>
+<ul>
+<li>限制最大深度：限制连续细分的次数。</li>
+<li>最小叶样本数为 2：不允许产生单条记录的子叶。</li>
+<li>后剪枝：先长出较大树，再删去部分分支。</li>
+</ul>
+<p>这里用前两种约束；不展开剪枝算法。</p>
+</section>
+<section id="paper-c" class="slide level2">
+<h2>纸笔 C：训练满分，应该选择它吗？</h2>
+<div class="activity-label">
+<p>约 5 分钟 · 独立假设表，与六条记录和实验输出无关</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">最大深度</th>
+<th style="text-align: right;">平均训练准确率</th>
+<th style="text-align: right;">平均折内验证准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.78</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.71</td>
+</tr>
+</tbody>
+</table>
+<p>按验证均分选谁？最小叶样本数为 2，会排除什么划分？</p>
+<p>“不用标准化，所以填补可在全开发集提前拟合”，对吗？</p>
+<aside class="notes">
+<p>60—75 分钟，本页至折内选模。纸笔 C 约 5 分钟；先作答，再揭示核对。不可把中等深度胜出当作固定答案。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paper-c-answer" class="slide level2">
+<h2>核对：选择的是当前验证依据</h2>
+<p>选择深度 3，验证均分 0.78，高于深度 8 的 0.71。</p>
+<div class="fragment" data-fragment-index="0">
+<p>深度 8 训练满分，却未改善当前验证表现，提示可能过度适应训练细节。</p>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p>每叶至少 2 条，会排除产生单条记录子叶的划分。填补仍须按当前折训练部分拟合。</p>
+</div>
+</section>
+<section id="scaling" class="slide level2">
+<h2>换计量单位，分组可以保持不变</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mn>100</mn><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>≤</mo><mn>2.5</mn><mspace width="0.222em"></mspace><mo>⇔</mo><mspace width="0.222em"></mspace><msup><mi>x</mi><mo>′</mo></msup><mo>≤</mo><mn>250</mn></mrow><annotation encoding="application/x-tex">
+x'=100x,\qquad x\le2.5\ \Longleftrightarrow\ x'\le250
+</annotation></semantics></math></p>
+<p>分组、子节点类别计数与 Gini 都没有改变。</p>
+<ul>
+<li>本章单个数值特征阈值树，通常不需要标准化平衡量级。</li>
+<li>中位数填补仍然从数据估计，必须在每折训练部分拟合。</li>
+<li>不需标准化，不等于不需数据处理。</li>
+</ul>
+</section>
+<section id="tree-cv" class="slide level2">
+<h2>用相同三折选择有限深度</h2>
+<div class="flow">
+<p>各折训练部分估计填补值 → 训练当前深度的树 → 在对应验证部分算准确率</p>
+</div>
+<ul>
+<li>各深度共用相同折与指标，其他设置保持一致。</li>
+<li>训练分数诊断拟合，验证均分支持选择。</li>
+<li>选定后，在全部开发集重新拟合填补与树。</li>
+</ul>
+<p>用于选择的均分仍不是独立最终测试成绩。</p>
+</section>
+<section id="reference-results" class="slide level2">
+<h2>实际结果可能偏向最浅的候选</h2>
+<p>固定课堂数据，120 行开发集；不是纸笔 C 的假设表：</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">最大深度</th>
+<th style="text-align: right;">平均训练准确率</th>
+<th style="text-align: right;">平均折内验证准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7708</td>
+<td style="text-align: right;">0.7083</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.8292</td>
+<td style="text-align: right;">0.6833</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.9083</td>
+<td style="text-align: right;">0.6333</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>这三个参考候选中选深度 1。验证方法可以迁移，“中等深度胜出”不能预定。</p>
+</div>
+<aside class="notes">
+<p>75—80 分钟。读既有参考数值，不重跑模型，不读取任何项目最终测试资料；不跨任务宣称树优于或劣于逻辑回归。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="threshold-demo" class="slide level2">
+<h2>教师演示：移动分裂界限，会改变谁？</h2>
+<p>把特征阈值从 2.5 改成 3.5；先预测哪些训练记录换边。</p>
+<div>
+<div id="pyodide-1" class="exercise-cell">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlY2hvIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJydW5idXR0b24iOnRydWV9LCJjb2RlIjoidGhyZXNob2xkID0gMi41XG54ID0gWzEsIDIsIDMsIDQsIDUsIDZdXG55ID0gWzAsIDAsIDEsIDEsIDAsIDFdXG5sZWZ0ID0gW2xhYmVsIGZvciB2YWx1ZSwgbGFiZWwgaW4gemlwKHgsIHkpIGlmIHZhbHVlIDw9IHRocmVzaG9sZF1cbnJpZ2h0ID0gW2xhYmVsIGZvciB2YWx1ZSwgbGFiZWwgaW4gemlwKHgsIHkpIGlmIHZhbHVlID4gdGhyZXNob2xkXVxucHJpbnQoXCLlt6bnu4TmoIfnrb7vvJpcIiwgbGVmdClcbnByaW50KFwi5Y+z57uE5qCH562+77yaXCIsIHJpZ2h0KSJ9
+</script>
+</div>
+<div class="fragment demo-reference">
+<p>静态核对：2.5 时左 [0,0]、右 [1,1,0,1]；3.5 时左 [0,0,1]、右 [1,0,1]。只改变边界，不是完整的树训练程序。</p>
+</div>
+<aside class="notes">
+<p>80—83 分钟；网络不可用直接揭示静态结果。只用内置 Python，不导入 sklearn 或下载数据。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="project-plan" class="slide level2">
+<h2>综合任务先从问题和评价计划开始</h2>
+<p>新的合成任务：开工前，根据计划负荷、温度设置与材料评分，预测完工后是否质量不合格。</p>
+<p>先在持续使用的项目 Notebook 写清：</p>
+<ul>
+<li>预测时点、对象与合法输入；</li>
+<li>一个简单基线、主要指标与划分理由。</li>
+</ul>
+<p>本阶段只做计划，不要求立即训练新项目模型或另交长报告。</p>
+</section>
+<section id="t08-summary" class="slide level2">
+<h2>小结：划分更细，证据要求没有减少</h2>
+<ul>
+<li>标签帮助选择划分；预测沿条件到达叶节点。</li>
+<li>Gini、训练误判率和叶内概率描述不同方面。</li>
+<li>深度与叶样本数约束拟合；同条件验证选择复杂度。</li>
+<li>路径说明模型怎样判断，不能单凭路径证明因果关系。</li>
+</ul>
+<p>B04 完成有限深度比较；T09—T10 再组合多棵树。</p>
+<aside class="notes">
+<p>83—85 分钟，本页与前页合计约 2 分钟；项目只交接计划边界，具体操作留实验课。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="t08-exit" class="slide level2">
+<h2>离堂检查：校园设备报修预测</h2>
+<div class="activity-label">
+<p>纸笔 D · 独立作答 · 约 4 分钟</p>
+</div>
+<p>使用前预测当天是否报修；两个候选共用相同三折及准确率。</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">最大深度</th>
+<th style="text-align: right;">平均训练准确率</th>
+<th style="text-align: right;">平均折内验证准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.81</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.74</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>按预先约定的验证均分应选谁？为什么？</li>
+<li>只有一条“需要报修”记录的纯叶，能否保证未来到此的设备都需要报修？</li>
+</ol>
+<aside class="notes">
+<p>85—90 分钟，作答约 4 分钟、收集约 1 分钟；不提前放答案。新情境核验选择依据和纯节点边界，教师答案见纸笔 D。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOC4xL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIl19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8xID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>机器学习 · T08</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="t08_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="t08_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="t08_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="t08_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="t08_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="t08_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="t08_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="t08_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="t08_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 8.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../../../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "已复制");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "已复制");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

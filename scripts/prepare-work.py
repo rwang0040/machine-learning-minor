@@ -1,4 +1,4 @@
-"""Create personal B01/B02/B03 unit copies without overwriting student work."""
+"""Create personal B01/B02/B03/B04 unit copies without overwriting student work."""
 
 from pathlib import Path
 import argparse
@@ -15,7 +15,12 @@ def main():
     parser.add_argument(
         "--unit",
         action="append",
-        choices=["split-evaluation", "linear-regression", "regularization"],
+        choices=[
+            "split-evaluation",
+            "linear-regression",
+            "regularization",
+            "decision-tree",
+        ],
         help="仅添加指定实验单元，可用于已有个人目录；不覆盖已有单元",
     )
     args = parser.parse_args()
@@ -25,7 +30,13 @@ def main():
     destination = root / "work" / args.student_id
     units = list(
         dict.fromkeys(
-            args.unit or ["split-evaluation", "linear-regression", "regularization"]
+            args.unit
+            or [
+                "split-evaluation",
+                "linear-regression",
+                "regularization",
+                "decision-tree",
+            ]
         )
     )
     if destination.exists() and not args.unit:
@@ -51,7 +62,7 @@ def main():
             k: v
             for k, v in release["files"].items()
             if any(k.startswith(f"units/{unit}/") for unit in units)
-            and ("/labs/" in k or "/data/" in k)
+            and ("/labs/" in k or "/data/" in k or "/project/" in k)
         }
     )
     info.setdefault("updates", []).append(
