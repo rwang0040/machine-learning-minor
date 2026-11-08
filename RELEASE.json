@@ -15,9 +15,9 @@
     "T09",
     "T10"
   ],
-  "source_revision": "a8ee0249d129eed75633386609a49037d0ed2458",
+  "source_revision": "24b6054d829c3ea42b9031dd43665a4a0c617bce",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "0e2a95fd4118c6905ecc2377160e7fec6b393510deab0d4a88d267f5e4334cba",
+  "manifest_sha256": "8cc1a6ae7300da88c459100c1e9ce1eef5256a3128870fabc69fc8a7ed9e0481",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -775,7 +775,7 @@
     "scripts/prepare-work.py": "0a2cfc2ddaf11ecc8bc5ed7621f3f6516e2296248b8f6a922d8a80d41b4d9c43",
     "units/boosting/data/README.md": "c7e4f52fa04677a9ce202760e4c5422bc3428aa7517c9cce3da150b17e39f6af",
     "units/boosting/data/boosting-classification.csv": "cb10b78fbf68da81cece16a5ff2ca4f04427311f6dd5137e9c818a543c53d4b1",
-    "units/boosting/labs/B05-minor.ipynb": "e0e0eb72b9644722da1ba0822ce93ffdcee476fb7721b09ee84418d19aed3ddc",
+    "units/boosting/labs/B05-minor.ipynb": "6d0d2c44b440bfc9e890d77c551e50d8322ad0eb4f31448eebabfe0f5523dfcc",
     "units/boosting/project/README.md": "bed9c09f1b9edb890d6f181091a86fdf07b9ef61f0580d6fb0977c25ce6ce0fd",
     "units/boosting/project/baseline-cells.ipynb": "b5ad44ecd9e9fa8224b3197862bcada9bcc837ab8fb6713968a9b5d8b1999397",
     "units/boosting/worksheets/student.md": "6a7865fddd4f9e815a05576e5accc94b6824dcc509329a72b39f9cb9e4436721",
@@ -1009,7 +1009,7 @@
     },
     "units/boosting/labs/B05-minor.ipynb": {
       "source": "units/boosting/labs/B05-minor.ipynb",
-      "source_sha256": "e0e0eb72b9644722da1ba0822ce93ffdcee476fb7721b09ee84418d19aed3ddc"
+      "source_sha256": "6d0d2c44b440bfc9e890d77c551e50d8322ad0eb4f31448eebabfe0f5523dfcc"
     },
     "units/boosting/data/boosting-classification.csv": {
       "source": "units/boosting/data/boosting-classification.csv",
@@ -4065,13 +4065,13 @@
       "change": "remove references to non-minor lab; data and modeling settings unchanged"
     }
   ],
-  "external_publication": true,
+  "external_publication": false,
   "pending": [
     "student timing",
     "physical printing",
     "classroom setup and browser runtime cold start"
   ],
-  "note": "Published T01-T10 minor student materials. Personal work is outside synchronization. RELEASE.json does not hash itself.",
+  "note": "Local student package; teacher answers and major/future materials excluded. RELEASE.json does not hash itself; personal work is not part of the release.",
   "site": {
     "entry": "index.html",
     "jekyll": false,
