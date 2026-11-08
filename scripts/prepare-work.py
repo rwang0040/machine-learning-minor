@@ -1,4 +1,4 @@
-"""Create personal B01/B02/B03/B04 unit copies without overwriting student work."""
+"""Create personal B01/B02/B03/B04/B05 unit copies without overwriting student work."""
 
 from pathlib import Path
 import argparse
@@ -20,6 +20,7 @@ def main():
             "linear-regression",
             "regularization",
             "decision-tree",
+            "boosting",
         ],
         help="仅添加指定实验单元，可用于已有个人目录；不覆盖已有单元",
     )
@@ -36,6 +37,7 @@ def main():
                 "linear-regression",
                 "regularization",
                 "decision-tree",
+                "boosting",
             ]
         )
     )

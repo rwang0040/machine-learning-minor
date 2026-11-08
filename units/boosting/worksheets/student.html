@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T10 课堂活动：逐步学习预测修正 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t10-课堂活动逐步学习预测修正">T10 课堂活动：逐步学习预测修正</h1>
+<p>姓名________　班级________　日期________</p>
+<p>A—C 随课堂讲解完成，D 按教师安排独立作答。无需电脑，计算可保留分数。沿用残差 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mi>F</mi><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">e=F-y</annotation></semantics></math>，修正目标 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>y</mi><mo>−</mo><mi>F</mi><mo>=</mo><mi>−</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">r=y-F=-e</annotation></semantics></math>，平方损失使用半均方误差。</p>
+<h2 id="a从常数开始加入一棵浅树">A．从常数开始，加入一棵浅树</h2>
+<p>四条训练记录的标签依次为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,3,5,7]</annotation></semantics></math>，初始模型 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mn>0</mn></msub><annotation encoding="application/x-tex">F_0</annotation></semantics></math> 对每条记录都预测 4。给定浅树将 A、B 放入左叶，将 C、D 放入右叶，以叶内修正目标均值作为树输出。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>i</mi></msub><mo>=</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><msub><mi>F</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>F</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>η</mi><msub><mi>h</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>η</mi><mo>=</mo><mn>0.5</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+r_i=y_i-F_0(x_i),\qquad F_1(x_i)=F_0(x_i)+\eta h_1(x_i),\qquad \eta=0.5.
+</annotation></semantics></math></p>
+<ol type="1">
+<li>填写逐条修正目标、修正树输出和更新后的预测。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>样本</th>
+<th style="text-align: right;">标签</th>
+<th style="text-align: right;">原预测</th>
+<th style="text-align: right;">修正目标</th>
+<th style="text-align: right;">树输出</th>
+<th style="text-align: right;">更新预测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>写出两个叶的均值计算过程。解释树输出与最终更新预测之间的关系。</li>
+</ol>
+<!-- print:answer-lines=10 -->
+<!-- print:pagebreak -->
+<h2 id="b同一修正树不同加入幅度">B．同一修正树，不同加入幅度</h2>
+<p>继续使用 A 的标签、初始预测与修正树。每个学习率都重新从 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">F_0=4</annotation></semantics></math> 出发，保持 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mn>1</mn></msub><annotation encoding="application/x-tex">h_1</annotation></semantics></math> 不变，分别计算一次更新。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false" form="prefix">(</mo><mi>F</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>n</mi></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false" form="prefix">(</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>=</mo><mn>4</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J(F)=\frac{1}{2n}\sum_{i=1}^{n}(F(x_i)-y_i)^2,\qquad n=4.
+</annotation></semantics></math></p>
+<ol type="1">
+<li>补全初始与两种更新的表格，并在下方保留平方和的计算步骤。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>四个预测值</th>
+<th style="text-align: right;">残差平方和</th>
+<th style="text-align: right;">半均方误差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mn>0</mn></msub><annotation encoding="application/x-tex">F_0</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[4,4,4,4]</annotation></semantics></math></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\eta=0.5</annotation></semantics></math></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\eta=1</annotation></semantics></math></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>如果学习率 1 在这次计算中得到更低训练损失，是否足以规定所有任务都使用 1？说明本次比较的条件范围。</li>
+<li>训练损失下降后，还需要怎样的证据来判断新对象的表现？</li>
+</ol>
+<!-- print:answer-lines=14 -->
+<!-- print:pagebreak -->
+<h2 id="c根据学习机制解释模型">C．根据学习机制解释模型</h2>
+<p>每题用一两句话说明依据。可在下方按题号作答。</p>
+<ol type="1">
+<li>后来的树根据前面模型的不足继续学习修正，体现 Bagging 还是 Boosting 的组织方式？</li>
+<li>随机森林训练下一棵树时，通常需要把当前整片森林的修正目标交给它学习吗？说明它使用哪些随机安排。</li>
+<li>二分类 Sigmoid 与交叉熵的组合给出分数负梯度 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">y-p</annotation></semantics></math>。是否所有 Boosting 方法都把这个量作为下一棵树的学习目标？说明为什么。</li>
+<li>候选 A、B 在相同三折下的平均准确率相同，是否说明它们对每条记录都作出相同判断？还应查看哪些结果？</li>
+</ol>
+<!-- print:answer-lines=20 -->
+<!-- print:pagebreak -->
+<h2 id="d离堂检查预测包裹分拣用时">D．离堂检查：预测包裹分拣用时</h2>
+<p>姓名________　班级________　日期________</p>
+<p>独立作答，不与同学讨论。以下为新的数值预测情境。</p>
+<ol type="1">
+<li>模型对一个包裹的当前组合预测为 12 分钟。新修正树给出的输出为 -4 分钟，学习率为 0.25。写出更新式和更新后的预测。</li>
+<li>在下一轮训练中，应根据初始模型还是本轮更新后的组合，重新计算训练记录的修正目标？说明理由。</li>
+</ol>
+<!-- print:answer-lines=7 -->
+<ol start="3" type="1">
+<li>另在相同训练／验证划分、初始状态和学习率下比较轮数，得到下面的假设结果。事先约定按验证半均方误差较小者选择，应选 3 轮还是 8 轮？引用数值，解释训练损失下降为何不足以决定继续加树。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">修正轮数</th>
+<th style="text-align: right;">训练半均方误差</th>
+<th style="text-align: right;">验证半均方误差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.8</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">2.4</td>
+</tr>
+</tbody>
+</table>
+<!-- print:answer-lines=8 -->
+
+</main></body></html>

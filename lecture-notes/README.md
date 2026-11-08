@@ -12,10 +12,12 @@
 | T06 正则化与模型复杂度 | [PDF，11 页](pdf/minor-48/t06.pdf) | [投影片](../lecture/t06/index.html) · [纸笔活动 PDF，4 页](../units/regularization/worksheets/student.pdf) · [文字版](../units/regularization/worksheets/student.md) | T06 后完成 [B03 练习](../units/regularization/labs/B03-minor.ipynb) |
 | T07 交叉验证与模型选择 | [PDF，9 页](pdf/minor-48/t07.pdf) | [投影片](../lecture/t07/index.html) · [纸笔活动 PDF，4 页](../units/cross-validation/worksheets/student.pdf) · [文字版](../units/cross-validation/worksheets/student.md) | 用纸笔核对轮换与折内拟合，下一章实验继续使用 |
 | T08 决策树与深度选择 | [PDF，10 页](pdf/minor-48/t08.pdf) | [投影片](../lecture/t08/index.html) · [纸笔活动 PDF，4 页](../units/decision-tree/worksheets/student.pdf) · [文字版](../units/decision-tree/worksheets/student.md) | T08 后完成 [B04 练习](../units/decision-tree/labs/B04-minor.ipynb) 与项目计划 |
+| T09 Bagging 与随机森林 | [PDF，6 页](pdf/minor-48/t09.pdf) | [投影片](../lecture/t09/index.html) · [纸笔活动 PDF，4 页](../units/random-forest/worksheets/student.pdf) · [文字版](../units/random-forest/worksheets/student.md) | 用纸笔核对两种随机性、预测汇总与成对错误 |
+| T10 Boosting 与梯度提升 | [PDF，10 页](pdf/minor-48/t10.pdf) | [投影片](../lecture/t10/index.html) · [纸笔活动 PDF，4 页](../units/boosting/worksheets/student.pdf) · [文字版](../units/boosting/worksheets/student.md) | T10 后完成 [B05 练习](../units/boosting/labs/B05-minor.ipynb)，追加项目开发内基线 |
 
-实验遇到划分、训练、预测或指标函数问题时，回看 T02 第 8 节；B02 的梯度、更新和结果核对回看 T04 第 8 节。B03 的惩罚、尺度和概率操作回看 T05—T06 的活动与实验查阅。完成 TODO 后删除该处停止提示，保留检查代码；重启内核并运行全部，保存自己的 Notebook。B04 的流程查阅见 T08 第 7 节。B01—B04 没有独立最终测试集，结果不能称为独立最终测试表现。
+实验遇到划分、训练、预测或指标函数问题时，回看 T02 第 8 节；B02 的梯度、更新和结果核对回看 T04 第 8 节。B03 的惩罚、尺度和概率操作回看 T05—T06 的活动与实验查阅。完成 TODO 后删除该处停止提示，保留检查代码；重启内核并运行全部，保存自己的 Notebook。B04 的流程查阅见 T08 第 7 节。B05 的验证、混淆计数及项目基线见 T10 第 7 节。B01—B05 没有独立最终测试集，结果不能称为独立最终测试表现。
 
-请保留课程文件的相对目录结构，不单独移动 PDF 或 Notebook。投影片通过课程 HTTP 预览入口打开；T02—T08 交互演示首次加载需要联网，运行不成时可以使用页面的静态算例。后续讲义会随授课进度补充到此入口。
+请保留课程文件的相对目录结构，不单独移动 PDF 或 Notebook。投影片通过课程 HTTP 预览入口打开；T02—T10 交互演示首次加载需要联网，运行不成时可以使用页面的静态算例。后续讲义会随授课进度补充到此入口。
 
 ## 课后作业
 

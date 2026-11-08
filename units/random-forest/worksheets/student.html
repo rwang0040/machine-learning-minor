@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T09 课堂活动：从抽样到组合判断 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t09-课堂活动从抽样到组合判断">T09 课堂活动：从抽样到组合判断</h1>
+<p>姓名________　班级________　日期________</p>
+<p>A—C 随课堂讲解完成，D 按教师安排独立作答。无需电脑，可保留分数或四位小数。正常为 0，超限为 1。各树硬分类按正类概率至少为 0.5 时判为 1；概率平均选类时比较两类平均概率，本活动的类别顺序为 0、1，平票取 0。</p>
+<h2 id="a抽取次数与不同记录数">A．抽取次数与不同记录数</h2>
+<p>原训练样本编号为 A、B、C、D。两次有放回抽样的结果如下。</p>
+<ol type="1">
+<li>补全表格，区分抽取次数与抽到的不同记录数。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>抽样序列</th>
+<th style="text-align: right;">抽取次数</th>
+<th style="text-align: right;">不同记录数</th>
+<th>未抽到的编号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A、A、C、D</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>B、C、C、B</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>第一组的 A 被抽中两次，是否等于多取得了一个独立观测？说明重复使用的输入和标签来自哪里。</li>
+<li>若只把原表换个顺序，每条记录仍使用一次，会产生上面这样的重复与遗漏吗？这与有放回抽样有什么区别？</li>
+</ol>
+<!-- print:answer-lines=12 -->
+<!-- print:pagebreak -->
+<h2 id="b多数投票与共同错误">B．多数投票与共同错误</h2>
+<p>两个对象的真实类别均为超限 1，三棵树的类别预测如下。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align: right;">实际类别</th>
+<th style="text-align: right;">树 1</th>
+<th style="text-align: right;">树 2</th>
+<th style="text-align: right;">树 3</th>
+<th style="text-align: right;">投票类别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>补全多数投票类别，说明哪个对象被正确识别、哪个仍然漏报。</li>
+<li>结合对象 B，解释树数增加时，怎样的判断差异才可能帮助纠正错误。</li>
+<li>把树 1 原样复制一百遍，预测时会得到独立的新判断吗？说明理由。</li>
+</ol>
+<!-- print:answer-lines=15 -->
+<!-- print:pagebreak -->
+<h2 id="c先判类别还是先平均概率">C．先判类别，还是先平均概率？</h2>
+<p>下面两行是同一个问题下两个独立的概率示例，每行均有三棵树。先按本页公式和首页约定计算，再作解释。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">‾</mo></mover><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>+</mo><msub><mi>p</mi><mn>2</mn></msub><mo>+</mo><msub><mi>p</mi><mn>3</mn></msub></mrow><mn>3</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mover><mi>p</mi><mo accent="true">‾</mo></mover><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi></mrow></msub><mo>=</mo><mn>1</mn><mo>−</mo><mover><mi>p</mi><mo accent="true">‾</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\bar p=\frac{p_1+p_2+p_3}{3},\qquad \bar p_{\mathrm{normal}}=1-\bar p.
+</annotation></semantics></math></p>
+<ol type="1">
+<li>补全两种汇总的结果。多数投票先将每棵树的概率转成类别；概率平均先计算均值，再选择平均概率较大的类别。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>正类概率序列</th>
+<th style="text-align: right;">多数投票类别</th>
+<th style="text-align: right;">平均正类概率</th>
+<th style="text-align: right;">概率平均类别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.80、0.60、0.40</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>0.51、0.51、0.01</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>第二行为什么可能得到不同类别？用具体数值说明硬票与概率平均分别保留了哪些信息。</li>
+<li>输入为计划负荷比例和环境指数，模型每到一个分裂节点随机选择一个候选特征（接口设置为 <code>max_features=1</code>）。根节点选择了环境指数后，子节点还能选择计划负荷比例吗？说明理由。</li>
+</ol>
+<!-- print:answer-lines=12 -->
+<!-- print:pagebreak -->
+<h2 id="d离堂检查预测打印任务是否卡纸">D．离堂检查：预测打印任务是否卡纸</h2>
+<p>姓名________　班级________　日期________</p>
+<p>独立作答，不与同学讨论。以下为新的合成情境，假设各次打印任务相互独立。模型在开始打印前，根据已知页数和纸张厚度预测本次是否卡纸。</p>
+<ol type="1">
+<li>某同学把同一训练表打乱顺序 20 次，每次用全部记录训练一棵树，各节点都比较全部特征。他认为已经实施了本章随机森林的两种随机性。这个安排符合吗？分别说明训练记录和节点候选特征应怎样处理。</li>
+</ol>
+<!-- print:answer-lines=7 -->
+<ol start="2" type="1">
+<li>随后按本章方式训练森林，并在相同三折、相同合法输入和指标下取得下面的假设结果。填补均在每折训练部分拟合。若事先约定按平均验证准确率选择，应选哪个？引用数值写出结论，并说明它能否保证未来所有打印任务都更好。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th style="text-align: right;">平均折内验证准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单树</td>
+<td style="text-align: right;">0.84</td>
+</tr>
+<tr>
+<td>随机森林</td>
+<td style="text-align: right;">0.88</td>
+</tr>
+</tbody>
+</table>
+<!-- print:answer-lines=7 -->
+
+</main></body></html>
