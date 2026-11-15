@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="t11_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css">
+  <link rel="stylesheet" href="t11_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css">
   <link rel="stylesheet" href="t11.css">
   <link href="t11_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="t11_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -252,7 +252,7 @@ d(x,q)=\sqrt{(x_1-q_1)^2+(x_2-q_2)^2}.
       }</style></aside>
 </section>
 <section id="paper-a-answer" class="slide level2">
-<h2>核对：同一组距离，两种投票结果</h2>
+<h2>核对：距离排序与两种 K 的投票</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -363,7 +363,7 @@ q=(1.8,0.1)\longrightarrow q'=(1.8,10).
       }</style></aside>
 </section>
 <section id="paper-b-answer" class="slide level2">
-<h2>核对：第二坐标的贡献放大 10000 倍</h2>
+<h2>核对：换单位后的距离平方</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>A</mi><mo>′</mo></msup><mo>,</mo><msup><mi>q</mi><mo>′</mo></msup><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mn>3.24</mn><mo>+</mo><mn>100</mn><mo>=</mo><mn>103.24</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
 d(A',q')^2=3.24+100=103.24,
 </annotation></semantics></math></p>
@@ -371,9 +371,8 @@ d(A',q')^2=3.24+100=103.24,
 d(B',q')^2=0.04+8100=8100.04.
 </annotation></semantics></math></p>
 <div class="fragment">
-<p>原来 B 最近，换单位后 A 最近；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K=1</annotation></semantics></math> 的预测从 1 变为 0。</p>
+<p>第二坐标差乘 100，平方差便乘 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>100</mn><mn>2</mn></msup><mo>=</mo><mn>10000</mn></mrow><annotation encoding="application/x-tex">100^2=10000</annotation></semantics></math>。原来 B 最近，换单位后 A 最近；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K=1</annotation></semantics></math> 的预测从 1 变为 0。没有增加样本、特征或标签。</p>
 </div>
-<p>第二坐标差乘 100，平方差便乘 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>100</mn><mn>2</mn></msup><annotation encoding="application/x-tex">100^2</annotation></semantics></math>。没有增加样本、特征或标签。</p>
 </section>
 <section id="same-representation" class="slide level2">
 <h2>距离要求训练与查询使用同一表示</h2>
@@ -439,7 +438,7 @@ z_j=\frac{x_j-\mu_j}{s_j}.
       }</style></aside>
 </section>
 <section id="paper-c-answer" class="slide level2">
-<h2>核对：训练尺度下，B 恢复为最近邻</h2>
+<h2>核对：训练尺度下的标准化距离</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>z</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>0.8</mn><mo>,</mo><mi>−</mi><mn>1.4</mn><mi>/</mi><msqrt><mn>1.25</mn></msqrt><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
 q_z=(0.8,-1.4/\sqrt{1.25}).
 </annotation></semantics></math></p>
@@ -474,7 +473,7 @@ q_z=(0.8,-1.4/\sqrt{1.25}).
 </div>
 </section>
 <section id="scale-invariance" class="slide level2">
-<h2>正比例换单位后，标准化坐标保持一致</h2>
+<h2>正比例换单位后的标准化坐标</h2>
 <p>第二坐标乘 100：</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>μ</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><mn>100</mn><msub><mi>μ</mi><mn>2</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>s</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><mn>100</mn><msub><mi>s</mi><mn>2</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
 \mu'_2=100\mu_2,\qquad s'_2=100s_2.
@@ -484,6 +483,9 @@ q_z=(0.8,-1.4/\sqrt{1.25}).
 =\frac{x_2-\mu_2}{s_2}.
 </annotation></semantics></math></p>
 <p>适用条件：同一训练数据、正比例换算、原标准差非零。</p>
+<div class="fragment">
+<p>在这些条件下，换单位前后的标准化坐标保持一致。</p>
+</div>
 </section>
 <section id="standardization-limits" class="slide level2">
 <h2>标准化解决的是尺度一致，不是全部问题</h2>
@@ -579,12 +581,14 @@ q_z=(0.8,-1.4/\sqrt{1.25}).
 <p>标准化后的两种表示恢复为第一组邻居，全部验证预测也一致。</p>
 </section>
 <section id="reference-results" class="slide level2">
-<h2>总分相同，也可能改变许多对象的判断</h2>
+<h2>四个条件的三折结果</h2>
 
 <img data-src="assets/representation-comparison.png" class="plot-large r-stretch"><div class="fragment">
 <p>四个条件均判对 83/120，平均准确率约 0.6917。</p>
 </div>
-<p>原表示与未标准化单位变化之间仍有 28 行预测不同：14 行由对变错，14 行由错变对。</p>
+<div class="fragment">
+<p>但原表示与未标准化单位变化之间仍有 28 行预测不同：14 行由对变错，14 行由错变对。</p>
+</div>
 </section>
 <section id="validation-boundary" class="slide level2">
 <h2>验证记录只作查询，不参加训练变换</h2>

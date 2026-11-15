@@ -17,9 +17,9 @@
     "T11",
     "T12"
   ],
-  "source_revision": "203fffc03cfbf176a8247134c9336690f5d21496",
+  "source_revision": "40d0992c8b35b758c7f78ddd5c05ba8da2a91397",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "75743f58320f28599fb6ac4992760d44df08e1d30cc03e2ca5f2c3a14a3fd8f5",
+  "manifest_sha256": "95d8caf8339a9c1cae5dcf7a65728d4e77e16e3a90ae75f4275aee62ef13e640",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -773,7 +773,7 @@
     "lecture/t11/assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
     "lecture/t11/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "lecture/t11/assets/representation-comparison.png": "da84d2d2593973f614b9427bf065a71f509399242362c3a3b222768ccd12f037",
-    "lecture/t11/index.html": "a55d0196cc306acc6b1d2200d2e53dad14e8091af5826789d395358cce270d0a",
+    "lecture/t11/index.html": "f79ef37fe8886e2d0cd9976e502cd9fa7ad576c8a1fb4eb662e948f13ea22859",
     "lecture/t11/t11.css": "531354ae4c8924003b900e3025971b4ab2dd2229deb2ecb0ffc5952e42392147",
     "lecture/t11/t11_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
     "lecture/t11/t11_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
@@ -812,7 +812,7 @@
     "lecture/t11/t11_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646",
     "lecture/t11/t11_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5",
     "lecture/t11/t11_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc",
-    "lecture/t11/t11_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332",
+    "lecture/t11/t11_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css": "84badda974ffdb0f91413cce224fea50c7db63079482e9cd582887b5c528c2bc",
     "lecture/t11/t11_files/libs/revealjs/plugin/highlight/highlight.esm.js": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707",
     "lecture/t11/t11_files/libs/revealjs/plugin/highlight/highlight.js": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca",
     "lecture/t11/t11_files/libs/revealjs/plugin/highlight/monokai.css": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999",
@@ -854,7 +854,7 @@
     "lecture/t12/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "lecture/t12/assets/kmeans-update.png": "1d9eac88ad3b1c3bd0fd4aae951d2aa51eb554d847eb5fa36e474c5bd7373d7b",
     "lecture/t12/assets/pca-projection.png": "167e025b4875124b9df9a43c514c0ee0a8d3135d3e839aa829922106f268eee2",
-    "lecture/t12/index.html": "0cc314e3647d658dd592308ea23c1c6b581c4bdb700e34960e9f648fd9f92c8f",
+    "lecture/t12/index.html": "38298aad75533bf6977d04d20b5fe97f7af0d5101c70f5fe663005bee485360f",
     "lecture/t12/t12.css": "9c96699021051d0304d63577a46f6a7a64683265fe73cd7105cea76f7e2672e6",
     "lecture/t12/t12_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
     "lecture/t12/t12_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
@@ -893,7 +893,7 @@
     "lecture/t12/t12_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": "e8ec22b619599ef4088c788ec410ea3e70481acc9ec43cc0a7fcd00da6441646",
     "lecture/t12/t12_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": "7225cacc06c2f360367c138daa4ce727c2a0d26e42875b1f9e802f181fdb81c5",
     "lecture/t12/t12_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc",
-    "lecture/t12/t12_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332",
+    "lecture/t12/t12_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css": "84badda974ffdb0f91413cce224fea50c7db63079482e9cd582887b5c528c2bc",
     "lecture/t12/t12_files/libs/revealjs/plugin/highlight/highlight.esm.js": "ff4b4683377e4c0f8d512480bbd513b8fcd0d30db22bd1efedb39bd8bd5a8707",
     "lecture/t12/t12_files/libs/revealjs/plugin/highlight/highlight.js": "3d58fbfb3fb64e4c2c1c0288347ab4174847b281538fe93f056e90b9b5a608ca",
     "lecture/t12/t12_files/libs/revealjs/plugin/highlight/monokai.css": "504e51314144f3f8327155dc69502ba10b1a4991ae4cc3fa70086cf155465999",
@@ -4238,7 +4238,7 @@
     },
     "lecture/t11/index.html": {
       "source": "lecture/t11/index.html",
-      "source_sha256": "a55d0196cc306acc6b1d2200d2e53dad14e8091af5826789d395358cce270d0a"
+      "source_sha256": "f79ef37fe8886e2d0cd9976e502cd9fa7ad576c8a1fb4eb662e948f13ea22859"
     },
     "lecture/t11/t11.css": {
       "source": "lecture/t11/t11.css",
@@ -4392,9 +4392,9 @@
       "source": "lecture/t11/t11_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css",
       "source_sha256": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc"
     },
-    "lecture/t11/t11_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": {
-      "source": "lecture/t11/t11_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css",
-      "source_sha256": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332"
+    "lecture/t11/t11_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css": {
+      "source": "lecture/t11/t11_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css",
+      "source_sha256": "84badda974ffdb0f91413cce224fea50c7db63079482e9cd582887b5c528c2bc"
     },
     "lecture/t11/t11_files/libs/revealjs/plugin/highlight/highlight.esm.js": {
       "source": "lecture/t11/t11_files/libs/revealjs/plugin/highlight/highlight.esm.js",
@@ -4562,7 +4562,7 @@
     },
     "lecture/t12/index.html": {
       "source": "lecture/t12/index.html",
-      "source_sha256": "0cc314e3647d658dd592308ea23c1c6b581c4bdb700e34960e9f648fd9f92c8f"
+      "source_sha256": "38298aad75533bf6977d04d20b5fe97f7af0d5101c70f5fe663005bee485360f"
     },
     "lecture/t12/t12.css": {
       "source": "lecture/t12/t12.css",
@@ -4716,9 +4716,9 @@
       "source": "lecture/t12/t12_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css",
       "source_sha256": "5292b4fb38f4e609bf20cd98b3e5c039dbd7271d1c9174302305fbaaf42035cc"
     },
-    "lecture/t12/t12_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css": {
-      "source": "lecture/t12/t12_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css",
-      "source_sha256": "67fe5f917bcba4609d723a96e653115aede8ac2e53a2b3175e78780f3d91a332"
+    "lecture/t12/t12_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css": {
+      "source": "lecture/t12/t12_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css",
+      "source_sha256": "84badda974ffdb0f91413cce224fea50c7db63079482e9cd582887b5c528c2bc"
     },
     "lecture/t12/t12_files/libs/revealjs/plugin/highlight/highlight.esm.js": {
       "source": "lecture/t12/t12_files/libs/revealjs/plugin/highlight/highlight.esm.js",

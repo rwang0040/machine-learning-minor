@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="t12_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css">
+  <link rel="stylesheet" href="t12_files/libs/revealjs/dist/theme/quarto-3ce2612975c2c30cb08916bdbf729045.css">
   <link rel="stylesheet" href="t12.css">
   <link href="t12_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="t12_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -258,7 +258,7 @@ J=\sum_{i=1}^{n}d(x_i,c_{a_i})^2.
       }</style></aside>
 </section>
 <section id="paper-a-assignment" class="slide level2">
-<h2>核对一：两组各有三个点</h2>
+<h2>核对一：六点到两个初始中心</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -310,7 +310,7 @@ J=\sum_{i=1}^{n}d(x_i,c_{a_i})^2.
 <p>当前 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mn>0</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">J=0+4+4+0+4+4=16</annotation></semantics></math>。</p>
 </section>
 <section id="paper-a-centers" class="slide level2">
-<h2>核对二：组内均值成为新中心</h2>
+<h2>核对二：由当前分组更新中心</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>c</mi><mn>1</mn><mo>′</mo></msubsup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>/</mi><mn>3</mn><mo>,</mo><mn>2</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>c</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>26</mn><mi>/</mi><mn>3</mn><mo>,</mo><mn>26</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
 c'_1=(2/3,2/3),\qquad c'_2=(26/3,26/3).
 </annotation></semantics></math></p>
@@ -318,7 +318,7 @@ c'_1=(2/3,2/3),\qquad c'_2=(26/3,26/3).
 <img data-src="assets/kmeans-update.png" class="plot-medium r-stretch"><p>方框为初始中心，红色叉号为更新后的组内均值。</p>
 </section>
 <section id="paper-a-objective" class="slide level2">
-<h2>核对三：更新后仍要再次检查分配</h2>
+<h2>核对三：计算更新后的距离目标</h2>
 <p>第一簇到新中心的距离平方：</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>8</mn><mn>9</mn></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mfrac><mn>20</mn><mn>9</mn></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mfrac><mn>20</mn><mn>9</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mrow><mtext mathvariant="normal">合计 </mtext><mspace width="0.333em"></mspace></mrow><mfrac><mn>16</mn><mn>3</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
 \frac{8}{9},\quad \frac{20}{9},\quad \frac{20}{9},
@@ -356,7 +356,7 @@ J'=\frac{32}{3}\approx10.667&lt;16.
       }</style></aside>
 </section>
 <section id="paper-b-answer" class="slide level2">
-<h2>核对：距离目标不是“发现真相”的分数</h2>
+<h2>核对：J 能支持哪些结论？</h2>
 <ul>
 <li>交换簇编号不改变成员分区。</li>
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math> 不含真实类别资料，下降只说明中心更贴近当前成员。</li>
@@ -417,7 +417,7 @@ t=(x-\mu)\cdot u
       }</style></aside>
 </section>
 <section id="paper-c-answer" class="slide level2">
-<h2>核对：一个方向方差为 5，垂直方向为 0</h2>
+<h2>核对：两个方向的投影方差</h2>
 <p>沿 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">u=(1,1)/\sqrt2</annotation></semantics></math> 的坐标：</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn><msqrt><mn>2</mn></msqrt><mo>,</mo><mspace width="1.0em"></mspace><mo>−</mo><msqrt><mn>2</mn></msqrt><mo>,</mo><mspace width="1.0em"></mspace><msqrt><mn>2</mn></msqrt><mo>,</mo><mspace width="1.0em"></mspace><mn>2</mn><msqrt><mn>2</mn></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
 -2\sqrt2,\quad-\sqrt2,\quad\sqrt2,\quad2\sqrt2.
@@ -498,7 +498,7 @@ t=(x-\mu)\cdot u
       }</style></aside>
 </section>
 <section id="paper-d-answer" class="slide level2">
-<h2>核对：验证特征也能改变训练规则</h2>
+<h2>核对：预处理统计量来自哪些行？</h2>
 <p>错误流程：</p>
 <div class="flow">
 <p>120 行一起 fit 填补与尺度 → 再分三折训练 KNN</p>
@@ -510,7 +510,7 @@ t=(x-\mu)\cdot u
 <p>即使没有使用验证标签，验证特征仍可能改变中位数、均值、方差或投影方向。</p>
 </section>
 <section id="reference-results" class="slide level2">
-<h2>相同分数不能替代统计量来源检查</h2>
+<h2>三折结果与统计量来源</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
