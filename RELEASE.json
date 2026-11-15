@@ -17,9 +17,9 @@
     "T11",
     "T12"
   ],
-  "source_revision": "40d0992c8b35b758c7f78ddd5c05ba8da2a91397",
+  "source_revision": "0c2cc1aee24fd38db32513909bec52cd2600dbbd",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "95d8caf8339a9c1cae5dcf7a65728d4e77e16e3a90ae75f4275aee62ef13e640",
+  "manifest_sha256": "cf591177a441ffde16c9090405ddd7c418b45bd0c16308dd1d3dca9d11a5c41e",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -773,7 +773,7 @@
     "lecture/t11/assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
     "lecture/t11/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "lecture/t11/assets/representation-comparison.png": "da84d2d2593973f614b9427bf065a71f509399242362c3a3b222768ccd12f037",
-    "lecture/t11/index.html": "f79ef37fe8886e2d0cd9976e502cd9fa7ad576c8a1fb4eb662e948f13ea22859",
+    "lecture/t11/index.html": "9221eded842674bc015e9f2a45abaf303e9fbd71f0fdeb459d3262446fda0864",
     "lecture/t11/t11.css": "531354ae4c8924003b900e3025971b4ab2dd2229deb2ecb0ffc5952e42392147",
     "lecture/t11/t11_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
     "lecture/t11/t11_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
@@ -854,7 +854,7 @@
     "lecture/t12/assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "lecture/t12/assets/kmeans-update.png": "1d9eac88ad3b1c3bd0fd4aae951d2aa51eb554d847eb5fa36e474c5bd7373d7b",
     "lecture/t12/assets/pca-projection.png": "167e025b4875124b9df9a43c514c0ee0a8d3135d3e839aa829922106f268eee2",
-    "lecture/t12/index.html": "38298aad75533bf6977d04d20b5fe97f7af0d5101c70f5fe663005bee485360f",
+    "lecture/t12/index.html": "6d3b167beaa490e9369d4f35b710bf3828652be5c2c357db954280d17b4cc584",
     "lecture/t12/t12.css": "9c96699021051d0304d63577a46f6a7a64683265fe73cd7105cea76f7e2672e6",
     "lecture/t12/t12_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
     "lecture/t12/t12_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
@@ -4238,7 +4238,7 @@
     },
     "lecture/t11/index.html": {
       "source": "lecture/t11/index.html",
-      "source_sha256": "f79ef37fe8886e2d0cd9976e502cd9fa7ad576c8a1fb4eb662e948f13ea22859"
+      "source_sha256": "9221eded842674bc015e9f2a45abaf303e9fbd71f0fdeb459d3262446fda0864"
     },
     "lecture/t11/t11.css": {
       "source": "lecture/t11/t11.css",
@@ -4562,7 +4562,7 @@
     },
     "lecture/t12/index.html": {
       "source": "lecture/t12/index.html",
-      "source_sha256": "38298aad75533bf6977d04d20b5fe97f7af0d5101c70f5fe663005bee485360f"
+      "source_sha256": "6d3b167beaa490e9369d4f35b710bf3828652be5c2c357db954280d17b4cc584"
     },
     "lecture/t12/t12.css": {
       "source": "lecture/t12/t12.css",
