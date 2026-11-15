@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<script src="t11_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t11_files/libs/quarto-html/tabby.min.js"></script>
+<script src="t11_files/libs/quarto-html/popper.min.js"></script>
+<script src="t11_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="t11_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t11_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="t11_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t11_files/libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="t11_files/libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
+
+  <title>KNN、距离与尺度</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="t11_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="t11_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="t11_files/libs/revealjs/dist/theme/quarto-9083911048bc4465a9f1b5c4e71a6410.css">
+  <link rel="stylesheet" href="t11.css">
+  <link href="t11_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="t11_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="t11_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="t11_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="t11_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="t11_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">KNN、距离与尺度</h1>
+  <p class="subtitle">T11 · 机器学习 · 共同理论 · 2 学时</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="t11-overview" class="slide level2">
+<h2>“离我最近”由数据决定，还是也由表示决定？</h2>
+<div class="flow">
+<p>统一表示 → 计算距离 → 选出训练近邻 → 标签投票 → 用训练外记录评价</p>
+</div>
+<ul>
+<li>用欧氏距离完成一次 KNN 分类。</li>
+<li>观察只换计量单位为什么会改变邻居。</li>
+<li>用训练统计量建立共同尺度，同时保留评价边界。</li>
+</ul>
+<aside class="notes">
+<p>0—10 分钟，本页与下一页。承接逻辑回归、树和 T07 的折内预处理。两版共同理论，无需学生电脑。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="knn-process" class="slide level2">
+<h2>KNN 在预测时读取训练库</h2>
+<div class="process process-four">
+<div class="process-step">
+<p><strong>训练库</strong> <span>保存特征与标签</span></p>
+</div>
+<div class="process-step">
+<p><strong>查询点</strong> <span>只有可用特征</span></p>
+</div>
+<div class="process-step">
+<p><strong>最近 K 条</strong> <span>从训练记录中选择</span></p>
+</div>
+<div class="process-step">
+<p><strong>投票</strong> <span>给出查询预测</span></p>
+</div>
+</div>
+<p>查询点的真实标签只用于事后评价，不参与选邻居。</p>
+</section>
+<section id="euclidean-distance" class="slide level2">
+<h2>欧氏距离把各坐标差合成一个数</h2>
+<p>训练点 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x=(x_1,x_2)</annotation></semantics></math>，查询点 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo>,</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q=(q_1,q_2)</annotation></semantics></math>：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>q</mi><mn>1</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>q</mi><mn>2</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d(x,q)=\sqrt{(x_1-q_1)^2+(x_2-q_2)^2}.
+</annotation></semantics></math></p>
+<ul>
+<li>平方使不同方向的差不会相互抵消。</li>
+<li>只比较远近时，可以直接比较 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>d</mi><mn>2</mn></msup><annotation encoding="application/x-tex">d^2</annotation></semantics></math>。</li>
+<li>本章使用等权投票：每条近邻一票。</li>
+</ul>
+</section>
+<section id="paper-a" class="slide level2">
+<h2>纸笔 A：谁是邻居？</h2>
+<div class="activity-label">
+<p>约 7 分钟 · 欧氏距离 · 等权投票</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>点</th>
+<th>坐标</th>
+<th style="text-align: right;">标签</th>
+<th style="text-align: right;">到 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1.8</mn><mo>,</mo><mn>0.1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q=(1.8,0.1)</annotation></semantics></math> 的距离平方</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0)</annotation></semantics></math></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,2)</annotation></semantics></math></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,3)</annotation></semantics></math></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+</tbody>
+</table>
+<p>按近到远排序；分别写出 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K=1</annotation></semantics></math> 与 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">K=3</annotation></semantics></math> 的预测。</p>
+<aside class="notes">
+<p>10—30 分钟，本页至 K 的作用。A 独立计算约 7 分钟，核对时只开平方差表，不逐项计算根号。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paper-a-answer" class="slide level2">
+<h2>核对：同一组距离，两种投票结果</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>点</th>
+<th style="text-align: right;">第一坐标平方差</th>
+<th style="text-align: right;">第二坐标平方差</th>
+<th style="text-align: right;">距离平方</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">3.24</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">3.25</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">0.85</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">3.24</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">6.85</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">8.41</td>
+<td style="text-align: right;">8.45</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>从近到远为 B、A、C、D。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K=1</annotation></semantics></math> 预测 1；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">K=3</annotation></semantics></math> 按 1、0、0 预测 0。</p>
+</div>
+</section>
+<section id="k-neighborhood" class="slide level2">
+<h2>K 决定参考多大的局部范围</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>较小的 K</th>
+<th>较大的 K</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>很近的少数记录影响大</td>
+<td>更多记录参与决定</td>
+</tr>
+<tr class="even">
+<td>可能沿用单条噪声标签</td>
+<td>可能混入另一片区域</td>
+</tr>
+</tbody>
+</table>
+<p>查询点标签未知时，不能根据这一题判断哪个 K 更准。</p>
+<div class="conclusion">
+<p>候选 K 应在开发内评价；不能查看最终测试后再决定。</p>
+</div>
+</section>
+<section id="ties" class="slide level2">
+<h2>奇数 K 也没有消除所有并列</h2>
+<ul>
+<li>已选定邻居后，二分类等权投票用奇数 K 可避免票数相等。</li>
+<li>第 K 与第 K+1 近的记录仍可能等距，最后名额不唯一。</li>
+<li>多分类中，奇数 K 仍可能出现票数并列。</li>
+</ul>
+<div class="fragment">
+<p>“邻居集合怎样确定”和“集合确定后怎样投票”是两个问题。</p>
+</div>
+</section>
+<section id="unit-change" class="slide level2">
+<h2>只换单位，为什么可能换邻居？</h2>
+<p>把所有点的第二坐标乘 100，第一坐标保持不变：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1.8</mn><mo>,</mo><mn>0.1</mn><mo stretchy="false" form="postfix">)</mo><mo>→</mo><msup><mi>q</mi><mo>′</mo></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1.8</mn><mo>,</mo><mn>10</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q=(1.8,0.1)\longrightarrow q'=(1.8,10).
+</annotation></semantics></math></p>
+<p>这可以看作米换成厘米。对象和观测没有改变，输入数字的表示改变了。</p>
+</section>
+<section id="paper-b" class="slide level2">
+<h2>纸笔 B：重新比较 A 与 B</h2>
+<div class="activity-label">
+<p>约 5 分钟 · 训练点与查询点使用同一单位</p>
+</div>
+<ol type="1">
+<li>写出换单位后的 A、B 和查询点。</li>
+<li>计算查询点到 A、B 的距离平方。</li>
+<li>第二坐标的平方距离贡献放大多少倍？</li>
+<li>是否产生了新的观测信息？</li>
+</ol>
+<aside class="notes">
+<p>30—45 分钟，本页与后两页。强调所有训练点和查询点一起换单位；不把数值变大解释为实际负荷增加。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paper-b-answer" class="slide level2">
+<h2>核对：第二坐标的贡献放大 10000 倍</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>A</mi><mo>′</mo></msup><mo>,</mo><msup><mi>q</mi><mo>′</mo></msup><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mn>3.24</mn><mo>+</mo><mn>100</mn><mo>=</mo><mn>103.24</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+d(A',q')^2=3.24+100=103.24,
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>B</mi><mo>′</mo></msup><mo>,</mo><msup><mi>q</mi><mo>′</mo></msup><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><mn>0.04</mn><mo>+</mo><mn>8100</mn><mo>=</mo><mn>8100.04</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d(B',q')^2=0.04+8100=8100.04.
+</annotation></semantics></math></p>
+<div class="fragment">
+<p>原来 B 最近，换单位后 A 最近；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K=1</annotation></semantics></math> 的预测从 1 变为 0。</p>
+</div>
+<p>第二坐标差乘 100，平方差便乘 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>100</mn><mn>2</mn></msup><annotation encoding="application/x-tex">100^2</annotation></semantics></math>。没有增加样本、特征或标签。</p>
+</section>
+<section id="same-representation" class="slide level2">
+<h2>距离要求训练与查询使用同一表示</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>做法</th>
+<th>距离是否有一致含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>训练点和查询点都换成厘米</td>
+<td>是</td>
+</tr>
+<tr class="even">
+<td>训练点用厘米，查询点仍用米</td>
+<td>否</td>
+</tr>
+<tr class="odd">
+<td>两者使用同一训练变换</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>不同坐标的数值差直接进入距离，也就隐含了相对权重。</p>
+</section>
+<section id="standardization" class="slide level2">
+<h2>用训练标准差衡量每个坐标的差异</h2>
+<p>对第 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> 个特征，只用训练记录计算：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>j</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>j</mi></msub></mrow><msub><mi>s</mi><mi>j</mi></msub></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+z_j=\frac{x_j-\mu_j}{s_j}.
+</annotation></semantics></math></p>
+<ul>
+<li>减去训练均值：把训练中心移到 0。</li>
+<li>除以训练标准差：一个训练标准差成为一个坐标单位。</li>
+<li>查询点只接受已确定的同一变换。</li>
+</ul>
+</section>
+<section id="paper-c" class="slide level2">
+<h2>纸笔 C：标准化后谁更近？</h2>
+<div class="activity-label">
+<p>约 6 分钟 · <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1.5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mu=(1,1.5)</annotation></semantics></math> · <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><msqrt><mn>1.25</mn></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s=(1,\sqrt{1.25})</annotation></semantics></math></p>
+</div>
+<ol type="1">
+<li>求查询点 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1.8</mn><mo>,</mo><mn>0.1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q=(1.8,0.1)</annotation></semantics></math> 的标准化坐标。</li>
+<li>计算标准化后到 A、B 的距离平方。</li>
+<li>第二坐标乘 100 后，均值和标准差怎样变化？</li>
+<li>两套单位标准化后的坐标是否相同？</li>
+</ol>
+<aside class="notes">
+<p>45—60 分钟，本页至标准化边界。先让学生写查询坐标，再核对距离；标准差分母使用训练点数，与课程既有约定一致。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paper-c-answer" class="slide level2">
+<h2>核对：训练尺度下，B 恢复为最近邻</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>z</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>0.8</mn><mo>,</mo><mi>−</mi><mn>1.4</mn><mi>/</mi><msqrt><mn>1.25</mn></msqrt><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q_z=(0.8,-1.4/\sqrt{1.25}).
+</annotation></semantics></math></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>点</th>
+<th style="text-align: right;">标准化距离平方</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3.24</mn><mo>+</mo><mn>0.01</mn><mi>/</mi><mn>1.25</mn><mo>=</mo><mn>3.248</mn></mrow><annotation encoding="application/x-tex">3.24+0.01/1.25=3.248</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.04</mn><mo>+</mo><mn>0.81</mn><mi>/</mi><mn>1.25</mn><mo>=</mo><mn>0.688</mn></mrow><annotation encoding="application/x-tex">0.04+0.81/1.25=0.688</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">6.128</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td style="text-align: right;">6.768</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>标准化后从近到远仍为 B、A、C、D。</p>
+</div>
+</section>
+<section id="scale-invariance" class="slide level2">
+<h2>正比例换单位后，标准化坐标保持一致</h2>
+<p>第二坐标乘 100：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>μ</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><mn>100</mn><msub><mi>μ</mi><mn>2</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>s</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><mn>100</mn><msub><mi>s</mi><mn>2</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mu'_2=100\mu_2,\qquad s'_2=100s_2.
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>100</mn><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mn>100</mn><msub><mi>μ</mi><mn>2</mn></msub></mrow><mrow><mn>100</mn><msub><mi>s</mi><mn>2</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub></mrow><msub><mi>s</mi><mn>2</mn></msub></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{100x_2-100\mu_2}{100s_2}
+=\frac{x_2-\mu_2}{s_2}.
+</annotation></semantics></math></p>
+<p>适用条件：同一训练数据、正比例换算、原标准差非零。</p>
+</section>
+<section id="standardization-limits" class="slide level2">
+<h2>标准化解决的是尺度一致，不是全部问题</h2>
+<ul>
+<li>无关特征标准化后仍会进入距离。</li>
+<li>离群点可能改变训练均值和标准差。</li>
+<li>标准化没有用标签学习任务最优权重。</li>
+<li>邻居恢复一致，不等于准确率必然提高。</li>
+</ul>
+<div class="conclusion">
+<p>表示是否合理与预测是否更准，需要分别给出机制和训练外证据。</p>
+</div>
+</section>
+<section id="comparison-design" class="slide level2">
+<h2>四个条件只改变表示与是否标准化</h2>
+<p>120 条开发记录，同一分层三折；每折 80 条训练、40 条验证。</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>条件</th>
+<th style="text-align: right;">第一特征乘 100</th>
+<th style="text-align: right;">折内标准化</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原表示</td>
+<td style="text-align: right;">否</td>
+<td style="text-align: right;">否</td>
+</tr>
+<tr class="even">
+<td>单位变化</td>
+<td style="text-align: right;">是</td>
+<td style="text-align: right;">否</td>
+</tr>
+<tr class="odd">
+<td>原表示标准化</td>
+<td style="text-align: right;">否</td>
+<td style="text-align: right;">是</td>
+</tr>
+<tr class="even">
+<td>单位变化后标准化</td>
+<td style="text-align: right;">是</td>
+<td style="text-align: right;">是</td>
+</tr>
+</tbody>
+</table>
+<p>四个条件均固定 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">K=5</annotation></semantics></math>、等权欧氏距离，先折内中位数填补。</p>
+<aside class="notes">
+<p>60—75 分钟，本页至总体结果。实验放大第一特征，纸笔例子放大第二特征；两者都只改变一个坐标。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="neighbor-evidence" class="slide level2">
+<h2>一条查询：邻居换了，多数票未必换</h2>
+<p>固定查询 C001：</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>表示</th>
+<th>五个近邻</th>
+<th>票数</th>
+<th style="text-align: right;">预测</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原表示</td>
+<td>C035 / C031 / C030 / C055 / C034</td>
+<td>0 类 3 票</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>第一特征乘 100</td>
+<td>C086 / C087 / C035 / C031 / C055</td>
+<td>0 类 3 票</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>两条记录被替换，但两组都以 3 比 2 预测类别 0。</p>
+</div>
+<p>标准化后的两种表示恢复为第一组邻居，全部验证预测也一致。</p>
+</section>
+<section id="reference-results" class="slide level2">
+<h2>总分相同，也可能改变许多对象的判断</h2>
+
+<img data-src="assets/representation-comparison.png" class="plot-large r-stretch"><div class="fragment">
+<p>四个条件均判对 83/120，平均准确率约 0.6917。</p>
+</div>
+<p>原表示与未标准化单位变化之间仍有 28 行预测不同：14 行由对变错，14 行由错变对。</p>
+</section>
+<section id="validation-boundary" class="slide level2">
+<h2>验证记录只作查询，不参加训练变换</h2>
+<div class="process process-four">
+<div class="process-step">
+<p><strong>折内训练</strong> <span>80 行</span></p>
+</div>
+<div class="process-step">
+<p><strong>拟合变换</strong> <span>填补与尺度</span></p>
+</div>
+<div class="process-step">
+<p><strong>建立邻居库</strong> <span>仍是训练行</span></p>
+</div>
+<div class="process-step">
+<p><strong>验证查询</strong> <span>只 transform 与预测</span></p>
+</div>
+</div>
+<p>把验证行加入邻居库，会让查询对象用到自身或其他评价对象的信息。</p>
+</section>
+<section id="distance-demo" class="slide level2">
+<h2>教师演示：改变尺度与 K，预测怎样变化？</h2>
+<div>
+<div id="pyodide-1" class="exercise-cell">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlY2hvIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJydW5idXR0b24iOnRydWV9LCJjb2RlIjoicG9pbnRzID0gWyhcIkFcIiwgMCwgMCwgMCksIChcIkJcIiwgMiwgMSwgMSksXG4gICAgICAgICAgKFwiQ1wiLCAwLCAyLCAwKSwgKFwiRFwiLCAyLCAzLCAxKV1cbnF1ZXJ5ID0gKDEuOCwgMC4xKVxuc2NhbGVfc2Vjb25kID0gMVxuayA9IDNcblxucmFua2VkID0gc29ydGVkKFxuICAgICgoKHgtcXVlcnlbMF0pKioyICsgKHNjYWxlX3NlY29uZCooeS1xdWVyeVsxXSkpKioyLCBuYW1lLCBsYWJlbClcbiAgICAgZm9yIG5hbWUsIHgsIHksIGxhYmVsIGluIHBvaW50cylcbilcbm5laWdoYm9ycyA9IHJhbmtlZFs6a11cbnByZWRpY3Rpb24gPSBpbnQoc3VtKGxhYmVsIGZvciBfLCBfLCBsYWJlbCBpbiBuZWlnaGJvcnMpID4gayAvIDIpXG5wcmludChcIuS7jui/keWIsOi/nO+8mlwiLCBbbmFtZSBmb3IgXywgbmFtZSwgXyBpbiByYW5rZWRdKVxucHJpbnQoXCLlj4LkuI7mipXnpajvvJpcIiwgWyhuYW1lLCBsYWJlbCkgZm9yIF8sIG5hbWUsIGxhYmVsIGluIG5laWdoYm9yc10pXG5wcmludChcIumihOa1i+exu+WIq++8mlwiLCBwcmVkaWN0aW9uKSJ9
+</script>
+</div>
+<div class="fragment demo-reference">
+<p>默认尺度 1、K=3：B/A/C 投票，预测 0。将尺度改为 100、K=1：A 最近，仍预测 0；只改尺度且 K=3 时为 A/B/C，预测 0。</p>
+</div>
+<aside class="notes">
+<p>75—80 分钟。教师演示使用内置 Python；先让学生预测改变 scale_second 或 k 的结果。静态核对点击揭示，运行失败不影响主线。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="knn-kmeans" class="slide level2">
+<h2>KNN 与 K-means 都用距离，但回答不同问题</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>KNN 分类</th>
+<th>K-means 聚类</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>是否使用训练标签</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr class="even">
+<td>K 的含义</td>
+<td>参与投票的近邻数</td>
+<td>簇或中心数</td>
+</tr>
+<tr class="odd">
+<td>当前输出</td>
+<td>查询对象的类别预测</td>
+<td>整批对象的距离分组</td>
+</tr>
+</tbody>
+</table>
+<p>下一讲将从“用邻居标签预测”转向“没有标签时怎样描述结构”。</p>
+</section>
+<section id="t11-summary" class="slide level2">
+<h2>小结：距离同时依赖对象和表示</h2>
+<ul>
+<li>KNN 从训练库选择近邻，再用训练标签投票。</li>
+<li>K 改变参考范围；奇数 K 只解决部分票数并列。</li>
+<li>单位和尺度改变各坐标对欧氏距离的贡献。</li>
+<li>标准化用训练统计建立共同尺度，不保证预测提高。</li>
+<li>近邻、单条预测和总体分数需要分别核对。</li>
+</ul>
+<aside class="notes">
+<p>80—85 分钟。本页归纳后发放离堂题；不在本页重新展开技术例外。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="t11-exit" class="slide level2">
+<h2>离堂检查：纠正两条判断</h2>
+<div class="activity-label">
+<p>约 5 分钟 · 独立完成 · 姓名________</p>
+</div>
+<ol type="1">
+<li>“KNN 不需要学习参数，所以可以把验证样本也加入邻居库。”</li>
+<li>“奇数 K 可以避免所有并列。”</li>
+<li>用一句话区分 KNN 分类与 K-means 聚类。</li>
+</ol>
+<p>每条都写出判断和依据；答案在教师材料中核对。</p>
+<aside class="notes">
+<p>85—90 分钟。收取独立短答，记录验证范围与并列问题的卡点。答案不在学生投影片中揭示。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOC4xL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIl19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8xID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>机器学习 · T11</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="t11_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="t11_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="t11_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="t11_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="t11_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="t11_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="t11_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="t11_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="t11_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 8.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../../../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "已复制");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "已复制");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

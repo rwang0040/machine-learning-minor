@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T11 课堂活动：邻居、距离与尺度 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t11-课堂活动邻居距离与尺度">T11 课堂活动：邻居、距离与尺度</h1>
+<p>姓名________　班级________　日期________</p>
+<p>A—C 随课堂讲解完成，D 按教师安排独立作答。无需电脑；距离可以比较平方，根式和小数均可保留。</p>
+<h2 id="a谁是邻居">A．谁是邻居？</h2>
+<p>训练点 A=(0,0)/类别 0，B=(2,1)/类别 1，C=(0,2)/类别 0，D=(2,3)/类别 1；查询 q=(1.8,0.1)，真实类别未知。使用欧氏距离、等权投票。</p>
+<ol type="1">
+<li>填距离平方：A____ B____ C____ D____，按近到远排序。</li>
+<li>K=1 和 K=3 各预测什么？写出参与投票的标签。</li>
+<li>预测改变是否说明其中一个必然正确？还缺什么证据？</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math></th>
+<th>参与投票的训练点</th>
+<th>标签</th>
+<th style="text-align: right;">预测类别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td></td>
+<td></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td></td>
+<td></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<!-- print:answer-lines=8 -->
+<!-- print:pagebreak -->
+<h2 id="b只改单位">B．只改单位</h2>
+<p>将所有训练点与查询点的第二坐标乘 100，第一坐标不变。</p>
+<ol type="1">
+<li>写出新查询坐标并计算到 A、B 的距离平方；谁更近？</li>
+<li>这一坐标在平方距离中的贡献放大多少倍？是否产生了新的观测信息？</li>
+<li>只变换训练点、不变换查询点可以吗？为什么？</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>变换后的坐标</th>
+<th style="text-align: right;">到查询点的距离平方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查询点 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math></td>
+<td></td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>A</td>
+<td></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>B</td>
+<td></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<!-- print:answer-lines=13 -->
+<!-- print:pagebreak -->
+<h2 id="c标准化与边界">C．标准化与边界</h2>
+<p>给定原训练均值 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1.5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mu=(1,1.5)</annotation></semantics></math>，标准差 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><msqrt><mn>1.25</mn></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s=(1,\sqrt{1.25})</annotation></semantics></math>，均只根据 A—D 计算。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">z=(x-\mu)/s</annotation></semantics></math>。</p>
+<ol type="1">
+<li>写出查询 q 的标准化坐标；标准化后到 A、B 的距离平方各是多少？</li>
+<li>第二坐标乘 100 后，均值和标准差如何变化？标准化坐标是否变化？</li>
+<li>评价模型时，有人将训练点与当前验证查询点一起计算均值/标准差，称“没看标签所以没有泄漏”。请判断。</li>
+<li>标准化是否保证准确率增加？说明理由。</li>
+</ol>
+<!-- print:answer-lines=17 -->
+<!-- print:pagebreak -->
+<h2 id="d离堂检查邻居库与并列">D．离堂检查：邻居库与并列</h2>
+<p>姓名________　班级________　日期________</p>
+<p>独立作答，不与同学讨论。</p>
+<ol type="1">
+<li>纠正：“KNN 不需要学习参数，所以可以把验证样本也加入邻居库。”</li>
+<li>纠正：“奇数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math> 可以避免所有并列。”说明它能避免哪类并列、不能排除哪类并列。</li>
+<li>用一句话区分 KNN 分类与下讲 K-means 聚类，至少写出是否使用目标标签以及输出是什么。</li>
+</ol>
+<!-- print:answer-lines=17 -->
+
+</main></body></html>

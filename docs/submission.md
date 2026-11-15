@@ -1,6 +1,6 @@
 # 个人文件、保存与提交
 
-在课程根目录执行下面命令，创建自己的 B01、B02、B03、B04、B05 完整单元副本（将学号替换为自己的标识）：
+在课程根目录执行下面命令，创建自己的 B01—B06 完整单元副本（将学号替换为自己的标识）：
 
 ```bash
 # WSL / Cloud Studio
@@ -39,3 +39,11 @@ Windows 同样把命令开头替换为 `.\.venv\Scripts\python.exe`。只会添�
 ```
 
 Windows 将命令开头替换为 `.\.venv\Scripts\python.exe`。B05 单元保存于 `work/<学号>/units/boosting/`。完成实验后，按该单元的 `project/README.md`，将 `baseline-cells.ipynb` 追加到原有的 `work/<学号>/units/decision-tree/project/project.ipynb`。保留原计划和已写答案，继续使用同一份项目文件。
+
+## 已有个人目录，添加 B06
+
+```bash
+.venv/bin/python scripts/prepare-work.py 学号 --unit unsupervised
+```
+
+Windows 将命令开头替换为 `.\.venv\Scripts\python.exe`。B06 单元保存于 `work/<学号>/units/unsupervised/`。先从头运行原项目至 B05 基线，再按该单元的 `project/README.md` 将 `candidate-cells-minor.ipynb` 追加到同一份 `work/<学号>/units/decision-tree/project/project.ipynb`；固定使用给定 logistic 候选，不重新划分、不读取保留测试。
