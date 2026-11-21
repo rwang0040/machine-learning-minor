@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>个人文件、保存与提交 · 机器学习</title><link rel="stylesheet" href="../assets/site.css"></head><body><main class="reading"><a class="back" href="../index.html">← 返回课程首页</a>
 <h1 id="个人文件保存与提交">个人文件、保存与提交</h1>
-<p>在课程根目录执行下面命令，创建自己的 B01—B06 完整单元副本（将学号替换为自己的标识）：</p>
+<p>在课程根目录执行下面命令，创建自己的 B01—B07 完整单元副本（将学号替换为自己的标识）：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># WSL / Cloud Studio</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> scripts/prepare-work.py 学号</span></code></pre></div>
 <p>Windows 使用 <code>.\.venv\Scripts\python.exe scripts\prepare-work.py 学号</code>。副本放在 <code>work/&lt;学号&gt;/units/</code>，数据与 Notebook 的相对关系保持不变；脚本发现已有目录即停止，不覆盖旧答案。分别在对应单元的 <code>labs/</code> 里完成 Notebook。</p>
@@ -24,5 +24,8 @@
 <h2 id="已有个人目录添加-b06">已有个人目录，添加 B06</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> scripts/prepare-work.py 学号 <span class="at">--unit</span> unsupervised</span></code></pre></div>
 <p>Windows 将命令开头替换为 <code>.\.venv\Scripts\python.exe</code>。B06 单元保存于 <code>work/&lt;学号&gt;/units/unsupervised/</code>。先从头运行原项目至 B05 基线，再按该单元的 <code>project/README.md</code> 将 <code>candidate-cells-minor.ipynb</code> 追加到同一份 <code>work/&lt;学号&gt;/units/decision-tree/project/project.ipynb</code>；固定使用给定 logistic 候选，不重新划分、不读取保留测试。</p>
+<h2 id="已有个人目录添加-b07">已有个人目录，添加 B07</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> scripts/prepare-work.py 学号 <span class="at">--unit</span> mlp-training</span></code></pre></div>
+<p>Windows 将命令开头替换为 <code>.\.venv\Scripts\python.exe</code>。B07 单元保存于 <code>work/&lt;学号&gt;/units/mlp-training/</code>，在该目录的 <code>labs/</code> 打开 <code>B07-minor.ipynb</code>，按 Notebook 要求完成并保存个人副本。</p>
 
 </main></body></html>

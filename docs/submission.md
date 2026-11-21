@@ -1,6 +1,6 @@
 # 个人文件、保存与提交
 
-在课程根目录执行下面命令，创建自己的 B01—B06 完整单元副本（将学号替换为自己的标识）：
+在课程根目录执行下面命令，创建自己的 B01—B07 完整单元副本（将学号替换为自己的标识）：
 
 ```bash
 # WSL / Cloud Studio
@@ -47,3 +47,11 @@ Windows 将命令开头替换为 `.\.venv\Scripts\python.exe`。B05 单元保存
 ```
 
 Windows 将命令开头替换为 `.\.venv\Scripts\python.exe`。B06 单元保存于 `work/<学号>/units/unsupervised/`。先从头运行原项目至 B05 基线，再按该单元的 `project/README.md` 将 `candidate-cells-minor.ipynb` 追加到同一份 `work/<学号>/units/decision-tree/project/project.ipynb`；固定使用给定 logistic 候选，不重新划分、不读取保留测试。
+
+## 已有个人目录，添加 B07
+
+```bash
+.venv/bin/python scripts/prepare-work.py 学号 --unit mlp-training
+```
+
+Windows 将命令开头替换为 `.\.venv\Scripts\python.exe`。B07 单元保存于 `work/<学号>/units/mlp-training/`，在该目录的 `labs/` 打开 `B07-minor.ipynb`，按 Notebook 要求完成并保存个人副本。

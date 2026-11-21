@@ -1,4 +1,4 @@
-"""Create personal B01—B06 unit copies without overwriting student work."""
+"""Create personal B01—B07 unit copies without overwriting student work."""
 
 from pathlib import Path
 import argparse
@@ -22,6 +22,7 @@ def main():
             "decision-tree",
             "boosting",
             "unsupervised",
+            "mlp-training",
         ],
         help="仅添加指定实验单元，可用于已有个人目录；不覆盖已有单元",
     )
@@ -40,6 +41,7 @@ def main():
                 "decision-tree",
                 "boosting",
                 "unsupervised",
+                "mlp-training",
             ]
         )
     )

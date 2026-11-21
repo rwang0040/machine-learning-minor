@@ -1,0 +1,31 @@
+.reveal h2::before { content: "T14 / 反向传播与训练"; }
+.reveal #title-slide::before { content: "机器学习 / 理论单元 14"; }
+.reveal #title-slide::after { content: "沿着计算路径找出各层的更新依据"; }
+.reveal #paper-d h2::before { content: "T14 / 课堂反馈"; }
+.reveal #title-slide { box-sizing: border-box; }
+.reveal .process-three { grid-template-columns: repeat(3, 1fr); }
+.reveal .plot-medium, .reveal .plot-wide {
+  max-height: 345px;
+  max-width: 100%;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.reveal .quarto-figure figcaption { text-align: center; }
+.reveal .exercise-editor .cm-editor { font-size: 19px; line-height: 1.25; }
+.reveal .exercise-editor .card-header { font-size: 17px; }
+.reveal .exercise-cell .exercise-output, .reveal .exercise-cell pre {
+  font-size: 20px;
+  line-height: 1.3;
+}
+.reveal .exercise-cell { margin: .15em 0; }
+.reveal .demo-reference { font-size: .68em; color: var(--ml-muted); margin-top: .35em; }
+.reveal .cell-output-container-pyodide > div.sourceCode { display: none; }
+@font-face {
+  font-family: "ML Latin Modern Math";
+  src: url("assets/fonts/latinmodern-math.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+}
+.reveal math { font-family: "ML Latin Modern Math", math; line-height: normal; }

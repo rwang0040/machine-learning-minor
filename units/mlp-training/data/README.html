@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>B07 数据与评价协议 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="b07-数据与评价协议">B07 数据与评价协议</h1>
+<p>training-classification.csv 与 T13 课堂 CSV 一致。原 120 行 train 为开发数据，沿用分层三折 shuffle=True/random_state=42 的第一折，80 训练/40 验证。本次只用这一固定折观察训练机制，不声称完整三折估计。</p>
+<p>输入 planned_load_ratio、ambient_index，目标 over_limit 转为(n,1)。中位数及标准化仅 fit 这 80 训练行；40 验证行只 transform，标签仅计算评价损失。旧 40 行 validation 不参与，项目保留测试不读取。</p>
+<p>2→2→1、ReLU 隐藏层、Sigmoid 输出、平均二分类交叉熵。种子 20261003、标准差 0.2 正态权重、零偏置，与 T13 随机参数一致。200 步全批量梯度下降、无正则化、无早停。学习率 0 是故意冻结错误；0.1 是预定修复值，不作搜索或最优承诺。</p>
+<p>Notebook 记录第 0 步及 200 次更新后的训练和验证损失，共 201 个点。每次运行从同一初始化独立复制；验证数据不进入梯度，记录曲线不等于按验证选轮次。纸笔单隐藏单元是独立手算示例，不混为课堂批量网络的参数。</p>
+
+</main></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>T13 纸笔活动 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="t13-纸笔活动">T13 纸笔活动</h1>
+<p>姓名________ 班级________ 日期________。</p>
+<p>给定 W1=[[1,1],[1,1]]，b1=[0,−1]，W2=[[4],[−8]]，b2=[−2]；隐藏层 ReLU，输出 Sigmoid。参数已给定，没有训练。</p>
+<h2 id="a结构与形状">A．结构与形状</h2>
+<ol type="1">
+<li>网络输入、隐藏、输出各几维？参数总数是多少？</li>
+<li>X 为(n,2)，写出 W1、b1、Z1、H、W2、b2、S、P 的形状。</li>
+<li>批量从 4 行改成 20 行，参数总数是否变化？隐藏激活是否属于参数？</li>
+</ol>
+<!-- print:answer-lines=16 -->
+<!-- print:pagebreak -->
+<h2 id="b前向计算">B．前向计算</h2>
+<ol type="1">
+<li>对 x=(1,0)依次计算 Z1、H、S、P 与阈值 0.5 类别。可使用σ(2)≈0.8808、σ(−2)≈0.1192。</li>
+<li>对 x=(0,0)核对同样过程。</li>
+<li>XOR 标签依次为 0、1、1、0；教师给定参数使四点都正确，是否证明网络已通过训练或能泛化？</li>
+</ol>
+<!-- print:answer-lines=16 -->
+<!-- print:pagebreak -->
+<h2 id="c隐藏非线性">C．隐藏非线性</h2>
+<ol type="1">
+<li>去掉 ReLU 后，将 S 写成一个仿射映射，求等效权重和偏置。</li>
+<li>此时(0,0)的分数和类别是什么？</li>
+<li>为什么只在最终输出加 Sigmoid，仍不能把一个仿射分数的阈值边界变成任意非线性边界？</li>
+</ol>
+<!-- print:answer-lines=16 -->
+<!-- print:pagebreak -->
+<h2 id="d离堂检查">D．离堂检查</h2>
+<ol type="1">
+<li>预测 P 形状(4,1)，标签 y 形状(4,)，直接 P−y 得到什么形状？为什么不对？</li>
+<li>前向计算是否自动更新参数？训练还缺什么步骤（只描述，不求导）？</li>
+<li>用一句话解释隐藏层非线性的作用，并说明它不保证什么。</li>
+</ol>
+<!-- print:answer-lines=16 -->
+
+</main></body></html>
