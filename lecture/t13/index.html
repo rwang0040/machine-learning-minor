@@ -234,11 +234,11 @@ s=w_1x_1+w_2x_2+b,
 <h2>决策树可以用两步判断处理异或</h2>
 <ul>
 <li>手工构造一棵深度为 2 的树，先按 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>&lt;</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">x_1&lt;0.5</annotation></semantics></math> 分支，再在两个分支中分别按 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>&lt;</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">x_2&lt;0.5</annotation></semantics></math> 划分。</li>
-<li>四个点落到四个叶子，叶子给出相应标签。</li>
+<li>两步划分后，四个叶子各含一个样本，Gini 均为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>。</li>
 <li>从数据逐步训练时，按任一原始特征做第一步划分，两个子节点都各含一个正例和一个负例。</li>
 </ul>
 <div class="fragment">
-<p>加权 Gini 仍为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.5</mn><annotation encoding="application/x-tex">0.5</annotation></semantics></math>。若每一步都要求不纯度下降，树会停在根节点。</p>
+<p>第一次试划分后，两个子节点的加权 Gini 仍为 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.5</mn><annotation encoding="application/x-tex">0.5</annotation></semantics></math>，与根节点相同。若只接受能降低不纯度的划分，树会停在根节点。</p>
 </div>
 </section>
 <section id="engineered-feature" class="slide level2">

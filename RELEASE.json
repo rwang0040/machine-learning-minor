@@ -19,9 +19,9 @@
     "T13",
     "T14"
   ],
-  "source_revision": "a5651965246fdfdb0e45ca8c7dd64f1c4298cedc",
+  "source_revision": "dafd210846e4ab1d6312210ef64f72089ed327e2",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "9f0b01746648ce1dd42e5833de016c9970be1d13a779ea0433f29f7a557558c5",
+  "manifest_sha256": "1e45a9dc11331415d8c927cd18ee0d55abfa682ccd269ee23ac1bf9df237bf80",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -940,7 +940,7 @@
     "lecture/t13/assets/network.png": "20b3e4756210305cdcf7f78da1ec3aa14c5217acf92b96db441d9dfa7ebb4916",
     "lecture/t13/assets/xor-boundaries.png": "a00bc6a7517ac4c74a99b21c7f1fca678ada218c3393a6e724a736e6c8104fc2",
     "lecture/t13/assets/xor-diagonals.png": "09260101abdb354f7c95d9e435a5c3b8ee6f405822f23e46cbb973460aa771fe",
-    "lecture/t13/index.html": "017c4f6c8ec8ab61b8405f1fb7ac7ef4af47d1452e648c808609aebd6d50696d",
+    "lecture/t13/index.html": "0b0eb80d661fb138f9322006642d19ac7c29246b52d8bd13eda28603807ade94",
     "lecture/t13/t13.css": "4abfbd71043f6d51a9021beba4324701f027f7959e47b9a4e8b07e909f2383af",
     "lecture/t13/t13_files/libs/clipboard/clipboard.min.js": "e17a1d816e13c0826e0ed7febfabc3277f45571234bde0bf9120829a7169edc9",
     "lecture/t13/t13_files/libs/quarto-contrib/live-runtime/live-runtime.css": "e57daafd8024186326d4bcb743c8afd252468e87c36238b2baadcfe5be501f46",
@@ -1136,7 +1136,7 @@
     "units/mlp-forward/worksheets/student.pdf": "352474597fbda43aad0e8c7c2e3502c32eeab3be8657637984cda27ae4a81358",
     "units/mlp-training/data/README.md": "0fbe93fda5066794fcffaecf4a70abdd4a08903809a9c2573982a19a5598e9e5",
     "units/mlp-training/data/training-classification.csv": "cb10b78fbf68da81cece16a5ff2ca4f04427311f6dd5137e9c818a543c53d4b1",
-    "units/mlp-training/labs/B07-minor.ipynb": "63b0850d103d0712d1140be0703248815dbf7d9c337201c8c075a774eb093bae",
+    "units/mlp-training/labs/B07-minor.ipynb": "e6f96a070f1a0204b1b7fd545faf62f29474ca603dd65e7e1a1efff707f5bb80",
     "units/mlp-training/labs/mlp_core.py": "5a911c4e68544c4f213c8af5daa400ae6e14b32058d2042ca74e8ec4640c50c6",
     "units/mlp-training/worksheets/student.md": "0ba4d30c558e0276e020ad4d491a4eb8bb3a67490ba012c5ffac089a2fea791f",
     "units/mlp-training/worksheets/student.pdf": "fdac651ef094bd23b8a3141088cc470bc5822814da1cd54d2f86881f99bd7da4",
@@ -1406,7 +1406,7 @@
     },
     "units/mlp-training/labs/B07-minor.ipynb": {
       "source": "units/mlp-training/labs/B07-minor.ipynb",
-      "source_sha256": "63b0850d103d0712d1140be0703248815dbf7d9c337201c8c075a774eb093bae"
+      "source_sha256": "e6f96a070f1a0204b1b7fd545faf62f29474ca603dd65e7e1a1efff707f5bb80"
     },
     "units/mlp-training/data/training-classification.csv": {
       "source": "units/mlp-training/data/training-classification.csv",
@@ -5078,7 +5078,7 @@
     },
     "lecture/t13/index.html": {
       "source": "lecture/t13/index.html",
-      "source_sha256": "017c4f6c8ec8ab61b8405f1fb7ac7ef4af47d1452e648c808609aebd6d50696d"
+      "source_sha256": "0b0eb80d661fb138f9322006642d19ac7c29246b52d8bd13eda28603807ade94"
     },
     "lecture/t13/t13.css": {
       "source": "lecture/t13/t13.css",
