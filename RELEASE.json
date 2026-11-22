@@ -19,9 +19,9 @@
     "T13",
     "T14"
   ],
-  "source_revision": "ef6b8f76ae2c5f1a7bfa4a928ec199a195de6f77",
+  "source_revision": "631d8afb291647b7e680f22e1e4670561735f1f1",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "58a9abd4cb1c7fa0bb172984c56aec9de2aa4cc04ca502adc773f49374aab7c5",
+  "manifest_sha256": "8b435be29af1f072f3c1011db15b84076f1eabc77b53f3f6cb6381267eaa0468",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
@@ -32,8 +32,8 @@
     "docs/course-map.md": "9a2d2a808b7200275d655a3355f6e2d3834bac737245a84fc52bd71d38f1f4fb",
     "docs/getting-started.md": "4d90af411e42d15e979a104a9cfc794afd63620346234bda4b610ae839099ec8",
     "docs/submission.md": "ad5911758e99d13ee1a3d0ea6fb4e0402b8fed7330a3867108686e5b5c18dbf8",
-    "final/quickdraw-final.zip": "0b2243d338ddc11a2af07c2d072a58ca0ee92b3efdba54189a85bf6263b78d0d",
-    "final/student.md": "9a8ee16662d5c26f10069fe8248a521bf9eeddfb40fb8b11ccbfe27c1f1001fe",
+    "final/quickdraw-final.zip": "30c814b7bf37d174946e93c61b5511574329f695c60820fed804d856fb04a4dc",
+    "final/student.md": "1422da562a6dff780b3c4da97665f0d9fd31a380ec5162288237125b79c8af66",
     "homework/t01-t02/student.md": "5b8271f2ade682acb9ab7d0f3229698a16a74c72ca52ae391133d7f9a7e1c6ca",
     "homework/t03-t04/student.md": "4cdd3c81161fdcfffe95cacbd20fbd253b638e980d36dc0047ae247e469a4aa6",
     "homework/t05-t06/student.md": "ca9c2c525413e99e12ff060487976b1d3ca8c62b4a60de851e37e88bebe7bfae",
@@ -1175,7 +1175,7 @@
     "docs/course-map.html": "b3df5aaa4827109e298e53d01afc6ed0a012d8d691b0eb50580fad0ef5974657",
     "docs/getting-started.html": "fb2676149c22ced322a9e6e17854ffd96673689561157254cbbbff5ba6e6ab2b",
     "docs/submission.html": "cb92bb457ce4931b545d550a145279660269d2b190685156092344bf950d24f8",
-    "final/student.html": "4c37118268d3d892281f390ea2f6efc4f20a6000a279bf1088a9e1f04e6d7049",
+    "final/student.html": "80dcc6055a33d05a4540b4e815bed8730f7cfae8130b28b6c0e4139de3fcaff4",
     "homework/t01-t02/student.html": "4b76cb44fdd2e4069b044bf85582a395ac5e12c93246cadd13e9185e258a90f6",
     "homework/t03-t04/student.html": "0676a4cce98883472d7971d36b36dafc917750329d43d032267638646335f2be",
     "homework/t05-t06/student.html": "10ca1fc6af90baaac4264d455239059cd1c54d06dce563448fb6c307e5f25591",
@@ -5745,7 +5745,7 @@
     },
     "final/student.md": {
       "source": "exam/final/student.md",
-      "source_sha256": "9a8ee16662d5c26f10069fe8248a521bf9eeddfb40fb8b11ccbfe27c1f1001fe"
+      "source_sha256": "1422da562a6dff780b3c4da97665f0d9fd31a380ec5162288237125b79c8af66"
     }
   },
   "generated_student_files": [
@@ -5800,7 +5800,7 @@
   "final_assessment": {
     "archive": "final/quickdraw-final.zip",
     "members": {
-      "student.md": "9a8ee16662d5c26f10069fe8248a521bf9eeddfb40fb8b11ccbfe27c1f1001fe",
+      "student.md": "1422da562a6dff780b3c4da97665f0d9fd31a380ec5162288237125b79c8af66",
       "data-readme.md": "ad15ed82474b2cc4ba969e9baa0efed676963d1ccfec90cf16c5ca9088bfe8ad",
       "train.csv": "dc73cc237bdb64e25682f3f5482dc5ef016b58a8e1f772f12310d5fbdfd5d5f4"
     }
