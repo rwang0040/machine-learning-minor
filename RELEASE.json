@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "release_id": "minor-48-t01-t14-2026-11-21",
-  "date": "2026-11-21",
+  "release_id": "minor-48-t01-t14-2026-11-22",
+  "date": "2026-11-22",
   "track": "minor-48",
   "chapters": [
     "T01",
@@ -19,23 +19,25 @@
     "T13",
     "T14"
   ],
-  "source_revision": "dafd210846e4ab1d6312210ef64f72089ed327e2",
+  "source_revision": "47c45c946664b7642df26b6c0c876f90c03e559b",
   "source_includes_uncommitted_release_preparation": false,
-  "manifest_sha256": "1e45a9dc11331415d8c927cd18ee0d55abfa682ccd269ee23ac1bf9df237bf80",
+  "manifest_sha256": "58a9abd4cb1c7fa0bb172984c56aec9de2aa4cc04ca502adc773f49374aab7c5",
   "files": {
     ".gitattributes": "ad6539ba14cdff42dd665d5a1a2c3e1669ae3f5e445bc26788e563af0458b209",
     ".gitignore": "08354b9311a0fde5f5d567ae77cf4f979cc9c8875f91f02bef81b20de9b7ec3f",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     ".python-version": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb",
-    "README.md": "43acc5b74203a0da838c97c6f9568a86ec84a8b734deda57f0b98d1b92cd3edd",
+    "README.md": "d24a195672e584f1331de18237f00b621de0637df00e0088c60068e6a1e97772",
     "assets/site.css": "12d07a9513605d60a035c869452dd1457e5052face6a7400f47f0dacb03b7cd6",
     "docs/course-map.md": "9a2d2a808b7200275d655a3355f6e2d3834bac737245a84fc52bd71d38f1f4fb",
     "docs/getting-started.md": "4d90af411e42d15e979a104a9cfc794afd63620346234bda4b610ae839099ec8",
     "docs/submission.md": "ad5911758e99d13ee1a3d0ea6fb4e0402b8fed7330a3867108686e5b5c18dbf8",
+    "final/quickdraw-final.zip": "0b2243d338ddc11a2af07c2d072a58ca0ee92b3efdba54189a85bf6263b78d0d",
+    "final/student.md": "9a8ee16662d5c26f10069fe8248a521bf9eeddfb40fb8b11ccbfe27c1f1001fe",
     "homework/t01-t02/student.md": "5b8271f2ade682acb9ab7d0f3229698a16a74c72ca52ae391133d7f9a7e1c6ca",
     "homework/t03-t04/student.md": "4cdd3c81161fdcfffe95cacbd20fbd253b638e980d36dc0047ae247e469a4aa6",
     "homework/t05-t06/student.md": "ca9c2c525413e99e12ff060487976b1d3ca8c62b4a60de851e37e88bebe7bfae",
-    "index.html": "6c2ed40bea5cc47c84cedd49f01484ee32cae3995de5a41ae5573201ca149dba",
+    "index.html": "f40b4733803ab6093c78085fe2d094a03e718a22361050223846d9f0026c08ee",
     "lecture-notes/README.md": "59643474f0c5bb067a9484a5c3c909d83d0f94560519d1a92966880c8e6a41e6",
     "lecture-notes/pdf/minor-48/t01.pdf": "36cf4ee92f638bc7a132af22a489bc72fe5f1676f3b0493d9280da548a45d135",
     "lecture-notes/pdf/minor-48/t02.pdf": "b0155144cd9bb3aaf19f870723ca959186c12985b161f67503b885ba0c5e9267",
@@ -1116,7 +1118,7 @@
     "units/decision-tree/data/README.md": "77f94a11fd1af4dd5d5c7deaa9a3b3e4f4a76e5d926dc6ade117273658ff19b6",
     "units/decision-tree/data/tree-classification.csv": "cb10b78fbf68da81cece16a5ff2ca4f04427311f6dd5137e9c818a543c53d4b1",
     "units/decision-tree/labs/B04-minor.ipynb": "2a4695ad71abe28af09c232f381f23a9a9310db29922df2a63f4227224f44b9e",
-    "units/decision-tree/project/README.md": "03322c230d2917196869a403f280ce08d006c540082a2dc310025da25c574898",
+    "units/decision-tree/project/README.md": "a848ff0bffdaf2e6055316dbae2ac047bbbb95ce2b9be1ca66149b154f7d9692",
     "units/decision-tree/project/development.csv": "ac833d3042f8a984543089629cc39c8a36e80d2104bfc40de7990b4545c0b850",
     "units/decision-tree/project/project.ipynb": "c09fe2994d4d09f9cd44a64b191b998b61f230cd18da85fd229aec989fc03feb",
     "units/decision-tree/worksheets/student.md": "cded3806f8d5ccd1840f4d9c69b1f35abc859c3db0656f57a01d75b173553c5d",
@@ -1169,10 +1171,11 @@
     "uv.lock": "f7522126644ac43f9e6158fec4131c412f48eb6f4dfdd2490bc05408cbc710d9",
     "assets/fonts/latinmodern-math.otf": "6075562b771f8b82f0c179e363389684f2dd09de30038269e2628e504bd7be0f",
     "assets/fonts/GUST-FONT-LICENSE.txt": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050",
-    "README.html": "65a26712214e41ae0892c8bcb9ce6c480a43f3be34744e114aa4a3b29c17bdb1",
+    "README.html": "22b5cec1f0c558cd6fca8d4da6f8ce88300ad14b1f55e6726ecb5c604ab5a5b8",
     "docs/course-map.html": "b3df5aaa4827109e298e53d01afc6ed0a012d8d691b0eb50580fad0ef5974657",
     "docs/getting-started.html": "fb2676149c22ced322a9e6e17854ffd96673689561157254cbbbff5ba6e6ab2b",
     "docs/submission.html": "cb92bb457ce4931b545d550a145279660269d2b190685156092344bf950d24f8",
+    "final/student.html": "04ac79ae4cb5cf3a7b70ef37326bb225dd3546bf0bb6d2fa100e75238df5cba3",
     "homework/t01-t02/student.html": "4b76cb44fdd2e4069b044bf85582a395ac5e12c93246cadd13e9185e258a90f6",
     "homework/t03-t04/student.html": "0676a4cce98883472d7971d36b36dafc917750329d43d032267638646335f2be",
     "homework/t05-t06/student.html": "10ca1fc6af90baaac4264d455239059cd1c54d06dce563448fb6c307e5f25591",
@@ -1183,7 +1186,7 @@
     "units/boosting/worksheets/student.html": "8d43cd6d58af0f731ff4ec6e79def438f5bb14027d7b56e0f8ca8fcb52e99686",
     "units/cross-validation/worksheets/student.html": "ea3604a0c8dc4ae936c507b3cc72c937e44552eb28c5c602c80b428e0e73011d",
     "units/decision-tree/data/README.html": "90c02cc91d9151ecb1a405f906fa133294253052ae5eb1f1007256b9d269f691",
-    "units/decision-tree/project/README.html": "1be876a1ce0c3cbf48332b020dc90128c2cd8b082ab13b89d088485972c82115",
+    "units/decision-tree/project/README.html": "b643be3e212c78f7a34cbadfe7a6873077a8e2ec0570629cb86187966ced8986",
     "units/decision-tree/worksheets/student.html": "13e290d8cbdeae25ada4c317b80a0bbf8ea6cf1535c154c0d324e736e52968b6",
     "units/linear-regression/data/README.html": "9c5785f89994341b302da4b19391ce4185d9ac3c421988374800d87f34f122ee",
     "units/linear-regression/worksheets/student.html": "c02accaf3fea6855b4990c294cc930b10b6e12c26d11205bc71f477f9978a164",
@@ -1438,7 +1441,7 @@
     },
     "units/decision-tree/project/README.md": {
       "source": "units/decision-tree/project/README.md",
-      "source_sha256": "03322c230d2917196869a403f280ce08d006c540082a2dc310025da25c574898"
+      "source_sha256": "a848ff0bffdaf2e6055316dbae2ac047bbbb95ce2b9be1ca66149b154f7d9692"
     },
     "units/boosting/project/README.md": {
       "source": "units/boosting/project/README.md",
@@ -5739,6 +5742,10 @@
     "units/mlp-training/worksheets/student.pdf": {
       "source": "units/mlp-training/worksheets/student.pdf",
       "source_sha256": "fdac651ef094bd23b8a3141088cc470bc5822814da1cd54d2f86881f99bd7da4"
+    },
+    "final/student.md": {
+      "source": "exam/final/student.md",
+      "source_sha256": "9a8ee16662d5c26f10069fe8248a521bf9eeddfb40fb8b11ccbfe27c1f1001fe"
     }
   },
   "generated_student_files": [
@@ -5755,6 +5762,8 @@
     "docs/getting-started.md",
     "docs/submission.html",
     "docs/submission.md",
+    "final/quickdraw-final.zip",
+    "final/student.html",
     "homework/t01-t02/student.html",
     "homework/t03-t04/student.html",
     "homework/t05-t06/student.html",
@@ -5788,6 +5797,14 @@
     "units/unsupervised/project/README.html",
     "units/unsupervised/worksheets/student.html"
   ],
+  "final_assessment": {
+    "archive": "final/quickdraw-final.zip",
+    "members": {
+      "student.md": "9a8ee16662d5c26f10069fe8248a521bf9eeddfb40fb8b11ccbfe27c1f1001fe",
+      "data-readme.md": "ad15ed82474b2cc4ba969e9baa0efed676963d1ccfec90cf16c5ca9088bfe8ad",
+      "train.csv": "dc73cc237bdb64e25682f3f5482dc5ef016b58a8e1f772f12310d5fbdfd5d5f4"
+    }
+  },
   "student_text_transformations": [
     {
       "source": ".gitattributes",

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>机器学习期末作业　飞机与直升机简笔画分类 · 机器学习</title><link rel="stylesheet" href="../assets/site.css"></head><body><main class="reading"><a class="back" href="../index.html">← 返回课程首页</a>
+<nav class="links" aria-label="期末考试材料"><a class="button lab" href="quickdraw-final.zip" download>下载学生包（ZIP）</a></nav>
+<h1 id="机器学习期末作业-飞机与直升机简笔画分类">机器学习期末作业　飞机与直升机简笔画分类</h1>
+<ul>
+<li><strong>完成形式</strong>　个人独立完成</li>
+<li><strong>综合任务满分</strong>　100 分</li>
+<li><strong>提交物</strong>　一份可从头运行的 Jupyter Notebook</li>
+<li><strong>提交时间与渠道</strong>　以发布时的课程通知为准</li>
+</ul>
+<p>你将收到 4,000 张带标签的简笔画。课堂 Project 用于预演完整流程。期末作业另用这批图，从空白 Notebook 开始独立完成，单独提交。请写出从读取数据到生成预测的完整流程，比较几种课内模型，并根据验证结果选定一个最终方案。教师在收卷后用保留的 1,000 张图统一评价。</p>
+<h2 id="一数据与任务">一、数据与任务</h2>
+<p>每张图是 28×28 的灰度点阵。发放的 <code>train.csv</code> 每行对应一张图。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sample_id</code></td>
+<td>样本编号，用于核对图像和标签的对应关系</td>
+</tr>
+<tr>
+<td><code>p000</code> 至 <code>p783</code></td>
+<td>按行展开的 784 个像素，整数值范围为 0–255</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>0 表示飞机（airplane），1 表示直升机（helicopter）</td>
+</tr>
+</tbody>
+</table>
+<p>两类各有 2,000 张。你可以把一行像素还原为 28×28 的图来检查错分。构建特征矩阵时请按像素编号顺序取列，样本编号留作核对。标签来自原绘图任务的类别，个别草图可能画得不清楚。 <a href="https://github.com/googlecreativelab/quickdraw-dataset#license">Google Quick, Draw! 数据与许可（CC BY 4.0）</a></p>
+<p>训练、验证、选模和全量重训均只使用发放包内的 <code>train.csv</code>。不得引入官方全量数据、其他外部样本或外部预训练模型，也不得查找保留集及其标签。可以复用课程中学过的方法与代码片段，引用时注明来源并说明实际用途。</p>
+<h2 id="二建立共同参照">二、建立共同参照</h2>
+<ol type="1">
+<li>读入数据，报告样本数、类别数及特征矩阵与标签的形状。说明编号、像素和标签在程序中的用途。</li>
+<li>可以采用一次分层留出、3 折或 5 折分层交叉验证，也可以同时采用一次留出和一套交叉验证。同时使用时，先写清以哪一套结果作选模依据。报告划分方法、样本数和随机种子。若你选择留出验证，75%／25% 是一个可用的起点。</li>
+<li>在训练部分建立多数类基线和二分类逻辑回归。多数类由当前训练部分决定，票数相同时预测 0。说明多数类基线提供什么参照，以及逻辑回归怎样把一行像素转换为类别预测，并记录设置。若采用标准化等需要估计参数的预处理，每次只用当前训练部分拟合。</li>
+</ol>
+<h2 id="三选一个模型比较两种设置">三、选一个模型，比较两种设置</h2>
+<p>从下表选择 <strong>一个方向</strong>。先写下你预期改动会怎样影响训练和验证表现，再运行两种设置。表中给出了对照的起点，其余设置在同一组对照内固定。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>方向</th>
+<th>只改变这一项</th>
+<th>固定设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>随机森林 <code>RandomForestClassifier</code></td>
+<td>树的数量 <strong>10 vs 100</strong></td>
+<td><code>max_depth=None</code>、<code>max_features="sqrt"</code>、<code>bootstrap=True</code>，共用随机种子</td>
+</tr>
+<tr>
+<td>梯度提升树 <code>GradientBoostingClassifier</code></td>
+<td>单棵树的最大深度 <strong>2 vs 4</strong></td>
+<td>150 轮、学习率 0.1、<code>max_features="sqrt"</code>，共用随机种子</td>
+</tr>
+<tr>
+<td>多层感知机 <code>MLPClassifier</code></td>
+<td>单隐藏层的单元数 <strong>64 vs 128</strong></td>
+<td>ReLU、Adam、无 Dropout，共用输入缩放、批量大小、训练轮数上限和随机种子</td>
+</tr>
+</tbody>
+</table>
+<p>MLP 可以用 <code>hidden_layer_sizes=(64,)</code> 或 <code>(128,)</code> 表示一个隐藏层。两组使用相同的训练轮数上限，关闭基于验证集的早停，不用验证结果另外选择训练轮数。可将像素除以 255，使用批量大小 128、初始学习率 0.001、50 轮训练上限。记录两组的共同设置。</p>
+<p>四个配置共用同一验证划分或同一组交叉验证折，主指标统一用准确率。请在一张表里给出多数类、逻辑回归和两组候选的训练与验证准确率。采用交叉验证时，写清折数和汇总方式。主专业还需说明怎样保证对照只改变了指定因素，并解释一项结果的限制，例如分数接近时这一划分能支持多强的结论。</p>
+<p>对照运行前的预期，解释两种设置在训练和验证上的实际表现，包括变化很小或与预期不一致的情况。</p>
+<h2 id="四用结果选定最终方案">四、用结果选定最终方案</h2>
+<ol type="1">
+<li>根据比较表，从逻辑回归和所选候选的两种设置中暂选一个方案。用该方案的验证预测生成混淆矩阵，标明行列含义和标签顺序。使用交叉验证时，可汇总每条样本在其验证折上的预测。</li>
+<li>结合至少两张实际错分图，写出真实标签、预测标签和你从图中看到的特征。若某种错分方向在验证结果中没有出现，如实说明。</li>
+<li>说明这些错分证据是否支持你的暂选方案，并确定最终方案。若改变选择，请说明依据。只需为暂选方案制作混淆矩阵和错分图。说明你能把结论推广到怎样的简笔画，以及哪类图还需要另行验证。</li>
+<li>定好方案后，用全部 4,000 张带标签图重新训练最终模型。沿用选定方案的配置，拟合型预处理随模型一起重训。</li>
+</ol>
+<h2 id="五预测接口与提交">五、预测接口与提交</h2>
+<p>请在 Notebook 中写出 <code>predict_final(X_raw)</code>。教师重跑你的 Notebook 后会调用这个函数。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>接口约定</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入</td>
+<td>NumPy 二维数组，形状为 <code>(n, 784)</code>，列顺序为 <code>p000</code> 至 <code>p783</code>，像素值为 0–255</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>长度为 <code>n</code> 的一维整数预测，每项为 0 或 1，顺序与输入行一致</td>
+</tr>
+<tr>
+<td>行为</td>
+<td>使用已在全部 4,000 张图上训练好的最终模型和对应预处理，调用时直接预测</td>
+</tr>
+</tbody>
+</table>
+<p>解压学生包后，在 <code>train.csv</code> 所在目录创建并保存 Notebook，代码用相对路径 <code>train.csv</code> 读数据。提交前，重启内核并运行全部单元，用开发集的几张原始像素行检查上述接口。Notebook 应保留比较表、混淆矩阵、错分图和选模理由，并在末尾注明数据和引用代码的来源。如使用 AI 辅助，简要说明用途。代码可以使用课程环境中的 NumPy、pandas、scikit-learn 和 Matplotlib。</p>
+<p>请在课程 CPU 环境中完成整份 Notebook 的自查。教师从头运行整份 Notebook 的训练预算为 10 分钟，涵盖验证、选模和全量重训。若标准流程接近这个时限，请在提交说明中记录自查耗时和使用环境。</p>
+<p>按课程通知提交 <code>学号.ipynb</code>。教师端生成最终预测并回传测试结果。评分依据包括模型理解、独立实现、验证质量、结果解释和复现情况，测试准确率用于统一核验。</p>
+
+</main></body></html>

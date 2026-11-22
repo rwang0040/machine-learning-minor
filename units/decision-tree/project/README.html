@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>综合任务：开工前预测质量不合格 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
-<h1 id="综合任务开工前预测质量不合格">综合任务：开工前预测质量不合格</h1>
-<p>这是本课程后半段持续推进的独立合成任务，与课堂能耗/超限数据不同，不直接比较其分数。现在只填写 project.ipynb 中的计划；B05 再建基线，B06 修订处理，T15 冻结，B08 最终评价。</p>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>课堂 Project：开工前预测质量不合格 · 机器学习</title><link rel="stylesheet" href="../../../assets/site.css"></head><body><main class="reading"><a class="back" href="../../../index.html">← 返回课程首页</a>
+<h1 id="课堂-project开工前预测质量不合格">课堂 Project：开工前预测质量不合格</h1>
+<p>这个合成任务用于预演独立期末作业的流程。现在只填写 <code>project.ipynb</code> 中的计划。B05 建基线，B06 修订处理，T15 制定冻结决定，B08 完成评价预演。独立期末作业另用新数据和 Notebook，单独发放、提交和评分。</p>
 <h2 id="问题和数据">问题和数据</h2>
 <p>在一个独立生产批次开工前，用已确定的 planned_load、temperature_setting、material_score 预测完工后是否质量不合格（defective=1）。三个输入都是无量纲模拟变量，已在预测时可得；不是完工后检测结果。batch_id 是标识，不作特征。</p>
 <p><code>development.csv</code> 提供 120 行有标签开发数据。模拟假设批次独立、没有时间依赖或重复设备；可提出固定验证或分层交叉验证计划，但需说明依据。少量输入缺失需要在训练部分/训练折处理。特征数值不是因果结论。</p>
