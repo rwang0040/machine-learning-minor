@@ -7,7 +7,7 @@
 - [安装与启动](docs/getting-started.md)：本机或 Cloud Studio 环境、课件 HTTP 浏览。
 - [提交与保存](docs/submission.md)：创建个人实验副本、保存和备份。
 - [作业一](homework/t01-t02/student.md)、[作业二](homework/t03-t04/student.md) 及 [作业三](homework/t05-t06/student.md)：各约 60 分钟，开放讲义和计算器。
-- [期末考试题面](final/student.md)与[学生包（ZIP）](final/quickdraw-final.zip)。开放与提交时间以课程通知为准。
+- [期末项目题目](final/student.md)与[学生包（ZIP）](final/quickdraw-final.zip)。开放与提交时间以课程通知为准。
 
 课堂实验使用合成教学数据。B01—B07 仅使用训练与验证，没有独立最终测试集。Notebook 中的 TODO 和停止提示是练习的一部分；按要求补全后删除对应停止提示，保留检查代码。
 
